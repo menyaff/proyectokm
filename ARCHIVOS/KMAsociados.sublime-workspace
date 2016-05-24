@@ -1,0 +1,500 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"sql",
+				"sqlComentarios"
+			],
+			[
+				"utf8",
+				"utf8_encode"
+			],
+			[
+				"html",
+				"htmlentities"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"Produ",
+				"ProductID"
+			],
+			[
+				"pr",
+				"products"
+			],
+			[
+				"pat",
+				"pathComplementos"
+			],
+			[
+				"div",
+				"divDialogSaludo"
+			],
+			[
+				"strre",
+				"str_replace"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"tex",
+				"text-indent"
+			],
+			[
+				"consulta",
+				"consultaSQL"
+			],
+			[
+				"op",
+				"opcionMenu"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"usu",
+				"usuarioActivo"
+			],
+			[
+				"repla",
+				"str_replace"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"iV",
+				"iValor2"
+			],
+			[
+				"iv",
+				"iValor2"
+			],
+			[
+				"iValor",
+				"iValor1"
+			],
+			[
+				"_",
+				"_GET"
+			],
+			[
+				"mensaje",
+				"mensajeOculto"
+			],
+			[
+				"pa",
+				"param_mensaje"
+			],
+			[
+				"param",
+				"param_nombre"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "\n<?php\n	session_start();\n	\n	define(\"__DESARROLLO__\",TRUE);\n	define(\"__PathComplementos__\",$_SERVER[\"DOCUMENT_ROOT\"].\"/complementos/\");\n\n	if(__DESARROLLO__)\n		require_once __PathComplementos__.\"firePHP/fb.php\";\n	require_once \"conexionBD.inc\";\n\n	define(\"__BDHost__\",\"localhost\");\n	define(\"__BDUser__\",\"root\");\n	define(\"__BDPass__\",\"\");\n	define(\"__BDDatabase__\",\"kmasociados\");\n	define(\"__SQL__\",\"mysqli\");\n\n	function errorShow($texto){\n		if(__DESARROLLO__)\n			FB::error($texto);\n	}\n?>",
+			"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
+			"file_size": 501,
+			"file_write_time": 131074826998635054,
+			"settings":
+			{
+				"buffer_size": 482,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/xampp/htdocs/KMAsociados/config/conexionBD.inc",
+			"settings":
+			{
+				"buffer_size": 5490,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/xampp/htdocs/KMAsociados/config/front.conf",
+			"settings":
+			{
+				"buffer_size": 890,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 160.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/xampp/htdocs/D4/HTML/index.html",
+		"/C/Users/Meny/Desktop/hosts",
+		"/D/xampp/htdocs/D4/HTML/COMPLEMENTOS/bootstrap-3.3.6-dist/css/bootstrap.min.css",
+		"/D/xampp/htdocs/D4/HTML/COMPLEMENTOS/bootstrap-3.3.6-dist/css/bootstrap.css",
+		"/D/xampp/htdocs/tecmilenio/cursophp/index.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/login.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/webservice.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/comentar.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/comentarios.php",
+		"/D/xampp/htdocs/D4/disenio/index.html",
+		"/D/xampp/htdocs/D4/disenio/css/estilos.css",
+		"/D/xampp/htdocs/D4/disenio/contacto.html",
+		"/D/Mis documentos/Programación/JAVA/D4/ejemplojsp/web/WEB-INF/web.xml",
+		"/D/xampp/htdocs/complementos/bootstrap-3.3.6/css/bootstrap.css",
+		"/D/xampp/htdocs/complementos/bootstrap-3.3.6/css/bootstrap.min.css",
+		"/D/xampp/htdocs/tecmilenio/cursophp/contacto.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/ARCHIVOS/BD.sql",
+		"/D/xampp/htdocs/KMAsociados/config/front.conf",
+		"/D/xampp/htdocs/KMAsociados/front/menu.php",
+		"/D/xampp/htdocs/KMAsociados/front/proveedores.php",
+		"/D/xampp/htdocs/KMAsociados/front/clientes.php",
+		"/D/xampp/htdocs/KMAsociados/front/subfamilias.php",
+		"/D/xampp/htdocs/KMAsociados/front/familias.php",
+		"/D/xampp/htdocs/KMAsociados/front/lugares.php",
+		"/D/xampp/htdocs/KMAsociados/front/tiposEvento.php",
+		"/D/xampp/htdocs/KMAsociados/front/roles.php",
+		"/D/xampp/htdocs/KMAsociados/front/cotizacion.php",
+		"/D/xampp/htdocs/KMAsociados/front/areas.php",
+		"/D/xampp/htdocs/KMAsociados/front/articulos.php",
+		"/D/xampp/htdocs/KMAsociados/front/servicios.php",
+		"/D/xampp/htdocs/KMAsociados/v2/eventos.php",
+		"/D/xampp/htdocs/KMAsociados/v2/index.php",
+		"/D/xampp/htdocs/KMAsociados/tabs.php",
+		"/D/xampp/htdocs/KMAsociados/v2/lugares.php",
+		"/D/xampp/htdocs/KMAsociados/JS/products.js",
+		"/D/xampp/htdocs/KMAsociados/index.php",
+		"/D/xampp/htdocs/KMAsociados/config/config.conf",
+		"/D/xampp/htdocs/jqueryUI/jquery-ui.js",
+		"/D/xampp/htdocs/jqueryUI/jquery-ui.min.js",
+		"/D/xampp/htdocs/tecmilenio/cursophp/maqueta.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/servicios.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/contenido.php",
+		"/D/xampp/apache/conf/httpd.conf",
+		"/D/xampp/apache/conf/extra/httpd-xampp.conf",
+		"/D/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/D/xampp/htdocs/tecmilenio/cursophp/ayuda.php",
+		"/D/xampp/htdocs/tecmilenio/cursophp/css/estilo.css",
+		"/D/xampp/htdocs/D4/javascript/index.html",
+		"/C/Users/Meny/Documents/dumps/dump_gualmar.sql",
+		"/C/Users/Meny/Documents/dumps/dumpConsola.sql",
+		"/D/Mis documentos/Programación/MySQL/SELECTs.sql",
+		"/D/xampp/htdocs/digitalia/wsLogin.php",
+		"/D/xampp/htdocs/digitalia/main.php",
+		"/D/xampp/htdocs/digitalia/index.php",
+		"/D/xampp/htdocs/digitalia/bd.php",
+		"/D/xampp/htdocs/artrr/como.php",
+		"/D/xampp/htdocs/artrr/ryfu.php",
+		"/D/xampp/htdocs/artrr/main.php",
+		"/D/xampp/htdocs/D4/ARCHIVOS/dump.sql",
+		"/D/xampp/htdocs/digitalia/arturo/ryfu.php",
+		"/D/xampp/htdocs/digitalia/arturo/main.php",
+		"/D/xampp/htdocs/digitalia/arturo/como.php",
+		"/C/Users/Meny/AppData/Local/Packages/microsoft.windowscommunicationsapps_8wekyb3d8bbwe/LocalState/Files/601/187/como [9732].php",
+		"/D/xampp/htdocs/digitalia/ejemplo1.php",
+		"/D/xampp/htdocs/digitalia/arreglos.php",
+		"/D/xampp/htdocs/digitalia/arreglos",
+		"/D/xampp/htdocs/D4/wsLogin.php",
+		"/D/xampp/htdocs/digitalia/webservice.php",
+		"/D/xampp/htdocs/digitalia/ejemplo3.php",
+		"/D/xampp/htdocs/digitalia/ejemplo2.php",
+		"/D/xampp/htdocs/digitalia/ejemplo4.php",
+		"/D/xampp/htdocs/D4/BD.php",
+		"/D/xampp/htdocs/D4/main.php",
+		"/D/xampp/htdocs/test/index.php",
+		"/F/Nueva carpeta/dump.sql",
+		"/D/xampp/htdocs/D4/login.php",
+		"/D/xampp/htdocs/D4/ejemplo1.php",
+		"/D/xampp/htdocs/D4/ejemplo2.php",
+		"/D/xampp/htdocs/D4/ejemplo3.php",
+		"/D/xampp/htdocs/D4/ejemplo4.php",
+		"/D/Mis documentos/Programación/JAVA/Cursos/leer.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/puntoDeVenta/src/BD.sql",
+		"/D/xampp/htdocs/D4/webservice.php",
+		"/D/xampp/htdocs/D4/arrays.php",
+		"/D/xampp/htdocs/D4/arrays",
+		"/D/xampp/htdocs/D4/index.php",
+		"/D/xampp/htdocs/digitalia/xxx.html",
+		"/D/Mis documentos/Programación/JAVA/Cursos/mayorDeEdad.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/base de datos.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/calculadora.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/cicloDoWhile.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/cicloWhile.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/decisiones.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/funciones.java",
+		"/D/Mis documentos/Programación/JAVA/Cursos/base de datos/dump1.sql",
+		"/D/xampp/htdocs/D4/xxx.html",
+		"/D/Mis documentos/Programación/JAVA/Cursos/Dump20150502.sql",
+		"/C/DEM_14/DEC/FOFM8810118F30DOT88F1FCG1O19491.dec",
+		"/D/Mis documentos/Programación/C++/Digitalia/agenda/logEmpleados.txt",
+		"/D/Mis documentos/Acordeón documentos/SAT/DIOT Octubre 2015.txt",
+		"/D/xampp/htdocs/D4/principal.html",
+		"/D/xampp/htdocs/D4/wsContacto.php",
+		"/D/xampp/htdocs/D4/comentarios.json.php",
+		"/D/xampp/htdocs/test/index.html",
+		"/D/Mis documentos/Programación/JAVA/I/Calculadora.java",
+		"/D/Mis documentos/Programación/JAVA/I/Primero.java",
+		"/D/Mis documentos/Programación/JAVA/II/Alarma.java",
+		"/D/Mis documentos/MAESTRÍA/Cuatrimestre 3/Aplicaciones Móviles Web Apps/Tareas/Tarea1.html",
+		"/D/xampp/htdocs/D4/2disenioweb/comentarios.json",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/servicios.html",
+		"/D/xampp/htdocs/D4/Comentarios.php",
+		"/D/xampp/htdocs/D4/comentarios.json",
+		"/D/xampp/htdocs/D4/logComentarios.html",
+		"/D/xampp/htdocs/D4/logComentarios.txt",
+		"/C/Users/Meny/Documents/D4 database/resp.sql",
+		"/D/xampp/htdocs/D4/logComentarios.php",
+		"/D/xampp/htdocs/D4/index.html",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/webservice.php",
+		"/C/Users/Meny/AppData/Local/Temp/Rar$DR09.297/jquery-ui-1.11.4.custom/jquery-ui.js",
+		"/C/Users/Meny/AppData/Local/Temp/Rar$DR09.297/jquery-ui-1.11.4.custom/jquery-ui.min.js",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/listas.html",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/index.php",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/uno.php",
+		"/D/xampp/htdocs/wsC.php",
+		"/D/xampp/htdocs/digitalia/PHP_Marianne/webservice",
+		"/D/xampp/htdocs/D4/contacto.html",
+		"/D/xampp/htdocs/tecmilenio/disenioweb1/webserviceSaludo.php",
+		"/D/xampp/htdocs/digitalia/PHP_Marian/index.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"col-sm-4",
+			"col-md-4",
+			"sm-6",
+			"xs-6",
+			"6",
+			"col-sm-12",
+			"col-md-6",
+			"col-md-",
+			"col-lg-4",
+			"col-lg-3",
+			"col-lg-4",
+			"seccionCv",
+			" />",
+			";\">",
+			"from all",
+			"denny from",
+			"\"",
+			"gualmar",
+			">\n",
+			"TIME_ZONE",
+			"\n\n    function logMeny($txt){\n      $pf = fopen(\"cosa.log\",\"a+\");\n      fwrite($pf,$txt.PHP_EOL);\n      fclose($pf);\n    }",
+			"\n",
+			"com",
+			"85",
+			"80"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"'",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
+					"settings":
+					{
+						"buffer_size": 482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/xampp/htdocs/KMAsociados/config/conexionBD.inc",
+					"settings":
+					{
+						"buffer_size": 5490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/xampp/htdocs/KMAsociados/config/front.conf",
+					"settings":
+					{
+						"buffer_size": 890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true
+}
