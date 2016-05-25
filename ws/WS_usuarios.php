@@ -52,7 +52,7 @@
 		case "update":
 			$iIdUsuario = isset($_POST["iIdUsuario"]) ? $_POST["iIdUsuario"] : NULL;
 
-			$query = $BD->query("CALL SPU_usuarios(".$_POST["iIdUsuario"]."); //1:07am
+			$query = $BD->query("CALL SPU_usuarios(".$_POST["iIdUsuario"].");
 			break;
 	}
 ?>
