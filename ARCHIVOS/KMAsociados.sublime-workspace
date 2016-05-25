@@ -112,17 +112,6 @@
 	"buffers":
 	[
 		{
-			"contents": "\n<?php\n	session_start();\n	\n	define(\"__DESARROLLO__\",TRUE);\n	define(\"__PathComplementos__\",$_SERVER[\"DOCUMENT_ROOT\"].\"/complementos/\");\n\n	if(__DESARROLLO__)\n		require_once __PathComplementos__.\"firePHP/fb.php\";\n	require_once \"conexionBD.inc\";\n\n	define(\"__BDHost__\",\"localhost\");\n	define(\"__BDUser__\",\"root\");\n	define(\"__BDPass__\",\"\");\n	define(\"__BDDatabase__\",\"kmasociados\");\n	define(\"__SQL__\",\"mysqli\");\n\n	function errorShow($texto){\n		if(__DESARROLLO__)\n			FB::error($texto);\n	}\n?>",
-			"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
-			"file_size": 501,
-			"file_write_time": 131074826998635054,
-			"settings":
-			{
-				"buffer_size": 482,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "/D/xampp/htdocs/KMAsociados/config/conexionBD.inc",
 			"settings":
 			{
@@ -135,6 +124,31 @@
 			"settings":
 			{
 				"buffer_size": 890,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/xampp/htdocs/KMAsociados/ws/WS_usuarios.php",
+			"settings":
+			{
+				"buffer_size": 1508,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\n	include_once \"../config/back.conf\";\n\n	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);\n\n	$accion = $_REQUEST[\"accion\"];\n\n?>",
+			"settings":
+			{
+				"buffer_size": 160,
+				"line_ending": "Windows",
+				"name": "<?php"
+			}
+		},
+		{
+			"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
+			"settings":
+			{
+				"buffer_size": 482,
 				"line_ending": "Windows"
 			}
 		}
@@ -163,6 +177,9 @@
 	},
 	"file_history":
 	[
+		"/D/xampp/htdocs/KMAsociados/config/back.conf",
+		"/D/xampp/htdocs/KMAsociados/ARCHIVOS/BD20160524.sql",
+		"/D/xampp/htdocs/test/index.php",
 		"/D/xampp/htdocs/D4/HTML/index.html",
 		"/C/Users/Meny/Desktop/hosts",
 		"/D/xampp/htdocs/D4/HTML/COMPLEMENTOS/bootstrap-3.3.6-dist/css/bootstrap.min.css",
@@ -236,7 +253,6 @@
 		"/D/xampp/htdocs/digitalia/ejemplo4.php",
 		"/D/xampp/htdocs/D4/BD.php",
 		"/D/xampp/htdocs/D4/main.php",
-		"/D/xampp/htdocs/test/index.php",
 		"/F/Nueva carpeta/dump.sql",
 		"/D/xampp/htdocs/D4/login.php",
 		"/D/xampp/htdocs/D4/ejemplo1.php",
@@ -288,9 +304,7 @@
 		"/D/xampp/htdocs/digitalia/PHP_Marianne/uno.php",
 		"/D/xampp/htdocs/wsC.php",
 		"/D/xampp/htdocs/digitalia/PHP_Marianne/webservice",
-		"/D/xampp/htdocs/D4/contacto.html",
-		"/D/xampp/htdocs/tecmilenio/disenioweb1/webserviceSaludo.php",
-		"/D/xampp/htdocs/digitalia/PHP_Marian/index.php"
+		"/D/xampp/htdocs/D4/contacto.html"
 	],
 	"find":
 	{
@@ -352,38 +366,11 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
-					"settings":
-					{
-						"buffer_size": 482,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1,
-								1
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "/D/xampp/htdocs/KMAsociados/config/conexionBD.inc",
 					"settings":
 					{
@@ -410,11 +397,91 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "/D/xampp/htdocs/KMAsociados/config/front.conf",
 					"settings":
 					{
 						"buffer_size": 890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/xampp/htdocs/KMAsociados/ws/WS_usuarios.php",
+					"settings":
+					{
+						"buffer_size": 1508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1492,
+								1492
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"settings":
+					{
+						"buffer_size": 160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5,
+								5
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<?php",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/xampp/htdocs/KMAsociados/config/back.conf",
+					"settings":
+					{
+						"buffer_size": 482,
 						"regions":
 						{
 						},
