@@ -1,4 +1,0 @@
-[Sun Mar 13 18:54:17.301126 2016] [core:error] [pid 968:tid 1848] (20024)The given path is misformatted or contained invalid characters: [client 127.0.0.1:35178] AH00127: Cannot map GET /http://localhost/jquery-1.12.1.min.js HTTP/1.1 to file, referer: http://kmasociados.me/
-[Tue Mar 29 14:03:39.055588 2016] [:error] [pid 3100:tid 1916] [client 127.0.0.1:1990] script 'D:/xampp/htdocs/KMAsociados/front/servicios.php' not found or unable to stat
-[Wed Mar 30 14:11:17.792644 2016] [:error] [pid 3124:tid 1896] [client 127.0.0.1:1702] script 'D:/xampp/htdocs/KMAsociados/front/form.php' not found or unable to stat, referer: http://kmasociados.me/front/
-[Wed May 11 00:24:12.827183 2016] [:error] [pid 5360:tid 1900] [client 127.0.0.1:20222] script 'D:/xampp/htdocs/KMAsociados/usuarios.php' not found or unable to stat, referer: http://kmasociados.me/login.php
