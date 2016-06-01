@@ -3,36 +3,46 @@
 
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
-	$accion = $_REQUEST["accion"];
+	$accion = isset($_REQUEST["accion"]) ? $_REQUEST["accion"] : NULL;
 
 	switch($accion){
 		case "getLlave":
-			$query = $BD->query("CALL SPQ_llaveUsuario('".$_POST["nom"]."');");
-			$llave = $BD->fetchRow($query);
+			if(isset($_POST["nuevo"]))
+				echo json_encode(array("llave"=>date("U")));
+			else{
+				$nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;
 
-			if($llave[0]!="" && !is_null($llave[0])){
-				$_SESSION["llave"] = $llave[0];
-				$_SESSION["nllave"] = sha1(date("U"));
+				$query = $BD->query("CALL SPQ_llaveUsuario('".$nom."');");
+				$llave = $BD->fetchRow($query);
 
-				$retorno = array(
-							"mensaje" => "success",
-							"llave" => $_SESSION["llave"],
-							"nllave" => $_SESSION["nllave"]
-						);
+				if($llave[0]!="" && !is_null($llave[0])){
+					$_SESSION["llave"] = $llave[0];
+					$_SESSION["nllave"] = sha1(date("U"));
+
+					$retorno = array(
+								"mensaje" => "success",
+								"llave" => $_SESSION["llave"],
+								"nllave" => $_SESSION["nllave"]
+							);
+				}
+	            else
+	                $retorno = array("mensaje" => "No se encuentra el usuario");
+
+				echo json_encode($retorno);
 			}
-            else
-                $retorno = array("mensaje" => "No se encuentra el usuario");
-
-			echo json_encode($retorno);
 			break;
 		case "login":
 			require __PathComplementos__."cifrado.php";
 
+			$nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;
+			$pass = isset($_POST["pass"]) ? $_POST["pass"] : NULL;
+			$npass = isset($_POST["npass"]) ? $_POST["npass"] : NULL;
+
 			$data = array(
-						"usuario" => $_POST["nom"],
+						"usuario" => $nom,
 						"nllave" => $_SESSION["nllave"],
-						"pass" => cifrado::encrypt($_POST["pass"],$_SESSION["llave"]),
-						"npass" => cifrado::encrypt($_POST["npass"],$_SESSION["nllave"])
+						"pass" => cifrado::encrypt($pass,$_SESSION["llave"]),
+						"npass" => cifrado::encrypt($npass,$_SESSION["nllave"])
 					);
 
 			unset($_SESSION["llave"],$_SESSION["nllave"]);
@@ -50,9 +60,25 @@
 
 			break;
 		case "update":
-			$iIdUsuario = isset($_POST["iIdUsuario"]) ? $_POST["iIdUsuario"] : NULL;
+			$iId = isset($_POST["iId"]) ? $_POST["iId"] : "NULL";
 
-			$query = $BD->query("CALL SPU_usuarios(".$_POST["iIdUsuario"].");
+			if($iId!="NULL")
+				require __PathComplementos__."cifrado.php";
+
+			$iNombre = isset($_POST["iNombre"]) ? $_POST["iNombre"] : "NULL";
+			$iLlave = isset($_POST["iLlave"]) ? $_POST["iLlave"] : "NULL";
+			$iPassword = isset($_POST["iPassword"]) ? cifrado::encrypt($_POST["iPassword"],$iLlave) : "NULL";
+			$selEmpleado = isset($_POST["selEmpleado"]) ? $_POST["selEmpleado"] : "NULL";
+			$selRol = isset($_POST["selRol"]) ? $_POST["selRol"] : "NULL";
+
+			echo "CALL SPU_usuarios(".$iId.",'".$iNombre."','".$iPassword."','".$iLlave."',".$selEmpleado.",".$selRol.");";
+
+			$query = $BD->query("CALL SPU_usuarios(".$iId.",'".$iNombre."','".$iPassword."','".$iLlave."',".$selEmpleado.",".$selRol.");");
+			$resultado = $BD->fetchAssoc($query);
+			FB::info($resultado);
+			break;
+		default:
+			echo "Falta definir acción";
 			break;
 	}
 ?>
