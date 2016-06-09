@@ -1,0 +1,12 @@
+[2016-06-07 01:48:06][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? FROM cat_estados' at line 1 Query: SELECT ? FROM cat_estados;
+[2016-06-07 01:48:06][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-07 03:05:15][ERROR][/ws/WS_usuarios.php] Error SQL:Cannot add or update a child row: a foreign key constraint fails (`kmasociados`.`usuarios`, CONSTRAINT `FK_usuarios_2` FOREIGN KEY (`rol`) REFERENCES `cat_roles` (`id`)) Query: CALL SPU_usuarios('8','xxx','wsPEkg==','aaaa','5','9');
+[2016-06-07 03:05:15][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-07 03:05:46][ERROR][/ws/WS_usuarios.php] Error SQL:Cannot add or update a child row: a foreign key constraint fails (`kmasociados`.`usuarios`, CONSTRAINT `FK_usuarios_2` FOREIGN KEY (`rol`) REFERENCES `cat_roles` (`id`)) Query: CALL SPU_usuarios('8','xxx','wsPEkg==','aaaa','5','9');
+[2016-06-07 03:05:46][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-07 03:08:50][ERROR][/ws/WS_usuarios.php] Error SQL:Cannot add or update a child row: a foreign key constraint fails (`kmasociados`.`usuarios`, CONSTRAINT `FK_usuarios_2` FOREIGN KEY (`rol`) REFERENCES `cat_roles` (`id`)) Query: CALL SPU_usuarios('8','xxx','wsPEkg==','aaaa','5','9');
+[2016-06-07 03:08:50][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-07 03:13:16][ERROR][/ws/WS_usuarios.php] Error SQL:Cannot add or update a child row: a foreign key constraint fails (`kmasociados`.`usuarios`, CONSTRAINT `FK_usuarios_2` FOREIGN KEY (`rol`) REFERENCES `cat_roles` (`id`)) Query: CALL SPU_usuarios('8','xxx','wsPEkg==','aaaa','5','9');
+[2016-06-07 03:13:16][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-07 03:14:58][ERROR][/ws/WS_usuarios.php] Error SQL:Cannot add or update a child row: a foreign key constraint fails (`kmasociados`.`usuarios`, CONSTRAINT `FK_usuarios_2` FOREIGN KEY (`rol`) REFERENCES `cat_roles` (`id`)) Query: CALL SPU_usuarios(NULL,'xxx','wsPEkg==','aaaa','5','9');
+[2016-06-07 03:14:58][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc

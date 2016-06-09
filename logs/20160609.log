@@ -1,0 +1,6 @@
+[2016-06-09 02:14:16][ERROR][/ws/WS_subfamilias.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_cat_subfamilias; expected 0, got 1 Query: CALL SPQ_cat_subfamilias('3');
+[2016-06-09 02:14:16][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc
+[2016-06-09 02:14:22][ERROR][/ws/WS_subfamilias.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_cat_subfamilias; expected 0, got 1 Query: CALL SPQ_cat_subfamilias(NULL);
+[2016-06-09 02:14:22][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc
+[2016-06-09 02:45:08][ERROR][/ws/WS_subfamilias.php] Error SQL: Query: 
+[2016-06-09 02:45:08][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc

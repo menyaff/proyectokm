@@ -78,10 +78,9 @@
                             	$retorno = mysql_insert_id($CXN);
                            	else
                            		errorShow("Error SQL: ".mysql_error()." Query: ".$query);
-                        }else{
+                        }else
                             if(!($retorno = mysql_query($query,$CXN)))
                             	errorShow("Error SQL: ".mysql_error()." Query: ".$query);
-                        }
 						break;
 					case "mysqli":
                         if(strcmp("INSERT",strtoupper(substr($query, 0, 6))) == 0){
@@ -89,10 +88,9 @@
                             	$retorno = mysqli_insert_id($CXN);
                             else
                            		errorShow("Error SQL:".mysqli_error($CXN)." Query: ".$query);
-                        }else{
+                        }else
                             if(!($retorno = mysqli_query($CXN,$query)))
                             	errorShow("Error SQL:".mysqli_error($CXN)." Query: ".$query);
-                        }
 						break;
 				}
                 
@@ -220,6 +218,134 @@
 			}catch(Exception $e){
 				errorShow($e->getMessage());
 			}
+		}
+		public function doSP($SP, $parametros=array()){
+			$query = "CALL ".$SP."(";
+
+			foreach($parametros as $parametro)
+				$query .= is_null($parametro) ? "NULL," : "'".$parametro."',";
+
+			$query = rtrim($query,",").");";
+
+			return $query;
+		}
+		public function doSelect($tabla, $campos="*", $join=NULL, $where=NULL, $group=NULL, $order=NULL, $limit=NULL){
+			$query = "SELECT ";
+
+			if(is_null($campos) || $campos=="*")
+				$query .= "* ";	
+			else{
+				foreach($campos as $campo)
+					$query .= $campo.",";
+
+				$query = rtrim($query,",")." ";
+			}		
+
+			$query .= "FROM ".$tabla." ";
+
+			if(!is_null($join))
+				foreach($join as $elemento)
+					$query .= $elemento[0]." JOIN ".$elemento[1]." ON ".$elemento[2]." ";
+			if(!is_null($where)){
+				$query .= "WHERE ";
+
+				foreach($where as $elemento)
+					$query .= $elemento." AND ";
+
+				$query = rtrim($query,"AND ")." ";
+
+			}
+			if(!is_null($group)){
+				$query .= "GROUP BY ";
+
+				foreach($group as $elemento)
+					$query .= $elemento.",";
+
+				$query = trim($query,",")." ";
+			}
+			if(!is_null($order)){
+				$query .= "ORDER BY ";
+				
+				foreach($order as $elemento)
+					$query .= $elemento.",";
+
+				$query = trim($query,",")." ";
+			}
+			if(!is_null($limit))
+				$query .= "LIMIT ".$limit;
+
+			$query = rtrim($query," ").";";
+
+			return $query;
+		}
+		public function doInsert($tabla, $values, $campos=NULL){
+			$query = "INSERT INTO ".$tabla." ";
+
+			if(!is_null($campos)){
+				$query .= "(";
+
+				foreach($campos as $campo)
+					$query .= $campo.",";
+
+				$query = rtrim($query,",").") ";
+			}
+			$query .= "VALUES ";
+			foreach($values as $value){
+				$query .= "(";
+
+				foreach($value as $elemento)
+					$query .= "'".$elemento."',";
+
+				$query = rtrim($query,",")."),";
+			}
+
+			$query = rtrim($query,",").";";
+
+			return $query;
+		}
+		public function doDelete($tabla, $where=NULL){
+			$query = "DELETE FROM ".$tabla." ";
+
+			if(!is_null($where)){
+				$query .= "WHERE ";
+
+				foreach($where as $elemento)
+					$query .= $elemento." AND ";
+
+				$query = rtrim($query,"AND ")." ";
+
+			}
+
+			$query = rtrim($query).";";
+
+			if(__SAFEMODE__ && is_null($where))
+				return "Se  está ejecutando el modo seguro de BD, es necesario el uso del atributo WHERE en la consulta: \"".$query."\"";
+			else
+				return $query;
+		}
+		public function doUpdate($tabla,$set,$where=NULL){
+			$query = "UPDATE ".$tabla." SET ";
+
+			foreach($set as $index=>$value)
+				$query .= $index."=".$value.",";
+
+			$query = trim($query,",")." ";
+
+			if(!is_null($where)){
+				$query .= "WHERE ";
+
+				foreach($where as $elemento)
+					$query .= $elemento." AND ";
+
+				$query = rtrim($query,"AND ");
+			}
+
+			$query = rtrim($query," ").";";
+
+			if(__SAFEMODE__ && is_null($where))
+				return "Se  está ejecutando el modo seguro de BD, es necesario el uso del atributo WHERE en la consulta: \"".$query."\"";
+			else
+				return $query;
 		}
 	}
 	

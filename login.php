@@ -5,22 +5,33 @@
 <html>
 	<head>
 		<title>Login</title>
-		<meta charset="UTF-8" />
 		<?php
-			librerias::includeJQuery();
+			metatags();
+			librerias::JQuery();
+			librerias::notify();
 		?>
-		<script src="js/cifrado.js"></script>
+		<script src="<?= $pathJS ?>cifrado.js"></script>
 		<script>
 			$(document).ready(function(){
 				$("#btnAceptar").click(function(){
+					$.login();
+				});
+				$("input").keyup(function(event){
+					var tecla = event.keyCode ? event.keyCode : event.which;
+
+					if(tecla==13)
+						$.login();
+				});
+
+				$.login = function(){
 					$.ajax({
-		                url: "<?= librerias::pathWS() ?>WS_usuarios.php?accion=getLlave",
+		                url: "<?= $pathWS ?>WS_usuarios.php?accion=getLlave",
 		                dataType: "json",
 		                data: {"nom":$("#iUser").val()},
 		                type: "post",
 		                async: true,
 		                success: function(preLogin){
-		                	if(preLogin.mensaje=="success"){
+		                	if(preLogin.mensaje=="SUCCESS"){
 		                        var data = {
 			                                "nom" : $("#iUser").val(),
 			                                "pass" : $.base64Encode($("#iPass").val(),preLogin.llave),
@@ -28,21 +39,23 @@
 			                            };
 
 		                		$.ajax({
-					                url: "<?= librerias::pathWS() ?>WS_usuarios.php?accion=login",
+					                url: "<?= $pathWS ?>WS_usuarios.php?accion=login",
 					                dataType: "json",
 					                data: data,
 					                type: "post",
 					                async: true,
 					                success: function(login){
-					                	if(preLogin.mensaje=="success"){
+					                	if(login.mensaje=="SUCCESS"){
 					                		
-					                	}
+					                	}else
+		                					$.notify(login.mensaje,"error")
 					                }
 		            			});
-		                	}
+		                	}else
+		                		$.notify(preLogin.mensaje,"error")
 		                }
 		            });
-		        });
+		        };
 	        });
 		</script>
 	</head>

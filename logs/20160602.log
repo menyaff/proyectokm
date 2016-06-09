@@ -1,0 +1,22 @@
+[2016-06-02 09:39:38][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] UPDATE tabla T SET uno=1,segundo=dos WHERE campo1=3;
+[2016-06-02 09:42:23][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] UPDATE tabla T SET uno=1,segundo=dos WHERE campo1=3;
+[2016-06-02 02:44:15][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] UPDATE tabla T SET uno=1,segundo=dos WHERE campo1=3;
+[2016-06-02 02:47:07][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT  FROM tabla T  JOIN  ON  WHERE id=1 AND nombre LIKE '%cosa%' ORDER BY;
+[2016-06-02 02:48:01][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT  FROM tabla T  JOIN  ON  WHERE id=1 AND nombre LIKE '%cosa%' ORDER BY;
+[2016-06-02 02:48:40][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T  JOIN  ON  WHERE id=1 AND nombre LIKE '%cosa%' ORDER BY;
+[2016-06-02 02:49:06][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T WHERE id=1 AND nombre LIKE '%cosa%' ORDER BY;
+[2016-06-02 02:49:42][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T WHERE id=1 AND nombre LIKE '%cosa%';
+[2016-06-02 02:59:01][INFO][D:\xampp\htdocs\KMAsociados\config\back.conf] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T WHERE id=1 AND nombre LIKE '%cosa%';
+[2016-06-02 02:59:01][WARNING][D:\xampp\htdocs\KMAsociados\config\back.conf] HOLA MUNDO
+[2016-06-02 02:59:57][INFO][/ws/WS_usuarios.php] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T WHERE id=1 AND nombre LIKE '%cosa%';
+[2016-06-02 02:59:57][WARNING][/ws/WS_usuarios.php] HOLA MUNDO
+[2016-06-02 03:01:11][INFO][D:/xampp/htdocs/KMAsociados/ws/WS_usuarios.php] SELECT T.c1,T.c2,T.c4,T.campo5,C.campo2 FROM tabla T WHERE id=1 AND nombre LIKE '%cosa%';
+[2016-06-02 03:01:11][WARNING][D:/xampp/htdocs/KMAsociados/ws/WS_usuarios.php] HOLA MUNDO
+[2016-06-02 03:12:37][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM cat_estados' at line 1 Query: SELECT  FROM cat_estados;
+[2016-06-02 03:13:32][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM cat_estados' at line 1 Query: SELECT FROM cat_estados;
+[2016-06-02 03:14:04][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM cat_estados' at line 1 Query: SELECT FROM cat_estados;
+[2016-06-02 03:15:12][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM cat_estados' at line 1 Query: SELECT  FROM cat_estados;
+[2016-06-02 03:15:31][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? FROM cat_estados' at line 1 Query: SELECT ? FROM cat_estados;
+[2016-06-02 03:20:34][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? FROM cat_estados' at line 1 Query: SELECT ? FROM cat_estados;
+[2016-06-02 03:21:02][ERROR][/ws/WS_usuarios.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? FROM cat_estados' at line 1 Query: SELECT ? FROM cat_estados;
+[2016-06-02 03:21:02][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc

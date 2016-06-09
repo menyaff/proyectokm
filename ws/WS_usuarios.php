@@ -1,18 +1,22 @@
 <?php
 	include_once "../config/back.conf";
+	require_once "../config/webservice.inc";
 
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
-	$accion = isset($_REQUEST["accion"]) ? $_REQUEST["accion"] : NULL;
+	$accion = webservice::getRequest("accion",__GET__);
+	$respuesta = array();
 
 	switch($accion){
 		case "getLlave":
-			if(isset($_POST["nuevo"]))
-				echo json_encode(array("llave"=>date("U")));
-			else{
-				$nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;
+			$WS = new webservice("nuevo,nom");
 
-				$query = $BD->query("CALL SPQ_llaveUsuario('".$nom."');");
+			$nuevo = webservice::getRequest("nuevo",__POST__);
+
+			if($WS->getParametro("nuevo") != NULL)
+				echo json_encode(array("mensaje"=>"SUCCESS","llave"=>date("U")));
+			else{
+				$query = $BD->query($BD->doSP("SPQ_llaveUsuario",array($WS->getParametro("nom"))));
 				$llave = $BD->fetchRow($query);
 
 				if($llave[0]!="" && !is_null($llave[0])){
@@ -20,7 +24,7 @@
 					$_SESSION["nllave"] = sha1(date("U"));
 
 					$retorno = array(
-								"mensaje" => "success",
+								"mensaje" => "SUCCESS",
 								"llave" => $_SESSION["llave"],
 								"nllave" => $_SESSION["nllave"]
 							);
@@ -34,20 +38,18 @@
 		case "login":
 			require __PathComplementos__."cifrado.php";
 
-			$nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;
-			$pass = isset($_POST["pass"]) ? $_POST["pass"] : NULL;
-			$npass = isset($_POST["npass"]) ? $_POST["npass"] : NULL;
+			$WS = new webservice("nom,pass,npass");
 
 			$data = array(
-						"usuario" => $nom,
-						"nllave" => $_SESSION["nllave"],
-						"pass" => cifrado::encrypt($pass,$_SESSION["llave"]),
-						"npass" => cifrado::encrypt($npass,$_SESSION["nllave"])
+						"usuario" => $WS->getParametro("nom"),
+						"pass" => cifrado::encrypt($WS->getParametro("pass"),$_SESSION["llave"]),
+						"npass" => cifrado::encrypt($WS->getParametro("npass"),$_SESSION["nllave"]),
+						"nllave" => $_SESSION["nllave"]
 					);
 
 			unset($_SESSION["llave"],$_SESSION["nllave"]);
 
-			$query = $BD->query("CALL SPQ_loginUsuario('".$data["usuario"]."','".$data["pass"]."','".$data["npass"]."','".$data["nllave"]."');");
+			$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
 			$login = $BD->fetchRow($query);
 
 			if($login[0] !== "FALSE"){
@@ -60,23 +62,25 @@
 
 			break;
 		case "update":
-			$iId = isset($_POST["iId"]) ? $_POST["iId"] : "NULL";
+			require __PathComplementos__."cifrado.php";
 
-			if($iId!="NULL")
-				require __PathComplementos__."cifrado.php";
+			$WS = new webservice("iId,iNombre,iPassword,iLlave,selEmpleado,selRol");
 
-			$iNombre = isset($_POST["iNombre"]) ? $_POST["iNombre"] : "NULL";
-			$iLlave = isset($_POST["iLlave"]) ? $_POST["iLlave"] : "NULL";
-			$iPassword = isset($_POST["iPassword"]) ? cifrado::encrypt($_POST["iPassword"],$iLlave) : "NULL";
-			$selEmpleado = isset($_POST["selEmpleado"]) ? $_POST["selEmpleado"] : "NULL";
-			$selRol = isset($_POST["selRol"]) ? $_POST["selRol"] : "NULL";
+			$WS->changeParametro("iPassword",cifrado::encrypt($WS->getParametro("iPassword"),$WS->getParametro("iLlave")));
 
-			echo "CALL SPU_usuarios(".$iId.",'".$iNombre."','".$iPassword."','".$iLlave."',".$selEmpleado.",".$selRol.");";
-
-			$query = $BD->query("CALL SPU_usuarios(".$iId.",'".$iNombre."','".$iPassword."','".$iLlave."',".$selEmpleado.",".$selRol.");");
-			$resultado = $BD->fetchAssoc($query);
-			FB::info($resultado);
+			$query = $BD->doSP("SPU_usuarios",$WS->getParametro());
+			
+			echo json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
+		case "delete":
+			$WS = new webservice("iId");
+
+			$parametros = $WS->getParametro();
+			$parametros["filtro"] = NULL;
+
+			$query = $BD->doSP("SPD_usuarios",$parametros);
+			
+			echo json_encode($BD->fetchAssoc($BD->query($query)));
 		default:
 			echo "Falta definir acción";
 			break;
