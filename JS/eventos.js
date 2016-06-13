@@ -69,6 +69,7 @@ $.renderizaGridEventos = function(){
             serverFiltering: true,
             serverSorting: true
         },
+        toolbar: "<div><input type='checkbox' id='chTodosSubfamilias' />&nbsp;Todos&nbsp;&nbsp;</div>",
         filterable: false,
         sortable: true,
         resizable: true,
