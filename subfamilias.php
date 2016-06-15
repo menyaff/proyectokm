@@ -73,11 +73,11 @@
     <div id="divFormSubfamilias">
         <form>
             <div class="form-group">
-                <input type="text" id="iNombre" name="nombre" class="form-control campoNombre" placeholder="Nombre" />
+                <input type="text" id="iNombre" name="nombre" class="form-control campoNombre" placeholder="Nombre" required />
                 <input type="hidden" id="iId" name="id" value="0" />
             </div>
             <div class="text-center">
-                <input type="button" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
                 &nbsp;
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>

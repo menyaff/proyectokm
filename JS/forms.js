@@ -126,17 +126,8 @@ getFormJson = function(form){
 
 $(document).ready(function(){
 	$(modal).find("form").submit(function(){
-		return false;
-	});
-	$(modal).find("input:text, input[type='number'], input[type='email'], input:hidden, input:radio, input:checkbox, select, textarea").keyup(function(event){
-		var tecla = event.keyCode ? event.keyCode : event.wich;
-
-		if(tecla==13)
-			$(modal).salvaInfo();
-	});
-	$(modal).find("#btnAceptar").click(function(event){
-		event.stopPropagation();
-
 		$(modal).salvaInfo();
+
+		return false;
 	});
 });
