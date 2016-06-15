@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <?php include 'head.php'; ?>
-    <title>Eventos</title>
+    <title>Transacciones - Compras</title>
 </head>
 <body>
     <div id="wrapper">
@@ -16,15 +16,18 @@
                         <li>
                             <a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a>
                         </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#sub-menu-catalagos"><span class="fa fa-fw fa-money"></span> Transacciones</a>
+                        </li>
                         <li class="active">
-                            <span class="fa fa-fw fa-calendar"></span> Eventos
+                            <span class="fa fa-shopping-cart "></span> Compras
                         </li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
 
                 <div class="col-lg-12" style="text-align: center; height: 520px; padding-top: 50px;">
-                    <img src="ARCHIVOS/base/eventos.jpg" alt="usuarios" width="100%" class="img-rounded">
+                    <img src="img/compras.png" alt="compras" width="100%" class="img-rounded">
                 </div>
             </div>
         </div>

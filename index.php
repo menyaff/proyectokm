@@ -3,11 +3,10 @@
 <head>
    <?php include 'head.php' ?>
     <title>Sistema Contable</title>
-    <link href='css/fullcalendar.css' rel='stylesheet'/>
-    <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
-    <script src='js/lib/moment.min.js'></script>
-    <script src='js/lib/jquery.min.js'></script>
-    <script src='js/fullcalendar.min.js'></script>
+    <link href='complementos/fullcalendar-v2.6.1/css/fullcalendar.css' rel='stylesheet'/>
+    <link href='complementos/fullcalendar-v2.6.1/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <script src='complementos/fullcalendar-v2.6.1/js/moment.min.js'></script>
+    <script src='complementos/fullcalendar-v2.6.1/js/fullcalendar.min.js'></script>
     <style> #calendar {max-width: 900px;margin: 0 auto;} </style>
 </head>
 <body>

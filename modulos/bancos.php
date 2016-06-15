@@ -1,8 +1,8 @@
-<!DOCTYPE html!>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include 'head.php'; ?>
-    <title>Eventos</title>
+   <?php include 'head.php'; ?>
+   <title>Bancos</title>
 </head>
 <body>
     <div id="wrapper">
@@ -17,14 +17,14 @@
                             <a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a>
                         </li>
                         <li class="active">
-                            <span class="fa fa-fw fa-calendar"></span> Eventos
+                            <span class="fa fa-fw fa-university"></span> Bancos</a>
                         </li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
 
                 <div class="col-lg-12" style="text-align: center; height: 520px; padding-top: 50px;">
-                    <img src="ARCHIVOS/base/eventos.jpg" alt="usuarios" width="100%" class="img-rounded">
+                    <img src="img/bancos.png" alt="bancos" width="90%" class="img-rounded">
                 </div>
             </div>
         </div>

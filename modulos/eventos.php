@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <?php include 'head.php'; ?>
-    <title>Eventos</title>
+    <title>Sistema Contable</title>
 </head>
 <body>
     <div id="wrapper">
@@ -24,7 +24,7 @@
             <!-- /mapa ubicación -->
 
                 <div class="col-lg-12" style="text-align: center; height: 520px; padding-top: 50px;">
-                    <img src="ARCHIVOS/base/eventos.jpg" alt="usuarios" width="100%" class="img-rounded">
+                    <img src="img/eventos.png" alt="usuarios" width="100%" class="img-rounded">
                 </div>
             </div>
         </div>
