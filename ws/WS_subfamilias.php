@@ -36,6 +36,7 @@
 			$query = $BD->doSP("SPD_cat_subfamilias",$parametros);
 			
 			echo json_encode($BD->fetchAssoc($BD->query($query)));
+			break;
 		default:
 			echo "Falta definir acción";
 			break;

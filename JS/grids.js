@@ -40,6 +40,40 @@ activaBtnEliminar = function(){
 	else
 		$("#chGridTodos").prop("checked",false);
 };
+confirmaEliminar = function(funcion, singular){
+	singular = singular==undefined ? true : false;
+
+	var mensajeEliminar = singular ? "el registro" : "los registros";
+	var idModalConfirmacion = "modalConfirmaEliminar";
+
+	var modalConfirmacion = "<div id='"+idModalConfirmacion+"'>¿Desea eliminar "+mensajeEliminar+"?<br /><br /><input type='button' id='btnSiElimina' class='btn btn-default' value='Si' />&nbsp;&nbsp;<input type='button' id='btnNoElimina' class='btn btn-default' value='No' />";
+
+	$("body").append(modalConfirmacion);
+
+	$("#"+idModalConfirmacion).kendoWindow({
+        modal: true,
+        draggable: false,
+        resizable: false,
+        width: 200,
+        close: function(){
+        	$("#"+idModalConfirmacion).data("kendoWindow").destroy();
+        	$("#"+idModalConfirmacion).remove();
+        }
+    }).data("kendoWindow").center();
+
+    $("#btnSiElimina, #btnNoElimina").unbind("click");
+    $("#btnSiElimina").click(function(elem){
+    	elem.stopPropagation();
+
+    	$(funcion);
+    	$("#"+idModalConfirmacion).data("kendoWindow").close();
+    });
+    $("#btnNoElimina").click(function(elem){
+    	elem.stopPropagation();
+
+    	$("#"+idModalConfirmacion).data("kendoWindow").close();
+    });
+};
 
 (function($){
 	$.fn.extend({
@@ -134,10 +168,12 @@ activaBtnEliminar = function(){
 		            });
 		            $(".btnGridEliminar").click(function(event){
 						event.stopPropagation();
-
 		            	var elem = $(this);
 
-						eliminaRegistro(elem.attr("registro"));
+						confirmaEliminar(function(){
+							eliminaRegistro(elem.attr("registro"));
+						});
+
 		            });
 					$("#chGridTodos").click(function(event){
 						event.stopPropagation();

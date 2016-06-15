@@ -61,6 +61,19 @@
 			}
 
 			break;
+		case "select":
+			$WS = new webservice("iId");
+			
+			$resp = array();
+
+			$sql = $BD->doSP("SPQ_usuarios",$WS->getParametro());
+			$query = $BD->query($sql);
+
+			while($tupla = $BD->fetchAssoc($query))
+				array_push($resp,$tupla);
+
+			echo json_encode($resp);
+			break;
 		case "update":
 			require __PathComplementos__."cifrado.php";
 
