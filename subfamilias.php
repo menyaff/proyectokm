@@ -23,8 +23,8 @@
         templateID = "";
         templateBotones = "";
     </script>
-    <script src="<?= $pathJS ?>forms.js" ></script>
-    <script src="<?= $pathJS ?>grids.js" ></script>
+    <script src="<?= $pathJS ?>forms.js"></script>
+    <script src="<?= $pathJS ?>grids.js"></script>
     <script>
         jsonFields = {
                         id: { type: "number" },
