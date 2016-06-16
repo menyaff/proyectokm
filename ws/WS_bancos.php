@@ -13,7 +13,7 @@
 			
 			$resp = array();
 
-			$sql = $BD->doSP("SPQ_cat_subfamilias",$WS->getParametro());
+			$sql = $BD->doSP("SPQ_cat_bancos",$WS->getParametro());
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))
@@ -24,7 +24,7 @@
 		case "update":
 			$WS = new webservice("iId,iNombre");
 
-			$query = $BD->doSP("SPU_cat_subfamilias",$WS->getParametro());
+			$query = $BD->doSP("SPU_cat_bancos",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
@@ -33,7 +33,7 @@
 
 			$parametros = $WS->getParametro();
 
-			$query = $BD->doSP("SPD_cat_subfamilias",$parametros);
+			$query = $BD->doSP("SPD_cat_bancos",$parametros);
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
