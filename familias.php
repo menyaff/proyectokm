@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Subfamilias</title>
+    <title>Familias</title>
     <?php
         metatags();
 
@@ -25,7 +25,8 @@
     <script>
         jsonFields = {
                         id: { type: "number" },
-                        nombre: { type: "string" }
+                        nombre: { type: "string" },
+                        subfamilia: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -33,15 +34,20 @@
                             field: "nombre",
                             title: "Nombre"
                         },
+                        {
+                            field: "subfamilia",
+                            title: "Subfamilia"
+                        },
                         templateBotones
                     ];
-        modal = "#divFormSubfamilias"; 
+        modal = "#divFormFamilias"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_subfamilias.php";
+        WS =  "<?= $pathWS ?>WS_familias.php";
 
         $(document).ready(function(){
-            $(modal).setModal("subfamilia", 550);
+            $(modal).setModal("familia", 550);
             $(grid).setGrid();
+            $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
         });
     </script>
 </head>
@@ -67,11 +73,16 @@
             </div>
         </div>
     </div>
-    <div id="divFormSubfamilias" class="formPopup">
+    <div id="divFormFamilias" class="formPopup">
         <form>
             <div class="form-group">
                 <input type="text" id="iNombre" name="nombre" class="form-control campoNombre" placeholder="Nombre" required />
-                <input type="hidden" id="iId" name="id" value="0" />
+                <input type="hidden" id="hdnId" name="id" value="0" />
+            </div>
+            <div class="form-group">
+                <select name="id_subfamilia" id="selSubFamilias" class="form-control  campoNombre" required>
+                    <option value="" selected disabled>Subfamilias...</option>
+                </select>
             </div>
             <div class="text-center">
                 <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
