@@ -90,6 +90,7 @@ confirmaEliminar = function(funcion, singular){
                 actions: ["Close"],
                 close: function(){
                 	$(modal).find("form")[0].reset();
+                	effects: "fade:out";
                 }
             }).data("kendoWindow").center();
 		},
@@ -110,7 +111,7 @@ confirmaEliminar = function(funcion, singular){
 		                }
 		            }                
 		        },
-		        toolbar: "<div><input type='checkbox' id='chGridTodos' />&nbsp;Todos&nbsp;&nbsp;<input type='button' id='btnGridEliminar' class='btn btn-default' value='Eliminar' disabled />&nbsp;&nbsp;<input type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' value='Nuevo' /></div>",
+		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button id='btnGridEliminar' class='btn btn-default' disabled >Eliminar</button>&nbsp;&nbsp;<button id='btnGridNuevo' class='btnFormPopup btn btn-default'>Nuevo</button></div></div>",
 		        filterable: {
 		            messages: {
 		                info: "Muestra elementos con valor",

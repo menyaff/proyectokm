@@ -1,6 +1,4 @@
-<?php
-    require_once "config/front.conf";
-?>
+<?php require_once "config/front.conf"; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,11 +12,8 @@
         librerias::FontAwesome();
         librerias::Bootstrap();
     ?>
-    <link type="text/css" rel="stylesheet" href="<?= $pathCSS ?>main.css" />
     <link type="text/css" rel="stylesheet" href="<?= $pathCSS ?>formularios.css" />
-    <style type="text/css">
-        #divFormSubfamilias{ display: none; }
-    </style>
+    <style type="text/css"> #divFormSubfamilias{ display: none; } </style>
     <script>
         templateID = "";
         templateBotones = "";
@@ -43,26 +38,22 @@
         WS =  "<?= $pathWS ?>WS_subfamilias.php";
 
         $(document).ready(function(){
-            $(modal).setModal("subfamilia", 550);
+            $(modal).setModal("Subfamilia", 550);
             $(grid).setGrid();
         });
     </script>
 </head>
 <body>
     <div id="wrapper">
-        <?php include 'menu.php'; ?>
+        <?php menuLateral(); ?>
         <!-- Contenido -->
         <div id="page-wrapper">
             <div class="container-fluid">
             <!-- mapa ubicación -->
                 <div class="row">
                     <ol class="breadcrumb">
-                        <li>
-                            <a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a>
-                        </li>
-                        <li class="active">
-                            Familias
-                        </li>
+                        <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
+                        <li class="active"> Familias</li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
@@ -73,8 +64,8 @@
     <div id="divFormSubfamilias">
         <form>
             <div class="form-group">
-                <input type="text" id="iNombre" name="nombre" class="form-control campoNombre" placeholder="Nombre" required />
-                <input type="hidden" id="iId" name="id" value="0" />
+                <input type="text" id="iNombre" name="nombre" class="form-control campoNombre" placeholder="Nombre" required style="width: 500px;"/>
+                <input type="hidden" id="iId" name="id" value="0"/>
             </div>
             <div class="text-center">
                 <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />

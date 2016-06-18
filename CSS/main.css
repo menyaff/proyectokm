@@ -4,10 +4,11 @@ body {
     font-size: 14px;
     background-color: #222;
 }
-@media(min-width:768px) {body {margin-top: 50px;}}
+@media(min-width:768px) {body {margin-top: 50px;}
 #wrapper {padding-left: 0;}
 #page-wrapper {
     width: 100%;
+    min-height: 42.6em;
     padding: 0;
     background-color: #fff;
 }
@@ -81,141 +82,20 @@ body {
     color: #999;
 }.side-nav>li>ul>li>a:hover {color: #fff;}
 
-/* Estilos base de Contenido */
-.page-header{
-    margin-top: 10px;
+/* KENDO MODAL */
+div.k-widget.k-window{
+    border: 0px;
+    border-radius: .3em;
 }
-a{color: #cb000d;
--webkit-transition: color 300ms ease-in;
--o-transition: color 300ms ease-in;
-transition: color 300ms ease-in;
+div.k-window-titlebar.k-header{
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
 }
-a:hover{color: #9B040E; text-decoration: none;}
-.red {color: #E9424D;
--webkit-transition: color 300ms ease-in;
--o-transition: color 300ms ease-in;
-transition: color 300ms ease-in;
-} /* Active Red */
-.red:hover{color: #F27179;}
-.red-usr{color: #F27179;}
-
-/* Contenido */
-.wrapper-form-sm{
-    width: 55%;
-    margin: auto;
-    padding: 2.5em 1.5em;
-    
-}
-.wrapper-form-md{
-    width: 75%;
-    margin: auto;
-    padding: 2.5em 1.5em;
-}
-.wrapper-form-lg{
-    width: 85%;
-    margin: auto;
-    padding: 2.5em 1.5em;
+div.k-window-content.k-content, div.k-grid.k-widget/*GRID*/{
+    border-radius: .3em;
 }
 
-.input-group{
-    width: 100% !important;
-}
-
-.form {
-    position: relative;
-    background: #FFF;
-    max-width: 400px;
-    min-width: 400px;
-    margin: 0 auto 100px;
-    padding: 30px;
-    border-radius: 3px;
+.k-window-title{
     text-align: center;
+    font-weight: bold;
 }
-.form .logo {
-    text-align: center;
-    height: 244px;
-    margin-top: -.6em;
-    margin-bottom: 1.5em;
-    background: #F7F7F7;
-    border-radius: 5px;
-    -webkit-transition: opacity 300ms ease-in-out;
-    -moz-transition: opacity 300ms ease-in-out;
-    -o-transition: opacity 300ms ease-in-out;
-    transition: opacity 300ms ease-in-out;
-}
-.form .logo:hover {
-    opacity: .7;
-    
-}
-.form .logo img {
-    width: 70%;
-    margin-top: 15px;
-    border-radius: inherit;
-}
-.form input {
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0px solid rgba(233,66,77,0.4);
-    margin: 0 0 15px;
-    padding: 15px;
-    border-radius: 3px;
-    box-sizing: border-box;
-    font-size: 14px;
-    
-    -webkit-transition: background 300ms ease-in-out;
-    -moz-transition: background 300ms ease-in-out;
-    -o-transition: background 300ms ease-in-out;
-    transition: background 300ms ease-in-out;
-}
-.form input:focus {
-    box-shadow: 0 0 5px rgba(233,66,77,0.7);
-    border: 1px solid rgba(233,66,77,0.4);
-    background: #fdfdfd;
-    padding: 14px;
-}
-.form button {
-    background: #E9424D;
-    padding: 15px;
-    outline: 0;
-    border: 0;
-    width: 100%;
-    border-radius: 3px;
-    color: #fff;
-    -webkit-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out; 
-}
-.form button:hover {
-    background: #dd3c47;
-    border-radius: 5px;
-}
-/*
-    .form .message {
-      margin: 15px 0 0;
-      color: #b3b3b3;
-      font-size: 12px;
-    }
-    .form .message a {
-      color: #EF3B3A;
-      text-decoration: none;
-    }
-    .form .register-form {
-      display: none;
-    }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
