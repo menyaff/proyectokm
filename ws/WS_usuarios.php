@@ -5,7 +5,6 @@
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
 	$accion = webservice::getRequest("accion",__GET__);
-	$respuesta = array();
 
 	switch($accion){
 		case "getLlave":
@@ -14,7 +13,7 @@
 			$nuevo = webservice::getRequest("nuevo",__POST__);
 
 			if($WS->getParametro("nuevo") != NULL)
-				echo json_encode(array("mensaje"=>"SUCCESS","llave"=>date("U")));
+				$resp = json_encode(array("mensaje"=>"SUCCESS","llave"=>date("U")));
 			else{
 				$query = $BD->query($BD->doSP("SPQ_llaveUsuario",array($WS->getParametro("nom"))));
 				$llave = $BD->fetchRow($query);
@@ -29,40 +28,46 @@
 								"nllave" => $_SESSION["nllave"]
 							);
 				}
-	            else
+	            else{
 	                $retorno = array("mensaje" => "No se encuentra el usuario");
+	                logger("Intento fallido de login para ".$WS->getParametro("nom"),__WARNING__);
+	            }
 
-				echo json_encode($retorno);
+				$resp = json_encode($retorno);
 			}
 			break;
 		case "login":
-			require __PathComplementos__."cifrado.php";
+			if(isset($_SESSION["llave"])){
+				require __PathComplementos__."cifrado.php";
 
-			$WS = new webservice("nom,pass,npass");
+				$WS = new webservice("nom,pass,npass");
 
-			$data = array(
-						"usuario" => $WS->getParametro("nom"),
-						"pass" => cifrado::encrypt($WS->getParametro("pass"),$_SESSION["llave"]),
-						"npass" => cifrado::encrypt($WS->getParametro("npass"),$_SESSION["nllave"]),
-						"nllave" => $_SESSION["nllave"]
-					);
+				$data = array(
+							"usuario" => $WS->getParametro("nom"),
+							"pass" => cifrado::encrypt($WS->getParametro("pass"),$_SESSION["llave"]),
+							"npass" => cifrado::encrypt($WS->getParametro("npass"),$_SESSION["nllave"]),
+							"nllave" => $_SESSION["nllave"]
+						);
 
-			unset($_SESSION["llave"],$_SESSION["nllave"]);
+				unset($_SESSION["llave"],$_SESSION["nllave"]);
 
-			$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
-			$login = $BD->fetchRow($query);
+				$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
+				$login = $BD->fetchRow($query);
 
-			if($login[0] !== "FALSE"){
-				$_SESSION["usuario"] = $login[0];
+				if($login[0] !== "FALSE"){
+					$_SESSION["usuario"] = $login[0];
 
-				echo json_encode(array("mensaje"=>"SUCCESS","destino"=>"clientes.php"));
+					$resp = json_encode(array("mensaje"=>"SUCCESS","destino"=>"clientes.php"));
+				}else{
+					$resp = json_encode(array("mensaje"=>"Contraseña incorrecta"));
+				}
 			}else{
-				echo json_encode(array("mensaje"=>"Contraseña incorrecta"));
+				$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta llave"));
+				logger("Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave",__WARNING__);
 			}
-
 			break;
 		case "select":
-			$WS = new webservice("iId");
+			$WS = new webservice("iId,filtro,orden");
 			
 			$resp = array();
 
@@ -72,7 +77,7 @@
 			while($tupla = $BD->fetchAssoc($query))
 				array_push($resp,$tupla);
 
-			echo json_encode($resp);
+			$resp = json_encode($resp);
 			break;
 		case "update":
 			require __PathComplementos__."cifrado.php";
@@ -83,7 +88,7 @@
 
 			$query = $BD->doSP("SPU_usuarios",$WS->getParametro());
 			
-			echo json_encode($BD->fetchAssoc($BD->query($query)));
+			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "delete":
 			$WS = new webservice("iId");
@@ -93,9 +98,14 @@
 
 			$query = $BD->doSP("SPD_usuarios",$parametros);
 			
-			echo json_encode($BD->fetchAssoc($BD->query($query)));
+			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 		default:
-			echo "Falta definir acción";
+			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
+
+	if(isset($_GET["front"]))
+		pre(json_decode($resp),TRUE,"resp");
+	else
+		echo $resp;
 ?>

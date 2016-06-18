@@ -9,7 +9,7 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("iId");
+			$WS = new webservice("hdnId");
 			
 			$resp = array();
 
@@ -38,7 +38,7 @@
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		default:
-			$resp = "Falta definir acción";
+			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
 
