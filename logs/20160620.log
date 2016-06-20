@@ -1,0 +1,2 @@
+[2016-06-20 16:33:08][ERROR][/ws/WS_areas.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_areas(NULL,NULL,NULL);
+[2016-06-20 16:33:08][ERROR][/ws/WS_areas.php] Se esperaba un parámetro fetchAssoc

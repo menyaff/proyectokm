@@ -1,0 +1,2 @@
+[2016-06-17 02:21:46][ERROR][/ws/WS_familias.php] Error SQL:Column 'subfamilia' cannot be null Query: CALL SPU_cat_familias(NULL,'Familia 1',NULL);
+[2016-06-17 02:21:46][ERROR][/ws/WS_familias.php] Se esperaba un parámetro fetchAssoc

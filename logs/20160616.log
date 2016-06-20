@@ -1,4 +1,2 @@
-[2016-06-16 01:12:11][ERROR][/ws/WS_familias.php] Error SQL:Column 'subfamilia' cannot be null Query: CALL SPU_cat_familias(NULL,'Familia 8selSubfamilias=4',NULL);
-[2016-06-16 01:12:11][ERROR][/ws/WS_familias.php] Se esperaba un parámetro fetchAssoc
-[2016-06-16 01:24:52][ERROR][/ws/WS_familias.php] Error SQL:Column 'subfamilia' cannot be null Query: CALL SPU_cat_familias(NULL,'Familia 8selSubfamilias=4',NULL);
-[2016-06-16 01:24:52][ERROR][/ws/WS_familias.php] Se esperaba un parámetro fetchAssoc
+[2016-06-16 15:25:16][ERROR][/ws/WS_subfamilias.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_cat_subfamilias; expected 0, got 1 Query: CALL SPQ_cat_subfamilias(NULL);
+[2016-06-16 15:25:16][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc

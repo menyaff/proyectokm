@@ -1,0 +1,25 @@
+[2016-06-18 09:19:44][ERROR][/ws/WS_usuarios.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_usuarios; expected 3, got 1 Query: CALL SPQ_usuarios(NULL);
+[2016-06-18 09:19:44][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 09:20:35][ERROR][/ws/WS_usuarios.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_usuarios; expected 3, got 1 Query: CALL SPQ_usuarios(NULL);
+[2016-06-18 09:20:35][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 09:21:12][ERROR][/ws/WS_usuarios.php] Error SQL:Incorrect number of arguments for PROCEDURE kmasociados.SPQ_usuarios; expected 3, got 1 Query: CALL SPQ_usuarios(NULL);
+[2016-06-18 09:21:12][ERROR][/ws/WS_usuarios.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 09:31:47][WARNING][/ws/WS_usuarios.php] Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave
+[2016-06-18 09:34:02][WARNING][/ws/WS_usuarios.php] Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave
+[2016-06-18 09:34:17][WARNING][/ws/WS_usuarios.php] Intento fallido de login para MenyAfF
+[2016-06-18 22:03:17][ERROR][/ws/WS_puestos.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_puestos(NULL,NULL);
+[2016-06-18 22:03:17][ERROR][/ws/WS_puestos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:03:30][ERROR][/ws/WS_puestos.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_puestos(NULL,NULL);
+[2016-06-18 22:03:30][ERROR][/ws/WS_puestos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:03:36][ERROR][/ws/WS_puestos.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_puestos(NULL,NULL);
+[2016-06-18 22:03:36][ERROR][/ws/WS_puestos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:04:04][ERROR][/ws/WS_puestos.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_puestos(NULL,NULL);
+[2016-06-18 22:04:04][ERROR][/ws/WS_puestos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:31:06][ERROR][/ws/WS_tiposEvento.php] Error SQL:Column 'clave' cannot be null Query: CALL SPU_cat_tiposEvento(NULL,NULL,NULL);
+[2016-06-18 22:31:06][ERROR][/ws/WS_tiposEvento.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:31:32][ERROR][/ws/WS_tiposEvento.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_tiposEvento(NULL,'0001XV',NULL);
+[2016-06-18 22:31:32][ERROR][/ws/WS_tiposEvento.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:31:58][ERROR][/ws/WS_tiposEvento.php] Error SQL:Column 'clave' cannot be null Query: CALL SPU_cat_tiposEvento(NULL,NULL,'Graduación');
+[2016-06-18 22:31:58][ERROR][/ws/WS_tiposEvento.php] Se esperaba un parámetro fetchAssoc
+[2016-06-18 22:34:38][ERROR][/ws/WS_tiposEvento.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_tiposEvento('2','0002Grad',NULL);
+[2016-06-18 22:34:38][ERROR][/ws/WS_tiposEvento.php] Se esperaba un parámetro fetchAssoc

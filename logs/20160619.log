@@ -1,0 +1,14 @@
+[2016-06-19 00:23:46][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id_subfamilia=2'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,''id_subfamilia=2'',NULL);
+[2016-06-19 00:23:46][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 00:24:22][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id_subfamilia=2'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,''id_subfamilia=2'',NULL);
+[2016-06-19 00:24:22][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 00:24:24][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id_subfamilia=2'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,''id_subfamilia=2'',NULL);
+[2016-06-19 00:24:24][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 00:24:29][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id_subfamilia=2'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,''id_subfamilia=2'',NULL);
+[2016-06-19 00:24:29][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 00:27:20][ERROR][/ws/WS_articulos.php] Error SQL:Unknown column 'lounge002' in 'having clause' Query: CALL SPQ_articulos(NULL,'clave=lounge002',NULL);
+[2016-06-19 00:27:20][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 00:27:33][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'lounge002'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,'clave='lounge002'',NULL);
+[2016-06-19 00:27:33][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
+[2016-06-19 14:35:04][ERROR][/ws/WS_articulos.php] Error SQL:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id_subfamilia=2'',NULL)' at line 1 Query: CALL SPQ_articulos(NULL,''id_subfamilia=2'',NULL);
+[2016-06-19 14:35:04][ERROR][/ws/WS_articulos.php] Se esperaba un parámetro fetchAssoc
