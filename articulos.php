@@ -1,8 +1,50 @@
-<!DOCTYPE html!>
+<?php require_once "config/front.conf"; ?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include 'head.php'; ?>
     <title>Articulos</title>
+    <?php
+        metatags();
+
+        librerias::JQuery();
+        librerias::Kendo();
+        librerias::notify();
+        librerias::FontAwesome();
+        librerias::Bootstrap();
+    ?>
+    <script>
+        templateID = "";
+        templateBotones = "";
+    </script>
+    <script src="<?= $pathJS ?>forms.js"></script>
+    <script src="<?= $pathJS ?>grids.js"></script>
+    <script>
+        jsonFields = {
+                        id: { type: "number" },
+                        nombre: { type: "string" },
+                        familia: { type: "string" }
+                    };
+        jsonColumns = [
+                        templateID,
+                        {
+                            field: "nombre",
+                            title: "Nombre"
+                        },
+                        {
+                            field: "familia",
+                            title: "Familia"
+                        },
+                        templateBotones
+                    ];
+        modal = "#divModal"; 
+        grid = "#divGrid";
+        WS =  "<?= $pathWS ?>WS_articulos.php";
+
+        $(document).ready(function(){
+            $(modal).setModal("Articulos", 550);
+            $(grid).setGrid();
+        });
+    </script>
 </head>
 <body>
 <body>

@@ -371,3 +371,6 @@
 127.0.0.1 - - [20/Jun/2016:16:44:53 -0500] "GET /complementos/kendoUI/styles/Nova/sprite.png HTTP/1.1" 304 -
 127.0.0.1 - - [20/Jun/2016:16:44:53 -0500] "GET /ws/WS_bancos.php?accion=select HTTP/1.1" 200 91
 127.0.0.1 - - [20/Jun/2016:16:44:53 -0500] "GET /complementos/kendoUI/styles/Nova/loading-image.gif HTTP/1.1" 304 -
+127.0.0.1 - - [20/Jun/2016:16:54:33 -0500] "GET / HTTP/1.1" 200 7567
+127.0.0.1 - - [20/Jun/2016:16:54:33 -0500] "GET /area.php HTTP/1.1" 200 7642
+127.0.0.1 - - [20/Jun/2016:16:54:35 -0500] "GET /ws/WS_areas.php?accion=select HTTP/1.1" 200 477
