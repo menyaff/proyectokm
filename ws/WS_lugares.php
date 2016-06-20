@@ -9,7 +9,7 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("iId");
+			$WS = new webservice("hdnId");
 			
 			$resp = array();
 
@@ -22,14 +22,14 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("iId,iNombre,iDireiccion");
+			$WS = new webservice("hdnId,iNombre,iDireiccion");
 
 			$query = $BD->doSP("SPU_cat_lugares",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "delete":
-			$WS = new webservice("iId");
+			$WS = new webservice("hdnId");
 
 			$parametros = $WS->getParametro();
 
@@ -38,7 +38,7 @@
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		default:
-			$resp = "Falta definir acción";
+			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
 

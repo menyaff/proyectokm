@@ -12,6 +12,10 @@
         librerias::FontAwesome();
         librerias::Bootstrap();
     ?>
+<<<<<<< HEAD
+=======
+    <link type="text/css" rel="stylesheet" href="<?= $pathCSS ?>formularios.css" />
+>>>>>>> c150feaaf34ad561163324973dfeb4e93309ab85
     <script>
         templateID = "";
         templateBotones = "";

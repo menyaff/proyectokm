@@ -38,7 +38,7 @@
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		default:
-			$resp = "Falta definir acción";
+			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
 

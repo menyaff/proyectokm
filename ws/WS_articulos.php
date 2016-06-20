@@ -9,11 +9,12 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("hdnId,selSubfamilias");
+			$WS = new webservice("hdnId,filtro,order");
 			
 			$resp = array();
 
-			$sql = $BD->doSP("SPQ_cat_familias",$WS->getParametro());
+			$sql = $BD->doSP("SPQ_articulos",$WS->getParametro());
+			FB::info($sql);
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))
@@ -22,16 +23,18 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iNombre,selSubFamilias");
+			$WS = new webservice("hdnId,iClave,iNombre,iLinea,iMarca,iModelo,txtDescripcion,selLugares,iCodigoBarras,iSustituto,iUnidad,iExistencias,selAreas,fileArchivo,iPrecioRecuperacion,iPrecioLista,iPrecioMayoreo");
 
-			$query = $BD->doSP("SPU_cat_familias",$WS->getParametro());
-			
+			$query = $BD->doSP("SPU_articulos",$WS->getParametro());
+			FB::info($query);
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "delete":
 			$WS = new webservice("hdnId");
 
-			$query = $BD->doSP("SPD_cat_familias",$WS->getParametro());
+			$parametros = $WS->getParametro();
+
+			$query = $BD->doSP("SPD_articulos",$parametros);
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
