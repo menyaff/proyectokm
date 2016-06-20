@@ -11,6 +11,7 @@
 			librerias::notify();
 			librerias::Bootstrap();
 		?>
+		<link rel="stylesheet" href="<?= $pathCSS ?>login.css">
 		<script src="<?= $pathJS ?>cifrado.js"></script>
 		<script>
 			$(document).ready(function(){
@@ -58,7 +59,8 @@
 	        <form>
 	            <input type="text" placeholder="Usuario" id="iUser" maxlength="50" required/>
 	            <input type="password" placeholder="Contrase&ntilde;a" id="iPass" maxlength="20" required/>
-	            <input type="submit" id="btnAceptar" value="Iniciar Sesi&oacute;n" />
+	            <button type="submit" id="btnAceptar">Iniciar Sesi&oacute;n</button>
+
 	        </form>
 	    </div>
 	</body>

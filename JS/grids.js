@@ -92,6 +92,7 @@ confirmaEliminar = function(funcion, singular){
                 	$(modal).find("form select>option:selected").removeAttr("selected");
                 	$(modal).find("form select>option[value='']").attr("selected","selected");
                 	$(modal).find("form")[0].reset();
+                	effects: "fade:out";
                 	$(elem).data("kendoWindow").title(titulo);
                 }
             }).data("kendoWindow").center();
@@ -113,7 +114,7 @@ confirmaEliminar = function(funcion, singular){
 		                }
 		            }                
 		        },
-		        toolbar: "<div><input type='checkbox' id='chGridTodos' />&nbsp;Todos&nbsp;&nbsp;<button id='btnGridEliminar' class='btn btn-default' disabled>Eliminar</button>&nbsp;&nbsp;<button id='btnGridNuevo' class='btnFormPopup btn btn-default'>Nuevo</button></div>",
+		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button id='btnGridEliminar' class='btn btn-default' disabled >Eliminar</button>&nbsp;&nbsp;<button id='btnGridNuevo' class='btnFormPopup btn btn-default'>Nuevo</button></div></div>",
 		        filterable: {
 		            messages: {
 		                info: "Muestra elementos con valor",
