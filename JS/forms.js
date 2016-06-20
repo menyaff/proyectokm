@@ -1,7 +1,7 @@
 eliminaRegistro = function(id){
 	$.ajax({
 		url: WS+"?accion=delete",	
-		data: {"iId":id},
+		data: {"hdnId":id},
 		type: "POST",
 		dataType: "JSON",
 		async: true,
@@ -120,6 +120,28 @@ getFormJson = function(form){
 					console.error(info);
 				}
 			});
+		},
+		rellenaSelect : function(WS){
+			var elem = $(this);
+
+			elem.find("option[value!='']").remove();
+
+			$.ajax({
+				url: WS+"?accion=select",	
+				type: "POST",
+				dataType: "JSON",
+				async: true,
+				success: function(info){
+					$.each(info, function(){
+						var opcion = $(this)[0];
+
+						elem.append("<option value='"+opcion.id+"'>"+opcion.nombre+"</option>");
+					});
+				},
+				error: function(info){
+					console.error(info);
+				}
+			});
 		}
 	});
 })(jQuery);
@@ -129,5 +151,11 @@ $(document).ready(function(){
 		$(modal).salvaInfo();
 
 		return false;
+	});
+	$(modal).find("form input[type='reset']").click(function(){
+		$(modal).find("select>option:selected").removeAttr("selected");
+		$(modal).find("select>option[value='']").attr("selected","selected");
+
+		return true;
 	});
 });

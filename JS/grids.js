@@ -8,7 +8,7 @@ templateID = {
 templateBotones = {
                         title: "",
                         filterable: false,
-                        template: "<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
+                        template: "<button id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'>Editar</button>&nbsp;&nbsp;<button id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default'>Eliminar</button>",
                         width: 200,
                         attributes: {
                             style: "text-align: center"
@@ -89,8 +89,11 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
+                	$(modal).find("form select>option:selected").removeAttr("selected");
+                	$(modal).find("form select>option[value='']").attr("selected","selected");
                 	$(modal).find("form")[0].reset();
                 	effects: "fade:out";
+                	$(elem).data("kendoWindow").title(titulo);
                 }
             }).data("kendoWindow").center();
 		},
@@ -145,13 +148,14 @@ confirmaEliminar = function(funcion, singular){
 		              itemsPerPage: "Registros por página"
 		          },
 		          pageSize: 5,
-		          pageSizes: [10,20,50],
+		          pageSizes: [5,10,20,50],
 		          buttonCount: 10
 		        },
 		        columns: jsonColumns,
 		        dataBound: function(){
 		        	var titulo = $(modal).data("kendoWindow").title();
 
+		        	$(".btnFormPopup, .btnGridEliminar, #btnGridEliminar, #chGridTodos, .chGridRegistro").unbind("click");
 		            $(".btnFormPopup").click(function(event){
 		            	event.stopPropagation();
 		            	var elem = $(this);
@@ -175,6 +179,23 @@ confirmaEliminar = function(funcion, singular){
 							eliminaRegistro(elem.attr("registro"));
 						});
 
+		            });
+		            $("#btnGridEliminar").click(function(event){
+						event.stopPropagation();
+
+						var registros = "";
+
+						$(".chGridRegistro:checked").each(function(){
+							var elem = $(this);
+
+							registros += elem.attr("registro")+",";
+						});
+
+						registros = registros.substr(0,registros.length-1);
+
+						confirmaEliminar(function(){
+							eliminaRegistro(registros);
+						});
 		            });
 					$("#chGridTodos").click(function(event){
 						event.stopPropagation();

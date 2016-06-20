@@ -12,6 +12,39 @@
         librerias::FontAwesome();
         librerias::Bootstrap();
     ?>
+    <script>
+        templateID = "";
+        templateBotones = "";
+    </script>
+    <script src="<?= $pathJS ?>forms.js"></script>
+    <script src="<?= $pathJS ?>grids.js"></script>
+    <script>
+        jsonFields = {
+                        id: { type: "number" },
+                        nombre: { type: "string" },
+                        familia: { type: "string" }
+                    };
+        jsonColumns = [
+                        templateID,
+                        {
+                            field: "nombre",
+                            title: "Nombre"
+                        },
+                        {
+                            field: "familia",
+                            title: "Familia"
+                        },
+                        templateBotones
+                    ];
+        modal = "#divModal"; 
+        grid = "#divGrid";
+        WS =  "<?= $pathWS ?>WS_areas.php";
+
+        $(document).ready(function(){
+            $(modal).setModal("Áreas", 550);
+            $(grid).setGrid();
+        });
+    </script>
 </head>
 <body>
 <body>
@@ -31,7 +64,23 @@
                 <div id="divGrid"></div>
             </div>
         </div>
-        <div class="row wrapper-form-md">
+    </div>
+    <div id="divModal" class="formPopup">
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control form-md" placeholder="Clave" name="iClave">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-md" placeholder="Nombre" name="iNombre">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="reset" class="btn btn-default">Limpiar</button>
+            </div>
+       </form>
+    </div>
+    <!-- 
+        <div id="divModal" class="formPopup">
             <form>
              <fieldset>
                 <legend><h2>Áreas</h2></legend>
@@ -52,6 +101,6 @@
              </fieldset>
            </form>
         </div>
-    </div>
+     -->
 </body>
 </html>

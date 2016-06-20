@@ -30,11 +30,34 @@
     overflow: hidden;
     line-height: 41px;
 }
-.gridToolbar div{width: 50%;}
-.gridToolbar div#left{
-    float: left !important;
-}
+.gridToolbar div{ width: 50%; }
+.gridToolbar div#left{ float: left !important; }
 .gridToolbar div#right{
     float: right !important;
     text-align: right;
+}
+
+/* KENDO MODAL */
+.formPopup{	display: none; }
+div.k-widget.k-window{
+    border: 0px;
+    border-radius: .3em;
+}
+div.k-window-titlebar.k-header{
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+}
+div.k-window-content.k-content, div.k-grid.k-widget/*GRID*/{
+    border-radius: .3em;
+}
+.k-window-title{
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-md{
+	width: 500px !important;
+}
+.form-sm{
+	width: 400px !important;
 }

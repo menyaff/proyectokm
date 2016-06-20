@@ -22,14 +22,14 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("iId,iNombre");
+			$WS = new webservice("hdnId,iNombre");
 
 			$query = $BD->doSP("SPU_cat_subfamilias",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "delete":
-			$WS = new webservice("iId");
+			$WS = new webservice("hdnId");
 
 			$parametros = $WS->getParametro();
 
