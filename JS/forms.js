@@ -121,14 +121,17 @@ getFormJson = function(form){
 				}
 			});
 		},
-		rellenaSelect : function(WS){
+		rellenaSelect : function(WS,filtro){
 			var elem = $(this);
+ 
+			filtro = filtro==undefined ? '{}' : filtro;
 
 			elem.find("option[value!='']").remove();
 
 			$.ajax({
 				url: WS+"?accion=select",	
 				type: "POST",
+				data: filtro,
 				dataType: "JSON",
 				async: true,
 				success: function(info){
