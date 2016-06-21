@@ -1,0 +1,4 @@
+[2016-06-13 11:54:36][ERROR][/ws/WS_subfamilias.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_subfamilias(NULL,NULL);
+[2016-06-13 11:54:36][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc
+[2016-06-13 12:01:03][ERROR][/ws/WS_subfamilias.php] Error SQL:Column 'nombre' cannot be null Query: CALL SPU_cat_subfamilias(NULL,NULL);
+[2016-06-13 12:01:03][ERROR][/ws/WS_subfamilias.php] Se esperaba un parámetro fetchAssoc
