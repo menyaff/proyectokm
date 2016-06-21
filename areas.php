@@ -54,9 +54,10 @@
 
                 var jsonSubfamilias = '{"selSubfamilias":"'+elem.val()+'"}';
                 console.log(jsonSubfamilias);
-                console.log("\'"+jsonSubfamilias+"\'");
-                $.parseJSON(jsonSubfamilias);
-                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", "\'"+jsonSubfamilias +"\'");
+                console.log("'"+jsonSubfamilias+"'");
+                jsonSubfamilias = $.parseJSON(jsonSubfamilias);
+                console.log(jsonSubfamilias)
+                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", jsonSubfamilias);
 
             });
             //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias": '+$('#selSubFamilias').val()+' }');
