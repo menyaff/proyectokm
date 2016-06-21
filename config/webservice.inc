@@ -15,7 +15,12 @@
 		public function getParametro($indice=NULL){
 			if(is_null($indice))
 				return $this->parametros;
-			else
+			else if(is_array($indice)){
+				foreach($indice as $parametro)
+					$temp[$parametro] = $this->parametros[$parametro];
+
+				return $temp;
+			}else
 				return $this->parametros[$indice];
 		}
 		public static function getRequest($indice, $modo=__REQUEST__){

@@ -106,6 +106,30 @@
 				return FALSE;
 			}
 		}
+		public function lastIdInserted(){
+			$CXN = $this->openBD();
+
+			try{
+                switch($this->SQL){
+					case "mysql":
+                        $return = mysql_insert_id($CXN);
+						break;
+					case "mysqli":
+                        $return = mysqli_insert_id($CXN);
+						break;
+				}
+                
+				$this->closeBD($CXN);
+					
+				return $retorno;
+			}catch(Exception $e){
+                errorShow($e->getMessage());
+                
+                $this->closeBD($CXN);
+				
+				return FALSE;
+			}
+		}
 		public function numRows($query){
 			try{
 				switch($this->SQL){
@@ -185,15 +209,15 @@
 				return FALSE;
 			}
 		}
-		public function fetchArray($resultset){
+		public function fetchArray($resultset,$tipo=MYSQLI_BOTH){
 			try{
 				if($resultset){
 					switch($this->SQL){
 						case "mysql":
-							return mysql_fetch_array($resultset);
+							return mysql_fetch_array($resultset,$tipo);
 							break;
 						case "mysqli":
-							return mysqli_fetch_array($resultset);
+							return mysqli_fetch_array($resultset,$tipo);
 							break;
 					}
 				}else

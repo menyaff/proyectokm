@@ -89,11 +89,13 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
-                	$(modal).find("form select>option:selected").removeAttr("selected");
-                	$(modal).find("form select>option[value='']").attr("selected","selected");
-                	$(modal).find("form")[0].reset();
-                	effects: "fade:out";
-                	$(elem).data("kendoWindow").title(titulo);
+                	setTimeout(function(){
+	                	$(modal).find("form select>option:selected").removeAttr("selected");
+	                	$(modal).find("form select>option[value='']").attr("selected","selected");
+	                	$(modal).find("form")[0].reset();
+	                	effects: "fade:out";
+	                	$(elem).data("kendoWindow").title(titulo);
+	                },500);
                 }
             }).data("kendoWindow").center();
 		},
@@ -160,7 +162,7 @@ confirmaEliminar = function(funcion, singular){
 		            	event.stopPropagation();
 		            	var elem = $(this);
 
-		                switch(elem.val()){
+		                switch(elem.html()){
 		                    case "Nuevo":
 		                        $(modal).data("kendoWindow").title("Crear "+titulo);
 		                        break;

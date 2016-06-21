@@ -85,7 +85,7 @@ getFormJson = function(form){
 
 			$.ajax({
 				url: WS+"?accion=select",	
-				data: {iId:registro},
+				data: {hdnId:registro},
 				type: "POST",
 				dataType: "JSON",
 				async: true,
