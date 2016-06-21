@@ -37,14 +37,31 @@
                         templateBotones
                     ];
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
         WS =  "<?= $pathWS ?>WS_areas.php";
 
         $(document).ready(function(){
             $(modal).setModal("Áreas", 550);
             $(grid).setGrid();
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
-            $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php");
+
+            /*$("#selSubFamilias").change(function() {
+              //alert( $("#selSubFamilias").val() );
+              var selFamilias = $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+this.val()+'"}')
+            });*/
+            $("#selSubFamilias").change(function() {
+                var elem = $(this);
+
+                var jsonSubfamilias = '{"selSubfamilias":"'+elem.val()+'"}';
+                console.log(jsonSubfamilias);
+                console.log("\'"+jsonSubfamilias+"\'");
+                $.parseJSON(jsonSubfamilias);
+                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", "\'"+jsonSubfamilias +"\'");
+
+            });
+            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias": '+$('#selSubFamilias').val()+' }');
+            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+$("#selSubFamilias option:selected").text()+'"}');
+            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+$('#selSubFamilias option:selected').val()+'"}')
         });
     </script>
 </head>
@@ -78,6 +95,9 @@
                 <select name="id_familia" id="selFamilias" class="form-control form-md" required>
                     <option value="" selected disabled>Familias...</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control form-md" placeholder="Nombre" name="iNombre">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>
