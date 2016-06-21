@@ -34,6 +34,11 @@
                             field: "familia",
                             title: "Familia"
                         },
+                        {
+                            field: "subfamilia",
+                            title: "Subamilia"
+                        },
+
                         templateBotones
                     ];
         modal = "#divModal"; 
@@ -41,7 +46,7 @@
         WS =  "<?= $pathWS ?>WS_areas.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Áreas", 550);
+            $(modal).setModal("área", 550);
             $(grid).setGrid();
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
             $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php");
@@ -70,8 +75,12 @@
     <div id="divModal" class="formPopup">
         <form>
             <div class="form-group">
+                <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required />
+                <input type="hidden" id="hdnId" name="id" value="0" />
+            </div>
+            <div class="form-group">
                 <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md" required>
-                    <option value="" selected disabled>Subfamilias...</option>
+                    <option value="" selected>Subfamilias...</option>
                 </select>
             </div>
             <div class="form-group">
