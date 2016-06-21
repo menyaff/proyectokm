@@ -50,28 +50,17 @@
             $(grid).setGrid();
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
 
-            /*$("#selSubFamilias").change(function() {
-              //alert( $("#selSubFamilias").val() );
-              var selFamilias = $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+this.val()+'"}')
-            });*/
             $("#selSubFamilias").change(function() {
                 var elem = $(this);
 
                 var jsonSubfamilias = '{"selSubfamilias":"'+elem.val()+'"}';
-                console.log(jsonSubfamilias);
-                console.log("'"+jsonSubfamilias+"'");
                 jsonSubfamilias = $.parseJSON(jsonSubfamilias);
-                console.log(jsonSubfamilias)
-                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", jsonSubfamilias);
 
+                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php",jsonSubfamilias);
             });
-            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias": '+$('#selSubFamilias').val()+' }');
-            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+$("#selSubFamilias option:selected").text()+'"}');
-            //$("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php", '{"selSubfamilias":"'+$('#selSubFamilias option:selected').val()+'"}')
         });
     </script>
 </head>
-<body>
 <body>
     <div id="wrapper">
         <?php menuLateral(); ?>
@@ -106,37 +95,11 @@
                     <option value="" selected disabled>Familias...</option>
                 </select>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-md" placeholder="Nombre" name="iNombre">
-            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>
                 <button type="reset" class="btn btn-default">Limpiar</button>
             </div>
        </form>
     </div>
-    <!-- 
-        <div id="divModal" class="formPopup">
-            <form>
-             <fieldset>
-                <legend><h2>Áreas</h2></legend>
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Clave" name="iClave">
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nombre" name="iNombre">
-                    </div>
-                </div>
-                <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-default">Enviar</button>
-                    <button type="reset" class="btn btn-default">Limpiar</button>
-                </div>
-             </fieldset>
-           </form>
-        </div>
-     -->
 </body>
 </html>

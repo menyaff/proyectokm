@@ -43,6 +43,7 @@ rellenaCampos = function(form, valores){
 			case "select":
 				campo.find("option[selected]").removeAttr("selected");
 				campo.find("option[value='"+valores[campo.attr("name")]+"']").attr("selected","selected");
+				campo.change();
 				break;
 			case "textarea":
 				campo.html(valores[campo.attr("name")]);
@@ -80,7 +81,7 @@ getFormJson = function(form){
 
 (function($){
 	$.fn.extend({
-		inicializaInfo : function(WS, registro){
+		inicializaInfo : function(WS, registro, onDie){
 			var elem = $(this);
 
 			$.ajax({
@@ -93,6 +94,7 @@ getFormJson = function(form){
 					info = info[0];
 
 					rellenaCampos(elem,info);
+					$(onDie);
 				}
 			});
 		},
@@ -135,11 +137,12 @@ getFormJson = function(form){
 				dataType: "JSON",
 				async: true,
 				success: function(info){
-					$.each(info, function(){
-						var opcion = $(this)[0];
+					if(info[0].respuesta!="FALSE")
+						$.each(info, function(){
+							var opcion = $(this)[0];
 
-						elem.append("<option value='"+opcion.id+"'>"+opcion.nombre+"</option>");
-					});
+							elem.append("<option value='"+opcion.id+"'>"+opcion.nombre+"</option>");
+						});
 				},
 				error: function(info){
 					console.error(info);
@@ -156,7 +159,7 @@ $(document).ready(function(){
 		return false;
 	});
 	$(modal).find("form input[type='reset']").click(function(){
-		$(modal).find("select>option:selected").removeAttr("selected");
+		$(modal).find("select>option[selected]").removeAttr("selected");
 		$(modal).find("select>option[value='']").attr("selected","selected");
 
 		return true;
