@@ -63,17 +63,8 @@
     <div id="divModal" class="formPopup">
         <form>
             <div class="form-group">
-                <input type="text" class="form-control form-md" placeholder="Clave" name="iClave">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-md" placeholder="Nombre" name="iNombre">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control form-md" placeholder="No. Cuenta" name="iNoCuenta">
-            </div>
-            <div class="form-group">
-                <span></span>
-                <input type="text" class="form-control form-md" placeholder="CLABE" name="iClave">
+                <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>
@@ -81,31 +72,5 @@
             </div>
        </form>
     </div>
-    <!-- 
-        <div class="row wrapper-form-sm">
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-             <fieldset>
-                <legend><h2>Bancos</h2></legend>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Clave" name="iClave">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre" name="iNombre">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="No. Cuenta" name="iNoCuenta">
-                </div>
-                <div class="form-group">
-                    <span></span>
-                    <input type="text" class="form-control" placeholder="CLABE" name="iClave">
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-default">Enviar</button>
-                    <button type="reset" class="btn btn-default">Limpiar</button>
-                </div>
-             </fieldset>
-           </form>
-        </div>
-     -->
 </body>
 </html>

@@ -2,14 +2,14 @@ templateID = {
                     field: "id",
                     title: "ID",
                     filterable: false,
-                    width: 100,
+                    width: 90,
                     template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />&nbsp;#: id #"
                 };
 templateBotones = {
                         title: "",
                         filterable: false,
                         template: "<button id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'>Editar</button>&nbsp;&nbsp;<button id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default'>Eliminar</button>",
-                        width: 200,
+                        width: 180,
                         attributes: {
                             style: "text-align: center"
                         }
