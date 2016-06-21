@@ -82,6 +82,14 @@ confirmaEliminar = function(funcion, singular){
 
             $(elem).kendoWindow({
             	title: titulo,
+            	animation: {
+					open: {
+						duration: 500
+					},
+					close: {
+						duration: 300
+					}
+				},
                 visible: false,
                 modal: true,
                 draggable: false,
@@ -89,13 +97,7 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
-                	setTimeout(function(){
-	                	$(modal).find("form select>option:selected").removeAttr("selected");
-	                	$(modal).find("form select>option[value='']").attr("selected","selected");
-	                	$(modal).find("form")[0].reset();
-	                	effects: "fade:out";
-	                	$(elem).data("kendoWindow").title(titulo);
-	                },500);
+                	$(modal).find("input[type='reset']").click();
                 }
             }).data("kendoWindow").center();
 		},
@@ -167,8 +169,9 @@ confirmaEliminar = function(funcion, singular){
 		                        $(modal).data("kendoWindow").title("Crear "+titulo);
 		                        break;
 		                    case "Editar":
-		                    	$(modal).inicializaInfo(WS, elem.attr("registro"));
-		                        $(modal).data("kendoWindow").title("Editar "+titulo);
+		                    	$(modal).inicializaInfo(WS, elem.attr("registro"),function(){
+		                        	$(modal).data("kendoWindow").title("Editar "+titulo);
+		                        });
 		                        break;
 		                }
 		                $(modal).data("kendoWindow").open();
