@@ -22,7 +22,7 @@
         jsonFields = {
                         id: { type: "number" },
                         nombre: { type: "string" },
-                        nombreComercial: { type: "string" }
+                        nombreComercialFiscal: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -31,7 +31,7 @@
                             title: "Nombre"
                         },
                         {
-                            field: "nombreComercial",
+                            field: "nombreComercialFiscal",
                             title: "Nombre Comercial"
                         },
                         templateBotones
@@ -43,6 +43,7 @@
         $(document).ready(function(){
             $(modal).setModal("Proveedores", 550);
             $(grid).setGrid();
+            $("#selCiudadFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php");
         });
     </script>
 </head>
@@ -67,14 +68,56 @@
     <div id="divModal" class="formPopup">
         <form>
             <div class="form-group">
-                <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required />
-                <input type="hidden" id="hdnId" name="id" value="0" />
+                <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave"/>
             </div>
             <div class="form-group">
-                <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md" required>
-                    <option value="" selected disabled>Subfamilias...</option>
-                </select>
+                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre"/>
             </div>
+            <div class="form-group">
+                <input type="text" name="nombreContacto" id="iNombreContacto" class="form-control form-md" placeholder="Contacto"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="nombre2Contacto" id="iNombre2Contacto" class="form-control form-md" placeholder="Contacto 2"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="nombreEmpresaContacto" id="iNombreEmpresaContacto" class="form-control form-md" placeholder="Empresa"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="telefonoContacto" id="iTelefonoContacto" class="form-control form-md" placeholder="Telefono"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="celularContacto" id="iCelularContacto" class="form-control form-md" placeholder="Celular"/>
+            </div>
+            <div class="form-group">
+                <input type="email" name="emailContacto" id="iEmailContacto" class="form-control form-md" placeholder="Correo"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="webContacto" id="iWebContacto" class="form-control form-md" placeholder="http://www..."/>
+            </div>
+            <fieldset>
+                <legend>Datos Fiscales</legend>
+                <div class="form-group">
+                    <input type="text" name="rfcFiscal" id="iRfcFiscal" class="form-control form-md" placeholder="RFC"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombreComercialFiscal" id="iNombreComercialFiscal" class="form-control form-md" placeholder="Nombre"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="calleFiscal" id="iCalleFiscal" class="form-control form-md" placeholder="Calle"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="coloniaFiscal" id="iColoniaFiscal" class="form-control form-md" placeholder="Colonia"/>
+                </div>
+                <div class="form-group">
+                    <select name="ciudadFiscal" id="selCiudadFiscal" class="form-control form-md">
+                        <option value="" selected disabled>Ciudades...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="codigoPostalFiscal" id="iCodigoPostalFiscal" class="form-control form-md" placeholder="Código Postal"/>
+                </div>
+            </fieldset>
             <div class="text-center">
                 <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
                 &nbsp;

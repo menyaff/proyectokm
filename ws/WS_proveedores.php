@@ -10,7 +10,7 @@
 	switch($accion){
 		case "select":
 			$WS = new webservice("hdnId,filtro,order");
-			
+			FB::log('Hola');
 			$resp = array();
 
 			$sql = $BD->doSP("SPQ_proveedores",$WS->getParametro());
@@ -23,11 +23,12 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, iNombreContacto, iNombre2Contacto, iNombreEmpresaContacto, iTelefonoContacto, iCelularContacto, iEmailContacto, iWebContacto, iRfcFiscal, iNombreComercialFiscal, iCalleFiscal, iColoniaFiscal, iCiudadFiscal, iCodigoPostalFiscal");
+			$WS = new webservice("hdnId, iClave, iNombre, iNombreContacto, iNombre2Contacto, iNombreEmpresaContacto, iTelefonoContacto, iCelularContacto, iEmailContacto, iWebContacto, iRfcFiscal, iNombreComercialFiscal, iCalleFiscal, iColoniaFiscal, selCiudadFiscal, iCodigoPostalFiscal");
 
 			$query = $BD->doSP("SPU_proveedores",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
+			FB::log($resp);
 			break;
 		case "delete":
 			$WS = new webservice("hdnId");
