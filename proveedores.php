@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Bancos</title>
+    <title>Proveedores</title>
     <?php
         metatags();
 
@@ -21,7 +21,8 @@
     <script>
         jsonFields = {
                         id: { type: "number" },
-                        nombre: { type: "string" }
+                        nombre: { type: "string" },
+                        nombreComercial: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -29,19 +30,22 @@
                             field: "nombre",
                             title: "Nombre"
                         },
+                        {
+                            field: "nombreComercial",
+                            title: "Nombre Comercial"
+                        },
                         templateBotones
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_bancos.php";
+        WS =  "<?= $pathWS ?>WS_proveedores.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Bancos", 550);
+            $(modal).setModal("Proveedores", 550);
             $(grid).setGrid();
         });
     </script>
 </head>
-<body>
 <body>
     <div id="wrapper">
         <?php menuLateral(); ?>
@@ -52,7 +56,7 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
-                        <li class="active"><span class="fa fa-fw fa-university"></span> Bancos</li>
+                        <li class="active"> Proveedores</li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
@@ -63,14 +67,20 @@
     <div id="divModal" class="formPopup">
         <form>
             <div class="form-group">
-                <input type="hidden" name="id" id="hdnId" value="0"/>
-                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
+                <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required />
+                <input type="hidden" id="hdnId" name="id" value="0" />
+            </div>
+            <div class="form-group">
+                <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md" required>
+                    <option value="" selected disabled>Subfamilias...</option>
+                </select>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpiar</button>
+                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                &nbsp;
+                <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
-       </form>
+        </form>
     </div>
 </body>
 </html>

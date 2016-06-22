@@ -22,7 +22,10 @@
         jsonFields = {
                         id: { type: "number" },
                         nombre: { type: "string" },
-                        familia: { type: "string" }
+                        area: { type: "string" },
+                        familia: { type: "string" },
+                        subfamilia: { type: "string" },
+                        existencias: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -31,8 +34,20 @@
                             title: "Nombre"
                         },
                         {
+                            field: "area",
+                            title: "Área"
+                        },
+                        {
                             field: "familia",
                             title: "Familia"
+                        },
+                        {
+                            field: "subfamilia",
+                            title: "Subfamilia"
+                        },
+                        {
+                            field: "existencias",
+                            title: "Existencias"
                         },
                         templateBotones
                     ];
@@ -43,123 +58,115 @@
         $(document).ready(function(){
             $(modal).setModal("Articulos", 550);
             $(grid).setGrid();
+            $("#selLugares").rellenaSelect("<?= $pathWS ?>WS_lugares.php");
+            $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
+            $("#selSubFamilias").change(function(){
+                var elem = $(this);
+                //alert(elem.val());
+                var jsonSubFamilias = '{"selSubfamilias":"'+elem.val()+'"}';
+                jsonSubFamilias = $.parseJSON(jsonSubFamilias);
+                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php",jsonSubFamilias);
+            });
+            $("#selFamilias").change(function(){
+                var elem = $(this);
+                //alert(elem.val());
+                var jsonFamilias = '{"selFamilias":"'+elem.val()+'"}';
+                jsonFamilias = $.parseJSON(jsonFamilias);
+                console.log(jsonFamilias);
+                $("#selAreas").rellenaSelect("<?= $pathWS ?>WS_areas.php",jsonFamilias);
+            });
         });
     </script>
 </head>
 <body>
-<body>
     <div id="wrapper">
-        <?php include 'menu.php'; ?>
+        <?php menuLateral(); ?>
         <!-- Contenido -->
         <div id="page-wrapper">
             <div class="container-fluid">
             <!-- mapa ubicación -->
                 <div class="row">
                     <ol class="breadcrumb">
-                        <li>
-                            <a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a>
-                        </li>
-                        <li class="active">
-                            <span class="fa fa-fw fa-archive"></span> Articulos
-                        </li>
+                        <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
+                        <li class="active"><span class="fa fa-fw fa-archive"></span> Articulos</li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
-
-                <div class="row wrapper-form-sm">
-                    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                     <fieldset>
-                        <legend><h2>Articulos</h2></legend>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Clave" name="iClave">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nombre" name="iNombre">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Linea" name="iLinea">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Marca" name="iMarca">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Modelo" name="iModelo">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Descripción" name="iDescripcion">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Código de Barras" name="iCodigoBarras">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sustituto" name="iSustituto">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Unidades" name="iUnidades">
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Existencia" name="iExistencia">
-                        </div>
-                        <fieldset>
-                            <legend><h5>Pertenece a:</h5></legend>
-                            <div class="form-group col-md-4 col-sm-12">
-                                <select class="form-control" name="sArea">
-                                    <option selected disabled>Área</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12">
-                                <select class="form-control" name="sFamilia">
-                                    <option selected disabled>Familia</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12">
-                                <select class="form-control" name="sSubfamilia">
-                                    <option selected disabled>Subfamilia</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                        </fieldset>
-                        <div class="form-group">
-                            <input type="file">
-                        </div>
-                        
-                     </fieldset>
-                     <br><br>
-                     <fieldset>
-                         <legend><h2>Costos y Precios</h2></legend>
-                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Precio de Recuperación" name="iPrecioRecuperacion">
-                         </div>
-                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Precio de Lista" name="iPrecioLista">
-                         </div>
-                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Precio de Mayoreo" name="iPrecioMayoreo">
-                         </div>
-                     </fieldset>
-                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-default">Enviar</button>
-                        <button type="reset" class="btn btn-default">Limpiar</button>
-                     </div>
-                   </form>
-                </div>
+                <div id="divGrid"></div>
             </div>
         </div>
+    </div>
+    <div id="divModal" class="formPopup">
+        <form>
+            <div class="form-group">
+                <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave">
+            </div>
+            <div class="form-group">
+                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <input type="text" name="linea" id="iLinea" class="form-control form-md" placeholder="Linea">
+            </div>
+            <div class="form-group">
+                <input type="text" name="marca" id="iMarca" class="form-control form-md" placeholder="Marca">
+            </div>
+            <div class="form-group">
+                <input type="text" name="modelo" id="iModelo" class="form-control form-md" placeholder="Modelo">
+            </div>
+            <div class="form-group">
+                <input type="text" name="descripcion" id="txtDescripcion" class="form-control form-md" placeholder="Descripción">
+            </div>
+            <div class="form-group">
+                <select name="lugar" id="selLugares" class="form-control form-md">
+                    <option value="" selected disabled>Lugares...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="codigoBarras" id="iCodigoBarras" class="form-control form-md" placeholder="Código de Barras">
+            </div>
+            <div class="form-group">
+                <input type="text" name="sustituto" id="iSustituto" class="form-control form-md" placeholder="Sustituto">
+            </div>
+            <div class="form-group">
+                <input type="text" name="unidades" id="iUnidad" class="form-control form-md" placeholder="Unidades">
+            </div>
+            <div class="form-group">
+                <input type="number" name="existencias" id="iExistencias" class="form-control form-md" placeholder="Existencias">
+            </div>
+            <div class="form-group">
+                <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md">
+                    <option value="" selected disabled>Subfamilias...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="id_familia" id="selFamilias" class="form-control form-md">
+                    <option value="" selected disabled>Familias...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="area" id="selAreas" class="form-control form-md">
+                    <option value="" selected disabled>Áreas...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="file" name="archivo" id="fileArchivo" class="form-control form-md">
+            </div>
+            <div class="form-group">
+                <input type="text" name="precioRecuperacipn" id="iPrecioRecuperacion" class="form-control form-md" placeholder="Precio Recuperación">
+            </div>
+            <div class="form-group">
+                <input type="text" name="precioLista" id="iPrecioLista" class="form-control form-md" placeholder="Precio de Lista">
+            </div>
+            <div class="form-group">
+                <input type="text" name="precioMayoreo" id="iPrecioMayoreo" class="form-control form-md" placeholder="Precio de Mayoreo">
+            </div>
+            <div class="text-center">
+                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                &nbsp;
+                <input type="reset" class="btn btn-default" value="Limpiar" />
+            </div>
+        </form>
     </div>
 </body>
 </html>

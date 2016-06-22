@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Bancos</title>
+    <title>Roles</title>
     <?php
         metatags();
 
@@ -29,14 +29,23 @@
                             field: "nombre",
                             title: "Nombre"
                         },
-                        templateBotones
+                        templateBotones,
+                        {
+                            title: "Permisos",
+                            filterable: false,
+                            template: "<button id='btnGridPermisos_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'><i class='fa fa-lock' aria-hidden='true'></i></button>",
+                            width: 100,
+                            attributes: {
+                                style: "text-align: center"
+                            }
+                        }
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_bancos.php";
+        WS =  "<?= $pathWS ?>WS_roles.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Bancos", 550);
+            $(modal).setModal("Roles", 550);
             $(grid).setGrid();
         });
     </script>
@@ -52,7 +61,7 @@
                 <div class="row">
                     <ol class="breadcrumb">
                         <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
-                        <li class="active"><span class="fa fa-fw fa-university"></span> Bancos</li>
+                        <li class="active"><span class="fa fa-fw fa-child"></span> Roles</li>
                     </ol>
                 </div>
             <!-- /mapa ubicación -->
@@ -70,7 +79,7 @@
                 <button type="submit" class="btn btn-default">Enviar</button>
                 <button type="reset" class="btn btn-default">Limpiar</button>
             </div>
-       </form>
+        </form>
     </div>
 </body>
 </html>
