@@ -43,7 +43,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <?php menuLateral(); ?>
+        <?php menuLateral(); menuPrincipal(); ?>
         <!-- Contenido -->
         <div id="page-wrapper">
             <div class="container-fluid">

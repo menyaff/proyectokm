@@ -53,14 +53,15 @@
 
 				$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
 				$login = $BD->fetchRow($query);
+FB::info($login);
+				if($login["respuesta"] !== "FALSE"){
+					$_SESSION["llaveCookie"] = date("U");
 
-				if($login[0] !== "FALSE"){
-					$_SESSION["usuario"] = $login[0];
+					$resp = json_encode(array("respuesta"=>"SUCCESS","destino"=>"clientes.php"));
 
-					$resp = json_encode(array("mensaje"=>"SUCCESS","destino"=>"clientes.php"));
-				}else{
-					$resp = json_encode(array("mensaje"=>"Contraseña incorrecta"));
-				}
+					setcookie(__NombreCookie__,cifrado::encrypt($login["nombre"],$_SESSION["llaveCookie"])."|".cifrado::encrypt($login["rol"],$_SESSION["llaveCookie"]), time()+3600);
+				}else
+					$resp = json_encode(array("respuesta"=>$login["respuesta"]));
 			}else{
 				$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta llave"));
 				logger("Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave",__WARNING__);

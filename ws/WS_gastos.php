@@ -13,7 +13,7 @@
 			
 			$resp = array();
 
-			$sql = $BD->doSP("SPQ_proveedores",$WS->getParametro());
+			$sql = $BD->doSP("SPQ_gastos",$WS->getParametro());
 			FB::info($sql);
 			$query = $BD->query($sql);
 
@@ -23,9 +23,9 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, iNombreContacto, iNombre2Contacto, iNombreEmpresaContacto, iTelefonoContacto, iCelularContacto, iEmailContacto, iWebContacto, iRfcFiscal, iNombreComercialFiscal, iCalleFiscal, iColoniaFiscal, selCiudadFiscal, iCodigoPostalFiscal");
+			$WS = new webservice("hdnId, selEmpleados, selEventos, iDireccion, iConcepto, iTelefonoContacto, iFechaSolicitud, iFechaRequerido, iFechaEntrega, selAreas, iMonto");
 
-			$query = $BD->doSP("SPU_proveedores",$WS->getParametro());
+			$query = $BD->doSP("SPU_gastos",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
@@ -34,7 +34,7 @@
 
 			$parametros = $WS->getParametro();
 
-			$query = $BD->doSP("SPD_proveedores",$parametros);
+			$query = $BD->doSP("SPD_gastos",$parametros);
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
