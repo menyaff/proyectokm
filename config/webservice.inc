@@ -25,13 +25,13 @@
 		}
 		public static function getRequest($indice, $modo=__REQUEST__){
 			switch($modo){
-				case "REQUEST":
+				case __REQUEST__:
 					return isset($_REQUEST[$indice]) ? $_REQUEST[$indice] : NULL;
 					break;
-				case "GET":
+				case __GET__:
 					return isset($_GET[$indice]) ? $_GET[$indice] : NULL;
 					break;
-				case "POST":
+				case __POST__:
 					return isset($_POST[$indice]) ? $_POST[$indice] : NULL;
 					break;
 			}
