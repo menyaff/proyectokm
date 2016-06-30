@@ -48,7 +48,7 @@
 		case "update":
 			$WS = new webservice("hdnId, iNombre, cotizacion, selStatusCotizacion, selStatusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iInvitados, chSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, iDepositosEnGarantia, iGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selBancos, iTotal, iAnticipo,arrArticulos");
 
-			$query = $BD->doSP("SPU_eventos",$WS->getParametro(array("hdnId", "iNombre", "cotizacion", "selStatusCotizacion", "selStatusEvento", "selClientes", "selLugares", "selTipos", "iFechaEntrega", "iFechaSeguimiento", "iFechaFinal", "iInvitados", "chSalon", "selVendedores", "iUtilidadCuenta", "iCuenta", "iMontoServicios", "iDepositosEnGarantia", "iGuardias", "iCantidadGuardias", "iMontoGuardias", "selMetodosPago", "selBancos", "iTotal", "iAnticipo")));
+			$query = $BD->doSP("SPU_eventos",$WS->getParametro());
 			
 			$resultadoEventos = $BD->fetchAssoc($BD->query($query));
 

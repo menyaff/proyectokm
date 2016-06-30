@@ -17,13 +17,13 @@
 			$(document).ready(function(){
 				$("#divFormLogin").submit(function(){
 					$.ajax({
-		                url: "<?= $pathWS ?>WS_usuarios.php?accion=getLlave",
+		                url: "<?= $pathWS ?>WS_usuarios.php?accion=getLlave&sessionFree",
 		                dataType: "json",
 		                data: {"nom":$("#iUser").val()},
 		                type: "post",
 		                async: true,
 		                success: function(preLogin){
-		                	if(preLogin.mensaje=="SUCCESS"){
+		                	if(preLogin.respuesta=="TRUE"){
 		                        var data = {
 			                                "nom" : $("#iUser").val(),
 			                                "pass" : $.base64Encode($("#iPass").val(),preLogin.llave),
@@ -31,14 +31,14 @@
 			                            };
 
 		                		$.ajax({
-					                url: "<?= $pathWS ?>WS_usuarios.php?accion=login",
+					                url: "<?= $pathWS ?>WS_usuarios.php?accion=login&sessionFree",
 					                dataType: "json",
 					                data: data,
 					                type: "post",
 					                async: true,
 					                success: function(login){
-					                	if(login.mensaje=="SUCCESS"){
-					                		
+					                	if(login.respuesta=="TRUE"){
+					                		window.location.href = login.destino;
 					                	}else
 		                					$.notify(login.mensaje,"error")
 					                }

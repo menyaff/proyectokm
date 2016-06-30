@@ -13,7 +13,7 @@
 			$nuevo = webservice::getRequest("nuevo",__POST__);
 
 			if($WS->getParametro("nuevo") != NULL)
-				$resp = json_encode(array("mensaje"=>"SUCCESS","llave"=>date("U")));
+				$resp = json_encode(array("respuesta"=>"TRUE","llave"=>date("U")));
 			else{
 				$query = $BD->query($BD->doSP("SPQ_llaveUsuario",array($WS->getParametro("nom"))));
 				$llave = $BD->fetchRow($query);
@@ -23,13 +23,13 @@
 					$_SESSION["nllave"] = sha1(date("U"));
 
 					$retorno = array(
-								"mensaje" => "SUCCESS",
+								"respuesta" => "TRUE",
 								"llave" => $_SESSION["llave"],
 								"nllave" => $_SESSION["nllave"]
 							);
 				}
 	            else{
-	                $retorno = array("mensaje" => "No se encuentra el usuario");
+	                $retorno = array("respuesta"=>"FALSE","mensaje" => "No se encuentra el usuario");
 	                logger("Intento fallido de login para ".$WS->getParametro("nom"),__WARNING__);
 	            }
 
@@ -52,15 +52,14 @@
 				unset($_SESSION["llave"],$_SESSION["nllave"]);
 
 				$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
-				$login = $BD->fetchRow($query);
+				$login = $BD->fetchAssoc($query);
 
-				if($login[0] !== "FALSE"){
-					$_SESSION["usuario"] = $login[0];
-
-					$resp = json_encode(array("mensaje"=>"SUCCESS","destino"=>"clientes.php"));
-				}else{
-					$resp = json_encode(array("mensaje"=>"Contraseña incorrecta"));
-				}
+				if($login["respuesta"] !== "FALSE"){
+					validaSession(__LOGIN__, $login);
+					
+					$resp = json_encode(array("respuesta"=>"TRUE","destino"=>"http://KMAsociados.me/subfamilias.php"));
+				}else
+					$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>$login["mensaje"]));
 			}else{
 				$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta llave"));
 				logger("Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave",__WARNING__);
