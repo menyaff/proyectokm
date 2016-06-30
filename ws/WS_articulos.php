@@ -23,7 +23,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, iLinea, iMarca, iModelo, txtDescripcion, selLugares, iCodigoBarras, iSustituto, iUnidad, iExistencias, selAreas, fileArchivo, iPrecioRecuperacion, iPrecioLista, iPrecioMayoreo");
+			$WS = new webservice("hdnId,iClave,iNombre,iLinea,iMarca,iModelo,txtDescripcion,selLugares,iCodigoBarras,iSustituto,iUnidad,iExistencias,selAreas,fileArchivo,iPrecioRecuperacion,iPrecioLista,iPrecioMayoreo");
 
 			$query = $BD->doSP("SPU_articulos",$WS->getParametro());
 			
