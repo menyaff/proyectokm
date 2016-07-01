@@ -1,10 +1,17 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPQ_servicios`(IN P_id INT, IN P_filtro VARCHAR(200), IN P_order VARCHAR(50))
 BEGIN
-	SET @sqlQuery = "SELECT s.id, s.clave, s.concepto, ca.familia AS id_familia, cf.nombre AS familia, cf.subfamilia AS id_subfamilia, cs.nombre AS subfamilia, ca.id AS id_catArea, ca.nombre AS area, s.cantidad, s.precioUnitario, (s.cantidad*s.precioUnitario) AS total
+	SET @sqlQuery = "SELECT s.id, s.clave, 
+							s.concepto, 
+							cs.id AS id_subFamilia, cs.nombre AS subFamilia,
+                            cf.id AS id_catFamilia, cf.nombre AS familia,
+                            ca.id AS id_catArea, ca.nombre AS area,
+                            s.cantidad, 
+                            s.precioUnitario, 
+                            (s.cantidad*s.precioUnitario) AS total
 					 FROM servicios s
 					 LEFT JOIN cat_areas ca ON s.area=ca.id
 					 LEFT JOIN cat_familias cf ON ca.familia=cf.id
-					 LEFT JOIN cat_subfamilias cs ON cf.subfamilia=cs.id";
+					 LEFT JOIN cat_subFamilias cs ON cf.subFamilia=cs.id";
 	
 	IF(P_id IS NOT NULL AND P_id!="")THEN
 		SET @sqlQuery = CONCAT(@sqlQuery," WHERE s.id=",P_id);

@@ -22,7 +22,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iClave,iNombre,iNombreContacto,iNombre2Contacto,iNombreEmpresaContacto,iTelefonoContacto,iCelularContacto,iEmailContacto,iWebContacto,iRfcFiscal,iNombreComercialFiscal,iCalleFiscal,iColoniaFiscal,selCiudadFiscal,selEstadoFiscal,iCodigoPostalFiscal");
+			$WS = new webservice("hdnId,iClave,iNombre,iNombreContacto,iNombre2Contacto,iNombreEmpresaContacto,iTelefonoContacto,iCelularContacto,iEmailContacto,iWebContacto,iRfcFiscal,iNombreComercialFiscal,iCalleFiscal,iColoniaFiscal,selCiudadFiscal,iCodigoPostalFiscal");
 			//FB::log($WS);
 
 			$query = $BD->doSP("SPU_proveedores",$WS->getParametro());

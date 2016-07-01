@@ -80,7 +80,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <?php menuLateral(); ?>
+        <?php menuPrincipal(); ?>
         <!-- Contenido -->
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -115,7 +115,7 @@
                 <input type="text" name="modelo" id="iModelo" class="form-control form-md" placeholder="Modelo">
             </div>
             <div class="form-group">
-                <input type="text" name="descripcion" id="txtDescripcion" class="form-control form-md" placeholder="Descripción">
+                <textarea name="descripcion" id="txtDescripcion" class="form-control form-md" rows="4" placeholder="Concepto"></textarea>
             </div>
             <div class="form-group">
                 <select name="lugar" id="selLugares" class="form-control form-md">

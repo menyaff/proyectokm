@@ -72,8 +72,8 @@
             </div>
         </div>
     </div>
-    <div id="divModal" class="formPopup text-center clearfix" style="padding: 20px 60px">
-        <form style="overflow: hidden;">
+    <div id="divModal" class="formPopup text-center">
+        <form style="overflow: hidden; padding: 20px 60px">
             <div class="pull-left">
                 <fieldset>
                     <legend>Datos Fiscales</legend>

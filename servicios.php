@@ -29,6 +29,7 @@
                         total: { type: "string" }
                     };
         jsonColumns = [
+                        templateID,
                         {
                             field: "clave",
                             title: "Clave"
@@ -42,7 +43,7 @@
                             title: "Familia"
                         },
                         {
-                            field: "subfamilia",
+                            field: "subFamilia",
                             title: "Subfamilia"
                         },
                         {
@@ -66,7 +67,9 @@
         $(document).ready(function(){
             $(modal).setModal("Articulos", 550);
             $(grid).setGrid();
+
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
+            
             $("#selSubFamilias").change(function(){
                 var elem = $(this);
                 //alert(elem.val());
@@ -106,8 +109,11 @@
     <div id="divModal" class="formPopup">
         <form>
             <div class="form-group">
-                <input type="hidden" id="iId" name="id" value="0"/>
+                <input type="hidden" id="hdnId" name="id" value="0"/>
                 <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave"/>
+            </div>
+            <div class="form-group">
+                <textarea name="concepto" id="txtConcepto" class="form-control form-md" rows="4" placeholder="Concepto"></textarea>
             </div>
             <div class="form-group">
                 <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md">
@@ -123,9 +129,6 @@
                 <select name="area" id="selAreas" class="form-control form-md">
                     <option value="" selected disabled>Áreas...</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control form-md" rows="4" placeholder="Concepto"></textarea>
             </div>
             <div class="form-group">
                 <input type="number" name="cantidad" id="iCantidad" class="form-control form-md" placeholder="Cantidad">

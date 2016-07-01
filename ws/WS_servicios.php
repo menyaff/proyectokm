@@ -22,7 +22,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iNombre");
+			$WS = new webservice("hdnId,iClave,txtConcepto,selAreas,iCantidad,iPrecioUnitario");
 
 			$query = $BD->doSP("SPU_servicios",$WS->getParametro());
 			
