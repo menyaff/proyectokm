@@ -43,4 +43,3 @@
 				$this->parametros[$parametro] = self::getRequest($parametro,$modo);
 		}
 	}
-?>

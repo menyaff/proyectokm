@@ -17,7 +17,7 @@
 			$(document).ready(function(){
 				$("#divFormLogin").submit(function(){
 					$.ajax({
-		                url: "<?= $pathWS ?>WS_usuarios.php?accion=getLlave&sessionFree",
+		                url: "<?= $pathWS ?>WS_usuarios.php?accion=getLlave",
 		                dataType: "json",
 		                data: {"nom":$("#iUser").val()},
 		                type: "post",
@@ -31,7 +31,7 @@
 			                            };
 
 		                		$.ajax({
-					                url: "<?= $pathWS ?>WS_usuarios.php?accion=login&sessionFree",
+					                url: "<?= $pathWS ?>WS_usuarios.php?accion=login",
 					                dataType: "json",
 					                data: data,
 					                type: "post",
