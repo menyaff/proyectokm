@@ -949,7 +949,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'admin','c2c23c37fda1d113e9fe3de820bbd36a5c0be5d6','1e94dc565e37ea8edc3ab5495c070ebd21d48942',0,0),(6,'Erika','4c5cc6cabf28752d3d9790296e49a623b7dae9bc','a3a552bb6df69b5d8c5cb8b6988d11dc014ec624',2,2),(8,'MenyAFF','c862f26a9645225d99a91ba84e8f1a2a0f58d22f','4d8017813198d4787670f3d498bd219ea6353929',1,1);
+INSERT INTO `usuarios` VALUES (1,'admin','c2c23c37fda1d113e9fe3de820bbd36a5c0be5d6','1e94dc565e37ea8edc3ab5495c070ebd21d48942',0,0),(6,'Erika','8ef80e6a1e1deac4d8943d2089274c8737aca1e0','fd3d7f2d3a5d080ea16512271daac28ace682339',2,2),(8,'MenyAFF','d810e0666443050b4f9b49769bb76072181beb7b','17cd424ec80187decc4d62d90d49929ff6165382',1,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3552,12 +3552,13 @@ BEGIN
 	
 	IF(P_id IS NOT NULL AND P_id!="")THEN
 		SET @sqlQuery = CONCAT(@sqlQuery," WHERE v.id=",P_id);
-	END IF;
-	IF((P_id IS NULL OR P_id="") AND P_filtro IS NOT NULL AND P_filtro!="")THEN
-		SET @sqlQuery = CONCAT(@sqlQuery," WHERE ",P_filtro);
-	END IF;
-	IF(P_order IS NOT NULL AND P_order!="")THEN
-		SET @sqlQuery = CONCAT(@sqlQuery," ORDER BY ",P_order);
+	ELSE
+		IF(P_filtro IS NOT NULL AND P_filtro!="")THEN
+			SET @sqlQuery = CONCAT(@sqlQuery," HAVING ",P_filtro);
+		END IF;
+		IF(P_order IS NOT NULL AND P_order!="")THEN
+			SET @sqlQuery = CONCAT(@sqlQuery," ORDER BY ",P_order);
+		END IF;
 	END IF;
 	
 	SET @sqlQuery = CONCAT(@sqlQuery,";");
@@ -4547,4 +4548,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-02 13:57:51
+-- Dump completed on 2016-07-02 15:27:17
