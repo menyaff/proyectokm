@@ -42,4 +42,11 @@
 			foreach($arrParametros as $parametro)
 				$this->parametros[$parametro] = self::getRequest($parametro,$modo);
 		}
+
+		public static function salida($resp){
+			if(isset($_GET["front"]))
+				pre(json_decode($resp),TRUE,"resp");
+			else
+				echo $resp;
+		}
 	}
