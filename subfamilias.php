@@ -60,7 +60,7 @@
         <form>
             <div class="form-group">
                 <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required/>
-                <input type="hidden" id="iId" name="id" value="0"/>
+                <input type="hidden" id="hdnId" name="id" value="0"/>
             </div>
             <div class="text-center">
                 <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
