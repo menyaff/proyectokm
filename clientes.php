@@ -51,6 +51,14 @@
         $(document).ready(function(){
             $(modal).setModal("cliente", 1100);
             $(grid).setGrid();
+            $("#selEstadoFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
+            $("#selEstadoFiscal").change(function(){
+                var elem = $(this);
+                //alert(elem.val());
+                var jsonCiudades = '{"selEstadoFiscal":"'+elem.val()+'"}';
+                jsonCiudades = $.parseJSON(jsonCiudades);
+                $("#selCiudadFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+            });
         });
     </script>
 </head>
