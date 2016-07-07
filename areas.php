@@ -88,7 +88,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <select name="familia" id="selFamilias" class="form-control form-md" required>
+                <select name="id_familia" id="selFamilias" class="form-control form-md" required>
                     <option value="" selected disabled>Familias...</option>
                 </select>
             </div>

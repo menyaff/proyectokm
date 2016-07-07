@@ -98,8 +98,8 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
-                	$(modal).find("input[type='reset']").click();
-                	$(modal).find("input:hidden").val("0");
+                	$(modal).find("button[type='reset']").click();
+                	$(modal).find("#hdnId").val("0");
                 }
             }).data("kendoWindow").center();
 		},
