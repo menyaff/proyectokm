@@ -22,7 +22,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, selBancos, iNoCuenta, iClabe, iSaldo");
+			$WS = new webservice("hdnId,iClave,iNombre,selBancos,iNoCuenta,iClabe,iSaldo");
 
 			$query = $BD->doSP("SPU_cuentasBancarias",$WS->getParametro());
 			
