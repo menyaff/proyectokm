@@ -43,6 +43,7 @@ rellenaCampos = function(form, valores){
 			case "select":
 				campo.find("option[selected]").removeAttr("selected");
 				campo.find("option[value='"+valores[campo.attr("name")]+"']").attr("selected","selected");
+				campo.val(valores[campo.attr("name")]);
 				campo.change();
 				break;
 			case "textarea":
@@ -89,7 +90,7 @@ getFormJson = function(form){
 				data: {hdnId:registro},
 				type: "POST",
 				dataType: "JSON",
-				async: true,
+				async: false,
 				success: function(info){
 					info = info[0];
 
@@ -135,7 +136,7 @@ getFormJson = function(form){
 				type: "POST",
 				data: filtro,
 				dataType: "JSON",
-				async: true,
+				async: false,
 				success: function(info){
 					if(info[0].respuesta!="FALSE")
 						$.each(info, function(){
@@ -158,7 +159,7 @@ $(document).ready(function(){
 
 		return false;
 	});
-	$(modal).find("form input[type='reset']").click(function(){
+	$(modal).find("form button[type='reset']").click(function(){
 		$(modal).find("select>option[selected]").removeAttr("selected");
 		$(modal).find("select>option[value='']").attr("selected","selected");
 
