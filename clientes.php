@@ -106,7 +106,7 @@
                         <input type="text" name="coloniaContacto" id="iColoniaContacto" class="form-control form-sm" placeholder="Colonia"/>
                     </div>
                     <div class="form-group">
-                        <select name="id_estado" id="selEstadoFiscal" class="form-control form-sm">
+                        <select name="id_estado" id="selEstadoContacto" class="form-control form-sm">
                             <option value="" selected disabled>Estados...</option>
                         </select>
                     </div>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="form-group">
                         <select name="paisFiscal" id="selPaisFiscal" class="form-control form-sm">
-                            <option value="" selected disabled>Estados...</option>
+                            <option value="" selected disabled>País...</option>
                         </select>
                     </div>
                     <div class="form-group">

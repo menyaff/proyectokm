@@ -21,7 +21,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iNombre,iDireiccion");
+			$WS = new webservice("hdnId,iNombre,txtDireccion");
 
 			$query = $BD->doSP("SPU_cat_lugares",$WS->getParametro());
 			
