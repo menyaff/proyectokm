@@ -23,7 +23,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, selPuestos, iDomicilio, iColonia, selCiudades, iCodigoPostal, iTelefono, iCelular, iEmail, chLunes, chMartes, chMiercoles, chJueves, chViernes, chSabado");
+			$WS = new webservice("hdnId,iClave,iNombre,selPuestos,iDomicilio,iColonia,selCiudades,iCodigoPostal,iTelefono,iCelular,iEmail,chLunes,chMartes,chMiercoles,chJueves,chViernes,chSabado");
 
 			$query = $BD->doSP("SPU_empleados",$WS->getParametro());
 			

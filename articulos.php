@@ -56,7 +56,7 @@
         WS =  "<?= $pathWS ?>WS_articulos.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Articulos", 550);
+            $(modal).setModal("articulo", 550);
             $(grid).setGrid();
             $("#selLugares").rellenaSelect("<?= $pathWS ?>WS_lugares.php");
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
@@ -162,9 +162,8 @@
                 <input type="text" name="precioMayoreo" id="iPrecioMayoreo" class="form-control form-md" placeholder="Precio de Mayoreo">
             </div>
             <div class="text-center">
-                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
-                &nbsp;
-                <input type="reset" class="btn btn-default" value="Limpiar" />
+                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="reset" class="btn btn-default">Limpiar</button>
             </div>
         </form>
     </div>

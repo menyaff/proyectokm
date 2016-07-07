@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Empleados</title>
+    <title>Articulos</title>
     <?php
         metatags();
 
@@ -55,14 +55,14 @@
                 //alert(elem.val());
                 var jsonCiudades = '{"selEstadoFiscal":"'+elem.val()+'"}';
                 jsonCiudades = $.parseJSON(jsonCiudades);
-                $("#selCiudadFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+                $("#selCiudad").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
             });
         });
     </script>
 </head>
 <body>
     <div id="wrapper">
-        <?php menuLateral(); ?>
+        <?php menuPrincipal(); ?>
         <!-- Contenido -->
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -79,7 +79,8 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
-        <form style="overflow: hidden; padding: 20px 60px">
+        <form>
+        <div style="overflow: hidden; padding: 20px 60px">
             <div class="pull-left">
                 <div class="form-group">
                     <input type="hidden" name="id" id="hdnId" value="0"/>
@@ -154,12 +155,11 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
-                &nbsp;
-                <input type="reset" class="btn btn-default" value="Limpiar" />
-            </div>  
+                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="reset" class="btn btn-default">Limpiar</button>
+            </div> 
+        </div>
         </form>
-    </div>
     </div>
 </body>
 </html>
