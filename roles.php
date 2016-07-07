@@ -29,16 +29,7 @@
                             field: "nombre",
                             title: "Nombre"
                         },
-                        templateBotones,
-                        {
-                            title: "Permisos",
-                            filterable: false,
-                            template: "<button id='btnGridPermisos_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'><i class='fa fa-lock' aria-hidden='true'></i></button>",
-                            width: 100,
-                            attributes: {
-                                style: "text-align: center"
-                            }
-                        }
+                        templateBotones
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";

@@ -36,7 +36,7 @@
         WS =  "<?= $pathWS ?>WS_bancos.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Bancos", 550);
+            $(modal).setModal("banco", 550);
             $(grid).setGrid();
         });
     </script>
