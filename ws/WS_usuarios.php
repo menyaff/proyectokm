@@ -15,54 +15,71 @@
 			if($WS->getParametro("nuevo") != NULL)
 				$resp = json_encode(array("respuesta"=>"TRUE","llave"=>date("U")));
 			else{
-				$query = $BD->query($BD->doSP("SPQ_llaveUsuario",array($WS->getParametro("nom"))));
-				$llave = $BD->fetchRow($query);
+				if(!__DESARROLLO__){
+					$query = $BD->query($BD->doSP("SPQ_llaveUsuario",array($WS->getParametro("nom"))));
+					$llave = $BD->fetchRow($query);
 
-				if($llave[0]!="" && !is_null($llave[0])){
-					$_SESSION["llave"] = $llave[0];
-					$_SESSION["nllave"] = sha1(date("U"));
+					if($llave[0]!="" && !is_null($llave[0])){
+						$_SESSION["llave"] = $llave[0];
+						$_SESSION["nllave"] = sha1(date("U"));
 
-					$retorno = array(
-								"respuesta" => "TRUE",
-								"llave" => $_SESSION["llave"],
-								"nllave" => $_SESSION["nllave"]
-							);
-				}
-	            else{
-	                $retorno = array("respuesta"=>"FALSE","mensaje" => "No se encuentra el usuario");
-	                logger("Intento fallido de login para ".$WS->getParametro("nom"),__WARNING__);
-	            }
+						$retorno = array(
+									"respuesta" => "TRUE",
+									"llave" => $_SESSION["llave"],
+									"nllave" => $_SESSION["nllave"]
+								);
+					}
+		            else{
+		                $retorno = array("respuesta"=>"FALSE","mensaje" => "No se encuentra el usuario");
+		                logger("Intento fallido de login para ".$WS->getParametro("nom"),__WARNING__);
+		            }
+		        }else
+		        	$retorno = array("respuesta"=>"TRUE");
 
 				$resp = json_encode($retorno);
 			}
 			break;
 		case "login":
-			if(isset($_SESSION["llave"])){
-				require __PathComplementos__."cifrado.php";
+			if(!__DESARROLLO__){
+				if(isset($_SESSION["llave"])){
+					require __PathComplementos__."cifrado.php";
 
-				$WS = new webservice("nom,pass,npass");
+					$WS = new webservice("nom,pass,npass");
 
-				$data = array(
-							"usuario" => $WS->getParametro("nom"),
-							"pass" => cifrado::encrypt($WS->getParametro("pass"),$_SESSION["llave"]),
-							"npass" => cifrado::encrypt($WS->getParametro("npass"),$_SESSION["nllave"]),
-							"nllave" => $_SESSION["nllave"]
-						);
+					$data = array(
+								"usuario" => $WS->getParametro("nom"),
+								"pass" => cifrado::encrypt($WS->getParametro("pass"),$_SESSION["llave"]),
+								"npass" => cifrado::encrypt($WS->getParametro("npass"),$_SESSION["nllave"]),
+								"nllave" => $_SESSION["nllave"]
+							);
 
-				unset($_SESSION["llave"],$_SESSION["nllave"]);
+					unset($_SESSION["llave"],$_SESSION["nllave"]);
 
-				$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
-				$login = $BD->fetchAssoc($query);
+					$query = $BD->query($BD->doSP("SPQ_loginUsuario",$data));
+					$login = $BD->fetchAssoc($query);
 
-				if($login["respuesta"] !== "FALSE"){
-					validaSession(__LOGIN__, $login);
-					
-					$resp = json_encode(array("respuesta"=>"TRUE","destino"=>"http://KMAsociados.me/subfamilias.php"));
-				}else
-					$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>$login["mensaje"]));
+					if($login["respuesta"] !== "FALSE"){
+						validaSession(__LOGIN__, $login);
+						
+						$resp = json_encode(array("respuesta"=>"TRUE","destino"=>__INDEX__));
+					}else
+						$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>$login["mensaje"]));
+				}else{
+					$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta llave"));
+					logger("Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave",__WARNING__);
+				}
 			}else{
-				$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta llave"));
-				logger("Falta llave para obtener sesion de usuario, no se siguió el flujo para getLlave",__WARNING__);
+				$user = webservice::getRequest("nom");
+
+				$login = array(
+								"id"=>"0",
+								"nombre" => (is_null($user) || $user=="") ? "TEST" : $user,
+								"rol"=>"1"
+							);
+
+				validaSession(__LOGIN__, $login);
+
+				$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"DESARROLLO Logueado satisfactoriamente","destino"=>__INDEX__));
 			}
 			break;
 		case "select":

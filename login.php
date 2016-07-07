@@ -57,8 +57,8 @@
 		<div id="divFormLogin" class="form">
 	        <div class="logo"><img src="img/logo.jpg"/></div>
 	        <form>
-	            <input type="text" placeholder="Usuario" id="iUser" maxlength="50" required/>
-	            <input type="password" placeholder="Contrase&ntilde;a" id="iPass" maxlength="20" required/>
+	            <input type="text" placeholder="Usuario" id="iUser" <?= __DESARROLLO__ ? "" : "required " ?>/>
+	            <input type="password" placeholder="Contrase&ntilde;a" id="iPass" />
 	            <button type="submit" id="btnAceptar">Iniciar Sesi&oacute;n</button>
 
 	        </form>
