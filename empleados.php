@@ -68,10 +68,7 @@
             <div class="container-fluid">
             <!-- mapa ubicación -->
                 <div class="row">
-                    <ol class="breadcrumb">
-                        <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
-                        <li class="active">Empleados</li>
-                    </ol>
+                    <?php breadcrumb(); ?>
                 </div>
             <!-- /mapa ubicación -->
                 <div id="divGrid"></div>

@@ -103,8 +103,5 @@
 			break;
 	}
 
-	if(isset($_GET["front"]))
-		pre(json_decode($resp),TRUE,"resp");
-	else
-		echo $resp;
+	webservice::salida($resp);
 ?>

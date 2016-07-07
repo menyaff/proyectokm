@@ -5,7 +5,6 @@
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
 	$accion = webservice::getRequest("accion",__GET__);
-	$respuesta = array();
 
 	switch($accion){
 		case "select":
@@ -45,6 +44,18 @@
 
 			$resp = json_encode($resp);
 			break;
+		case "selectServicio":
+			$WS = new webservice("hdnId,filtro,order");
+
+			$query = $BD->query($BD->doSP("SPQ_serviciosEventos",$WS->getParametro()));
+	
+			$resp = array();
+
+			while($tupla = $BD->fetchAssoc($query))
+				array_push($resp,$tupla);
+
+			$resp = json_encode($resp);
+			break;
 		case "update":
 			$WS = new webservice("hdnId, iNombre, cotizacion, selStatusCotizacion, selStatusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iInvitados, chSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, iDepositosEnGarantia, iGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selBancos, iTotal, iAnticipo,arrArticulos");
 
@@ -52,26 +63,53 @@
 			
 			$resultadoEventos = $BD->fetchAssoc($BD->query($query));
 
-			if($resultadoEventos["respuesta"]=="TRUE"){
+			if($resultadoEventos["respuesta"]=="TRUE" && $WS->getParametro("hdnId")=="0"){
 				$articulos = $WS->getParametro("arrArticulos");
+				$servicios = $WS->getParametro("arrServicios");
+				$errorRelacionados = "";
 
 				if(!is_null($articulos)){
 					$inserts = implode("),(",$articulos);
 					$inserts = "(".$inserts.")";
 
-					$resultadoArticulos = $BD->fetchAssoc($BD->query($BD->doSP("SPI_articulos",$inserts)));
+					$resultadoArticulos = $BD->fetchAssoc($BD->query($BD->doSP("SPI_articulosEventosMasivo",$inserts)));
 
+					if($resultadoArticulos["respuesta"]=="FALSE")
+						$errorRelacionados = "artículos";
+				}
+
+				if(!is_null($servicios)){
+					$inserts = implode("),(",$servicios);
+					$inserts = "(".$inserts.")";
+
+					$resultadoServicios = $BD->fetchAssoc($BD->query($BD->doSP("SPI_serviciosEventosMasivo",$inserts)));
+
+					if($resultadoServicios["respuesta"]=="FALSE")
+						$errorRelacionados .= " servicios";
+				}
+
+				if($errorRelacionados == "")
 					$resp = json_encode($resultadoEventos);
-				}else
-					$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento guardado satisfactoriamente"));
+				else
+					resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento agregado correctamente con error en".trim($errorRelacionados)));
 			}else
-				$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento guardado, con error en la carga de artículos"));
+				$resp = json_encode($resultadoEventos);
 			break;
 		case "asignaArticulo":
 			$WS = new webservice("iCantidad, selArticulos, hdnIdEvento");
 
 			if($WS->getParametro("hdnIdEvento")!="0"){
 				$query = $BD->doSP("SPU_articulosEventos",$WS->getParametro());
+				
+				$resp = json_encode($BD->fetchAssoc($BD->query($query)));
+			}else
+				exit;
+			break;
+		case "asignaServicio":
+			$WS = new webservice("selServicios, hdnIdEvento");
+
+			if($WS->getParametro("hdnIdEvento")!="0"){
+				$query = $BD->doSP("SPU_serviciosEventos",$WS->getParametro());
 				
 				$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			}else
@@ -95,13 +133,19 @@
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
+		case "eliminaServicio":
+			$WS = new webservice("hdnId");
+
+			$parametros = $WS->getParametro();
+
+			$query = $BD->doSP("SPD_serviciosEventos",$parametros);
+			
+			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
+			break;
 		default:
 			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
 
-	if(isset($_GET["front"]))
-		pre(json_decode($resp),TRUE,"resp");
-	else
-		echo $resp;
+	webservice::salida($resp);
 ?>

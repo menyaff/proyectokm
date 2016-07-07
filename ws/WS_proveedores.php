@@ -5,7 +5,6 @@
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
 	$accion = webservice::getRequest("accion",__GET__);
-	$respuesta = array();
 
 	switch($accion){
 		case "select":
@@ -44,8 +43,5 @@
 			break;
 	}
 
-	if(isset($_GET["front"]))
-		pre(json_decode($resp),TRUE,"resp");
-	else
-		echo $resp;
+	webservice::salida($resp);
 ?>

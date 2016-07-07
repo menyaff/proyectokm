@@ -5,7 +5,6 @@
 	$BD = new conexionBD(__BDHost__,__BDUser__,__BDPass__,__BDDatabase__,__SQL__);
 
 	$accion = webservice::getRequest("accion",__GET__);
-	$respuesta = array();
 
 	switch($accion){
 		case "select":
@@ -21,29 +20,10 @@
 
 			$resp = json_encode($resp);
 			break;
-		case "update":
-			$WS = new webservice("iId,iNombre");
-
-			$query = $BD->doSP("SPU_cat_estados",$WS->getParametro());
-			
-			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
-			break;
-		case "delete":
-			$WS = new webservice("iId");
-
-			$parametros = $WS->getParametro();
-
-			$query = $BD->doSP("SPD_cat_estados",$parametros);
-			
-			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
-			break;
 		default:
 			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));
 			break;
 	}
 
-	if(isset($_GET["front"]))
-		pre(json_decode($resp),TRUE,"resp");
-	else
-		echo $resp;
+	webservice::salida($resp);
 ?>

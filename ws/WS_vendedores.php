@@ -8,11 +8,11 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("hdnId");
+			$WS = new webservice("hdnId,filtro,order");
 			
 			$resp = array();
 
-			$sql = $BD->doSP("SPQ_cat_lugares",$WS->getParametro());
+			$sql = $BD->doSP("SPQ_vendedores",$WS->getParametro());
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))
@@ -21,9 +21,9 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iNombre,iDireiccion");
+			$WS = new webservice("hdnId,selEmpleados,selRankings");
 
-			$query = $BD->doSP("SPU_cat_lugares",$WS->getParametro());
+			$query = $BD->doSP("SPU_vendedores",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
@@ -32,7 +32,7 @@
 
 			$parametros = $WS->getParametro();
 
-			$query = $BD->doSP("SPD_cat_lugares",$parametros);
+			$query = $BD->doSP("SPD_vendedores",$parametros);
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;

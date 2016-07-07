@@ -78,10 +78,11 @@ confirmaEliminar = function(funcion, singular){
 (function($){
 	$.fn.extend({
 		setModal : function(titulo, width){
+			tituloModal = titulo;
 			var elem = $(this);
 
             $(elem).kendoWindow({
-            	title: titulo,
+            	title: tituloModal,
             	animation: {
 					open: {
 						duration: 500
@@ -98,6 +99,7 @@ confirmaEliminar = function(funcion, singular){
                 actions: ["Close"],
                 close: function(){
                 	$(modal).find("input[type='reset']").click();
+                	$(modal).find("input:hidden").val("0");
                 }
             }).data("kendoWindow").center();
 		},
@@ -166,11 +168,11 @@ confirmaEliminar = function(funcion, singular){
 
 		                switch(elem.html()){
 		                    case "Nuevo":
-		                        $(modal).data("kendoWindow").title("Crear "+titulo);
+		                        $(modal).data("kendoWindow").title("Crear "+tituloModal);
 		                        break;
 		                    case "Editar":
 		                    	$(modal).inicializaInfo(WS, elem.attr("registro"),function(){
-		                        	$(modal).data("kendoWindow").title("Editar "+titulo);
+		                        	$(modal).data("kendoWindow").title("Editar "+tituloModal);
 		                        });
 		                        break;
 		                }

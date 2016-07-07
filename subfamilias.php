@@ -49,10 +49,7 @@
             <div class="container-fluid">
             <!-- mapa ubicación -->
                 <div class="row">
-                    <ol class="breadcrumb">
-                        <li><a href="index.php"><span class="fa fa-fw fa-home"></span> Inicio</a></li>
-                        <li class="active"> Familias</li>
-                    </ol>
+                    <?php breadcrumb(); ?>
                 </div>
             <!-- /mapa ubicación -->
                 <div id="divGrid"></div>
@@ -63,7 +60,7 @@
         <form>
             <div class="form-group">
                 <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required/>
-                <input type="hidden" id="iId" name="id" value="0"/>
+                <input type="hidden" id="hdnId" name="id" value="0"/>
             </div>
             <div class="text-center">
                 <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
