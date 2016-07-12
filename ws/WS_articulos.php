@@ -22,11 +22,10 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iClave,iNombre,iLinea,iMarca,iModelo,txtDescripcion,selLugares,iCodigoBarras,iSustituto,iUnidad,iExistencias,selAreas,fileArchivo,iPrecioRecuperacion,iPrecioLista,iPrecioMayoreo");
+			$WS = new webservice("hdnId,iClave,iNombre,iLinea,iMarca,iModelo,taDescripcion,selLugares,iCodigoBarras,iSustituto,iUnidad,iExistencias,selAreas,fileArchivo,iPrecioRecuperacion,iPrecioLista,iPrecioMayoreo");
 
 			$query = $BD->doSP("SPU_articulos",$WS->getParametro());
-			FB::info($query,"query");exit;
-			
+
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "delete":

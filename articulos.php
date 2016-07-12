@@ -115,7 +115,7 @@
                 <input type="text" name="modelo" id="iModelo" class="form-control form-md" placeholder="Modelo">
             </div>
             <div class="form-group">
-                <textarea name="descripcion" id="txtDescripcion" class="form-control form-md" rows="4" placeholder="Concepto"></textarea>
+                <textarea name="descripcion" id="taDescripcion" class="form-control form-md" rows="4" placeholder="Descripci&oacute;n"></textarea>
             </div>
             <div class="form-group">
                 <select name="lugar" id="selLugares" class="form-control form-md">
@@ -153,13 +153,13 @@
                 <input type="file" name="archivo" id="fileArchivo" class="form-control form-md">
             </div>
             <div class="form-group">
-                <input type="text" name="precioRecuperacipn" id="iPrecioRecuperacion" class="form-control form-md" placeholder="Precio Recuperación">
+                <input type="number" name="precioRecuperacipn" id="iPrecioRecuperacion" class="form-control form-md" placeholder="Precio Recuperación">
             </div>
             <div class="form-group">
-                <input type="text" name="precioLista" id="iPrecioLista" class="form-control form-md" placeholder="Precio de Lista">
+                <input type="number" name="precioLista" id="iPrecioLista" class="form-control form-md" placeholder="Precio de Lista">
             </div>
             <div class="form-group">
-                <input type="text" name="precioMayoreo" id="iPrecioMayoreo" class="form-control form-md" placeholder="Precio de Mayoreo">
+                <input type="number" name="precioMayoreo" id="iPrecioMayoreo" class="form-control form-md" placeholder="Precio de Mayoreo">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>

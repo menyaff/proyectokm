@@ -66,13 +66,16 @@ getFormJson = function(form){
 			case "input":
 				if(tagName=="input" && campo.attr("type") == "checkbox")
 					retorno[campo.attr("id")] = (campo.is(":checked") ? "TRUEb" : "FALSEb");
-				else
-					retorno[campo.attr("id")] = campo.val();
-				break;
-			case "select":
+				else{
 					var valor = campo.val();
 
-					retorno[campo.attr("id")] = (valor == null ? 0 : campoparseInt(valor));
+					retorno[campo.attr("id")] = (campo.attr("type")=="number" && valor=="") ? "0" : valor;
+				}
+				break;
+			case "select":
+				var valor = campo.val();
+
+				retorno[campo.attr("id")] = (valor == null ? 0 : parseInt(valor));
 				break;
 			case "textarea":
 				retorno[campo.attr("id")] = campo.html();
@@ -119,8 +122,11 @@ getFormJson = function(form){
 
 					if(info.respuesta=="TRUE")
 						$.notify(info.mensaje,"success");
-					else
-						$.notify(info.mensaje,"error");
+					else{
+						var msgError = info.mensaje == undefined ? "Ocurrió un error interno" : info.mensaje;
+
+						$.notify(msgError,"error");
+					}
 				},
 				error: function(info){
 					console.error(info);
