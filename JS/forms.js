@@ -33,10 +33,12 @@ rellenaCampos = function(form, valores){
 						campo.val(valores[campo.attr("name")]);
 						break;
 					case "radio":
-						form.find("input[name='"+campo.attr("name")+"'][value='"+valores[campo.attr("name")]+"']").prop("checked",true);
+						if(valores[campo.attr("name")] == "1")
+							form.find("input[name='"+campo.attr("name")+"'][value='"+valores[campo.attr("name")]+"']").prop("checked","checked");
 						break;
 					case "checkbox":
-						campo.prop("checked",valores[campo.attr("name")]);
+						if(valores[campo.attr("name")] == "1")
+							campo.prop("checked","checked");
 						break;
 				}
 				break;
@@ -53,31 +55,32 @@ rellenaCampos = function(form, valores){
 	});
 };
 getFormJson = function(form){
-	var retorno = '{';
+	var retorno = {};
 
 	form.find("input:text, input[type='number'], input[type='email'], input:password, input:hidden, input:radio, input:checkbox, select, textarea").each(function(){
 		var campo = $(this);
-		var tagName = campo.prop("tagName").toLowerCase();
 
-		retorno += '"'+campo.attr("id")+'":';
+		var tagName = campo.prop("tagName").toLowerCase();
 
 		switch(tagName){
 			case "input":
-			case "select":
 				if(tagName=="input" && campo.attr("type") == "checkbox")
-					retorno += (campo.is(":checked") ? 'TRUE' : 'FALSE') +',';
+					retorno[campo.attr("id")] = (campo.is(":checked") ? "TRUEb" : "FALSEb");
 				else
-					retorno += '"'+campo.val()+'",';
+					retorno[campo.attr("id")] = campo.val();
+				break;
+			case "select":
+					var valor = campo.val();
+
+					retorno[campo.attr("id")] = (valor == null ? 0 : campoparseInt(valor));
 				break;
 			case "textarea":
-				retorno += '"'+campo.html()+'",';
+				retorno[campo.attr("id")] = campo.html();
 				break;
 		}
 	});
 
-	retorno = retorno.substr(0,retorno.length-1) + '}';
-
-	return $.parseJSON(retorno);
+	return retorno;
 };
 
 (function($){
@@ -155,13 +158,18 @@ getFormJson = function(form){
 
 $(document).ready(function(){
 	$(modal).find("form").submit(function(){
-		$(modal).salvaInfo();
+		var elem = $(this);
+		
+		$(elem).salvaInfo();
 
 		return false;
 	});
 	$(modal).find("form button[type='reset']").click(function(){
-		$(modal).find("select>option[selected]").removeAttr("selected");
-		$(modal).find("select>option[value='']").attr("selected","selected");
+		var elem = $(this).parents("form");
+
+		$(elem).find("select>option[selected]").removeAttr("selected");
+		$(elem).find("select>option[value='']").attr("selected","selected");
+        $(elem).find(".selDependiente").find("option[value!='']").remove();
 
 		return true;
 	});

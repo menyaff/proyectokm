@@ -22,7 +22,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iClave, iNombre, iNombreComercial, iCargo, iMontoCredito, iDiasCredito, iTipoContacto, iNombreContacto, iWebContacto, iDireccionContacto, iColoniaContacto, selCiudadContacto, iCodigoPostalContacto, iTelefonoContacto, iCelularContacto, iEmailContacto, iRfcFiscal, iRazonSocialFiscal, iCalleFiscal, iColoniaFiscal, selCiudadFiscal, selPaisFiscal, iCodigoPostalFiscal, iNumeroInteriorFiscal, iNumeroExteriorFiscal, iLocalidadFiscal, selMunicipioFiscal");
+			$WS = new webservice("hdnId, iClave, iNombre, iNombreComercial, iCargo, iMontoCredito, iDiasCredito, iTipoContacto, iNombreContacto, iWebContacto, iDireccionContacto, iColoniaContacto, selCiudadesContacto, iCodigoPostalContacto, iTelefonoContacto, iCelularContacto, iEmailContacto, iRfcFiscal, iRazonSocialFiscal, iCalleFiscal, iColoniaFiscal, selCiudadesFiscal, iPaisFiscal, iCodigoPostalFiscal, iNumeroInteriorFiscal, iNumeroExteriorFiscal, iLocalidadFiscal, selMunicipioFiscal");
 
 			$query = $BD->doSP("SPU_clientes",$WS->getParametro());
 			

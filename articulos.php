@@ -58,21 +58,24 @@
         $(document).ready(function(){
             $(modal).setModal("articulo", 550);
             $(grid).setGrid();
+
             $("#selLugares").rellenaSelect("<?= $pathWS ?>WS_lugares.php");
-            $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
+            $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subFamilias.php");
+
             $("#selSubFamilias").change(function(){
                 var elem = $(this);
-                //alert(elem.val());
-                var jsonSubFamilias = '{"selSubfamilias":"'+elem.val()+'"}';
+                
+                var jsonSubFamilias = '{"selSubFamilias":"'+elem.val()+'"}';
                 jsonSubFamilias = $.parseJSON(jsonSubFamilias);
+
                 $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php",jsonSubFamilias);
             });
             $("#selFamilias").change(function(){
                 var elem = $(this);
-                //alert(elem.val());
+                
                 var jsonFamilias = '{"selFamilias":"'+elem.val()+'"}';
                 jsonFamilias = $.parseJSON(jsonFamilias);
-                console.log(jsonFamilias);
+                
                 $("#selAreas").rellenaSelect("<?= $pathWS ?>WS_areas.php",jsonFamilias);
             });
         });
@@ -94,7 +97,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
                 <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave">
@@ -137,12 +140,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <select name="id_familia" id="selFamilias" class="form-control form-md">
+                <select name="id_familia" id="selFamilias" class="form-control form-md selDependiente">
                     <option value="" selected disabled>Familias...</option>
                 </select>
             </div>
             <div class="form-group">
-                <select name="area" id="selAreas" class="form-control form-md">
+                <select name="id_area" id="selAreas" class="form-control form-md selDependiente">
                     <option value="" selected disabled>Áreas...</option>
                 </select>
             </div>

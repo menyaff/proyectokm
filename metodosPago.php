@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Ranking</title>
+    <title>Métodos de Pago</title>
     <?php
         metatags();
 
@@ -32,10 +32,10 @@
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_ranking.php";
+        WS =  "<?= $pathWS ?>WS_metodosPago.php";
 
         $(document).ready(function(){
-            $(modal).setModal("ranking", 550);
+            $(modal).setModal("método de pago", 550);
             $(grid).setGrid();
         });
     </script>

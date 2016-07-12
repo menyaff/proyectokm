@@ -246,8 +246,18 @@
 		public function doSP($SP, $parametros=array()){
 			$query = "CALL ".$SP."(";
 
-			foreach($parametros as $parametro)
-				$query .= is_null($parametro) ? "NULL," : "'".$parametro."',";
+			foreach($parametros as $parametro){
+				if(is_null($parametro))
+					$query .= "NULL";
+				else if(is_numeric($parametro))
+					$query .= $parametro;
+				else if($parametro==="TRUEb" || $parametro==="FALSEb")
+					$query .= rtrim($parametro,"b");
+				else
+					$query .= "'".$parametro."'";
+
+				$query .= ",";
+			}
 
 			$query = rtrim($query,",").");";
 

@@ -13,7 +13,7 @@
 			$resp = array();
 
 			$sql = $BD->doSP("SPQ_articulos",$WS->getParametro());
-			FB::info($sql);
+			
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))
@@ -25,6 +25,7 @@
 			$WS = new webservice("hdnId,iClave,iNombre,iLinea,iMarca,iModelo,txtDescripcion,selLugares,iCodigoBarras,iSustituto,iUnidad,iExistencias,selAreas,fileArchivo,iPrecioRecuperacion,iPrecioLista,iPrecioMayoreo");
 
 			$query = $BD->doSP("SPU_articulos",$WS->getParametro());
+			FB::info($query,"query");exit;
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;

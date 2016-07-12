@@ -40,7 +40,7 @@
         WS =  "<?= $pathWS ?>WS_vendedores.php";
 
         $(document).ready(function(){
-            $(modal).setModal("vendedor", 550);
+            $(modal).setModal("vendedor", 450);
             $(grid).setGrid();
             $("#selEmpleados").rellenaSelect("<?= $pathWS ?>WS_empleados.php");
             $("#selRankings").rellenaSelect("<?= $pathWS ?>WS_ranking.php");
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
                 <select name="id_empleado" id="selEmpleados" class="form-control form-sm">

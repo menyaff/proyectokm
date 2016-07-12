@@ -1,4 +1,4 @@
-<?php
+<?php
 	include_once "../config/back.conf";
 	require_once "../config/webservice.inc";
 
@@ -8,7 +8,7 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("hdnId,selEstadoFiscal");
+			$WS = new webservice("hdnId,selEstados");
 			
 			$resp = array();
 

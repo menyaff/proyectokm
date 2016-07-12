@@ -37,6 +37,7 @@
 			}
 		}
 		private function parseParametros($strParametros,$modo=__REQUEST__){
+			$strParametros = str_replace(" ","",$strParametros);
 			$arrParametros = explode(",",$strParametros);
 
 			foreach($arrParametros as $parametro)

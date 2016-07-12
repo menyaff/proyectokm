@@ -58,7 +58,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
                 <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">

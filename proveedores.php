@@ -43,13 +43,14 @@
         $(document).ready(function(){
             $(modal).setModal("proveedor", 1100);
             $(grid).setGrid();
-            $("#selEstadoFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
-            $("#selEstadoFiscal").change(function(){
+            $("#selEstadosFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
+            $("#selEstadosFiscal").change(function(){
                 var elem = $(this);
-                //alert(elem.val());
-                var jsonCiudades = '{"selEstadoFiscal":"'+elem.val()+'"}';
+                
+                var jsonCiudades = '{"selEstados":"'+elem.val()+'"}';
                 jsonCiudades = $.parseJSON(jsonCiudades);
-                $("#selCiudadFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+
+                $("#selCiudadesFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
             });
         });
     </script>
@@ -70,7 +71,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup text-center">
-        <form style="overflow: hidden; padding: 20px 60px">
+        <form method="post" style="overflow: hidden; padding: 20px 60px">
             <div class="pull-left">
                 <fieldset>
                     <legend>Datos Fiscales</legend>
@@ -100,7 +101,7 @@
                         <input type="email" name="emailContacto" id="iEmailContacto" class="form-control form-sm" placeholder="Correo"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="webContacto" id="iWebContacto" class="form-control form-sm" placeholder="http://www..."/>
+                        <input type="text" name="webContacto" id="iWebContacto" class="form-control form-sm" placeholder="Sitio web (http://www.)"/>
                     </div>
                 </fieldset>
             </div>
@@ -120,12 +121,12 @@
                         <input type="text" name="coloniaFiscal" id="iColoniaFiscal" class="form-control form-sm" placeholder="Colonia"/>
                     </div>
                     <div class="form-group">
-                        <select name="id_estado" id="selEstadoFiscal" class="form-control form-sm">
+                        <select name="id_estado" id="selEstadosFiscal" class="form-control form-sm">
                             <option value="" selected disabled>Estados...</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="ciudadFiscal" id="selCiudadFiscal" class="form-control form-sm">
+                        <select name="ciudadFiscal" id="selCiudadesFiscal" class="form-control form-sm selDependiente">
                             <option value="" selected disabled>Ciudades...</option>
                         </select>
                     </div>
@@ -135,9 +136,9 @@
                 </fieldset>
             </div>
             <div class="col-md-12 text-center">
-                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                <button type="submit" id="btnAceptar" class="btn btn-default">Aceptar</button>
                 &nbsp;
-                <input type="reset" class="btn btn-default" value="Limpiar" />
+                <button type="reset" class="btn btn-default">Limpiar</button>
             </div>            
         </form>
     </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Ranking</title>
+    <title>Tipos de Eventos</title>
     <?php
         metatags();
 
@@ -20,10 +20,15 @@
     <script src="<?= $pathJS ?>grids.js"></script>
     <script>
         jsonFields = {
+                        clave: { type: "string" },
                         nombre: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
+                        {
+                            field: "clave",
+                            title: "Clave"
+                        },
                         {
                             field: "nombre",
                             title: "Nombre"
@@ -32,10 +37,10 @@
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_ranking.php";
+        WS =  "<?= $pathWS ?>WS_tiposEvento.php";
 
         $(document).ready(function(){
-            $(modal).setModal("ranking", 550);
+            $(modal).setModal("tipo de evento", 550);
             $(grid).setGrid();
         });
     </script>
@@ -61,6 +66,9 @@
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
                 <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>

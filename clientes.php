@@ -33,16 +33,7 @@
                             field: "nombreComercial",
                             title: "Nombre Comercial"
                         },
-                        templateBotones,
-                        {
-                            title: "",
-                            filterable: false,
-                            template: "<button id='btnGridPermisos_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'><i class='fa fa-search' aria-hidden='true'></i></button>",
-                            width: 100,
-                            attributes: {
-                                style: "text-align: center"
-                            }
-                        }
+                        templateBotones
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
@@ -51,13 +42,23 @@
         $(document).ready(function(){
             $(modal).setModal("cliente", 1100);
             $(grid).setGrid();
-            $("#selEstadoFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
-            $("#selEstadoFiscal").change(function(){
+            $("#selEstadosContacto, #selEstadosFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
+
+            $("#selEstadosContacto").change(function(){
                 var elem = $(this);
-                //alert(elem.val());
-                var jsonCiudades = '{"selEstadoFiscal":"'+elem.val()+'"}';
+                
+                var jsonCiudades = '{"selEstados":"'+elem.val()+'"}';
                 jsonCiudades = $.parseJSON(jsonCiudades);
-                $("#selCiudadFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+                
+                $("#selCiudadesContacto").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+            });
+            $("#selEstadosFiscal").change(function(){
+                var elem = $(this);
+                
+                var jsonCiudades = '{"selEstados":"'+elem.val()+'"}';
+                jsonCiudades = $.parseJSON(jsonCiudades);
+
+                $("#selCiudadesFiscal").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
             });
         });
     </script>
@@ -79,7 +80,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup text-center">
-        <form style="overflow: hidden; padding: 20px 60px">
+        <form method="post" style="overflow: hidden; padding: 20px 60px">
             <div class="pull-left">
                 <div class="form-group">
                     <input type="hidden" name="id" id="hdnId" value="0"/>
@@ -97,7 +98,7 @@
                         <input type="text" name="nombreContacto" id="iNombreContacto" class="form-control form-sm" placeholder="Nombre"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="webContacto" id="iWebContacto" class="form-control form-sm" placeholder="http://www..."/>
+                        <input type="text" name="webContacto" id="iWebContacto" class="form-control form-sm" placeholder="Sitio web (http://www.)"/>
                     </div>
                     <div class="form-group">
                         <input type="text" name="direccionContacto" id="iDireccionContacto" class="form-control form-sm" placeholder="Dirección"/>
@@ -106,12 +107,12 @@
                         <input type="text" name="coloniaContacto" id="iColoniaContacto" class="form-control form-sm" placeholder="Colonia"/>
                     </div>
                     <div class="form-group">
-                        <select name="id_estado" id="selEstadoContacto" class="form-control form-sm">
+                        <select name="id_estado" id="selEstadosContacto" class="form-control form-sm">
                             <option value="" selected disabled>Estados...</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="ciudadContacto" id="selCiudadContacto" class="form-control form-sm">
+                        <select name="ciudadContacto" id="selCiudadesContacto" class="form-control form-sm selDependiente">
                             <option value="" selected disabled>Ciudades...</option>
                         </select>
                     </div>
@@ -155,17 +156,15 @@
                         <input type="text" name="coloniaFiscal" id="iColoniaFiscal" class="form-control form-sm" placeholder="Colonia"/>
                     </div>
                     <div class="form-group">
-                        <select name="paisFiscal" id="selPaisFiscal" class="form-control form-sm">
-                            <option value="" selected disabled>País...</option>
-                        </select>
+                        <input type="text" name="paisFiscal" id="iPais" class="form-control form-sm" placeholder="Pa&iacute;s"/>
                     </div>
                     <div class="form-group">
-                        <select name="id_estadoFiscal" id="selEstadoFiscal" class="form-control form-sm">
+                        <select name="id_estadoFiscal" id="selEstadosFiscal" class="form-control form-sm">
                             <option value="" selected disabled>Estados...</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="ciudadFiscal" id="selCiudadFiscal" class="form-control form-sm">
+                        <select name="ciudadFiscal" id="selCiudadesFiscal" class="form-control form-sm selDependiente">
                             <option value="" selected disabled>Ciudades...</option>
                         </select>
                     </div>
@@ -182,16 +181,14 @@
                         <input type="text" name="localidadFiscal" id="iLocalidadFiscal" class="form-control form-sm" placeholder="Localidad Físcal"/>
                     </div>
                     <div class="form-group">
-                        <select name="municipioFiscal" id="selMunicipioFiscal" class="form-control form-sm">
-                            <option value="" selected disabled>Municipios...</option>
-                        </select>
+                        <input type="text" name="municipioFiscal" id="iMunicipioFiscal" class="form-control form-sm" placeholder="Municipio F&iacute;scal"/>
                     </div>
                 </fieldset>
             </div>
             <div class="col-md-12 text-center">
-                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                <button type="submit" id="btnAceptar" class="btn btn-default">Aceptar</button>
                 &nbsp;
-                <input type="reset" class="btn btn-default" value="Limpiar" />
+                <button type="reset" class="btn btn-default">Limpiar</button>
             </div>            
         </form>
     </div>

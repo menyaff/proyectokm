@@ -100,6 +100,7 @@ confirmaEliminar = function(funcion, singular){
                 close: function(){
                 	$(modal).find("button[type='reset']").click();
                 	$(modal).find("#hdnId").val("0");
+                	$(modal).find(".selDependiente").find("option[value!='']").remove();
                 }
             }).data("kendoWindow").center();
 		},

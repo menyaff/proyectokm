@@ -8,7 +8,7 @@
 
 	switch($accion){
 		case "select":
-			$WS = new webservice("hdnId,selSubfamilias");
+			$WS = new webservice("hdnId,selSubFamilias");
 			
 			$resp = array();
 

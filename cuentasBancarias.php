@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Ranking</title>
+    <title>Bancos</title>
     <?php
         metatags();
 
@@ -20,7 +20,8 @@
     <script src="<?= $pathJS ?>grids.js"></script>
     <script>
         jsonFields = {
-                        nombre: { type: "string" }
+                        nombre: { type: "string" },
+                        saldo: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -28,15 +29,25 @@
                             field: "nombre",
                             title: "Nombre"
                         },
+                        {
+                            field: "banco",
+                            title: "Banco"
+                        },
+                        {
+                            field: "saldo",
+                            title: "Saldo",
+                            template: "$#: saldo #"
+                        },
                         templateBotones
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_ranking.php";
+        WS =  "<?= $pathWS ?>WS_cuentasBancarias.php";
 
         $(document).ready(function(){
-            $(modal).setModal("ranking", 550);
+            $(modal).setModal("cuenta bancaria", 550);
             $(grid).setGrid();
+            $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
         });
     </script>
 </head>
@@ -60,7 +71,24 @@
         <form method="post">
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave">
+            </div>
+            <div class="form-group">
                 <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <select name="banco" id="selBancos" class="form-control form-md">
+                    <option value="" selected disabled>Bancos...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="noCuenta" id="iNoCuenta" class="form-control form-md" placeholder="N&uacute;mero de cuenta">
+            </div>
+            <div class="form-group">
+                <input type="text" name="clabe" id="iClabe" class="form-control form-md" placeholder="Clabe">
+            </div>
+            <div class="form-group">
+                <input type="number" step="any" name="saldo" id="iSaldo" class="form-control form-md" placeholder="Saldo">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-default">Enviar</button>

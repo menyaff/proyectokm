@@ -104,7 +104,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
-        <form>
+        <form method="post">
             <div class="form-group">
                 <input type="hidden" id="hdnId" name="id" value="0"/>
                 <input type="text" name="clave" id="iClave" class="form-control form-md" placeholder="Clave"/>

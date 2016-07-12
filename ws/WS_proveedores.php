@@ -12,7 +12,7 @@
 			$resp = array();
 
 			$sql = $BD->doSP("SPQ_proveedores",$WS->getParametro());
-			FB::info($sql);
+
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))
@@ -21,13 +21,13 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId,iClave,iNombre,iNombreContacto,iNombre2Contacto,iNombreEmpresaContacto,iTelefonoContacto,iCelularContacto,iEmailContacto,iWebContacto,iRfcFiscal,iNombreComercialFiscal,iCalleFiscal,iColoniaFiscal,selCiudadFiscal,iCodigoPostalFiscal");
-			//FB::log($WS);
+			$WS = new webservice("hdnId,iClave,iNombre,iNombreContacto,iNombre2Contacto,iNombreEmpresaContacto,iTelefonoContacto,iCelularContacto,iEmailContacto,iWebContacto,iRfcFiscal,iNombreComercialFiscal,iCalleFiscal,iColoniaFiscal,selCiudadesFiscal,iCodigoPostalFiscal");
+
 
 			$query = $BD->doSP("SPU_proveedores",$WS->getParametro());
-			FB::log($query);
+
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
-			//FB::info($resp);
+
 			break;
 		case "delete":
 			$WS = new webservice("hdnId");
