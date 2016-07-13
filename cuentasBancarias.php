@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Bancos</title>
+    <title>Cuentas bancarias</title>
     <?php
         metatags();
 
@@ -24,7 +24,13 @@
                         saldo: { type: "string" }
                     };
         jsonColumns = [
-                        templateID,
+                        {
+                            field: "id",
+                            title: "ID",
+                            filterable: false,
+                            width: 70,
+                            template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />&nbsp;#: id #"
+                        },
                         {
                             field: "nombre",
                             title: "Nombre"
@@ -36,9 +42,18 @@
                         {
                             field: "saldo",
                             title: "Saldo",
-                            template: "$#: saldo #"
+                            template: "$#: saldo #",
+                            width: 150
                         },
-                        templateBotones
+                        {
+                        title: "",
+                        filterable: false,
+                        template: "<button id='btnEstadoDeCuenta' registro='#: id #' class='btnFormPopup btn btn-default'>Estado de cuenta</button>&nbsp;&nbsp;<button id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'>Editar</button>&nbsp;&nbsp;<button id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default'>Eliminar</button>",
+                        width: 320,
+                        attributes: {
+                            style: "text-align: center"
+                        }
+                    }
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
