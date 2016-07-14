@@ -26,8 +26,8 @@
 		                	if(preLogin.respuesta=="TRUE"){
 		                        var data = {
 			                                "nom" : $("#iUser").val(),
-			                                "pass" : $.base64Encode($("#iPass").val(),preLogin.llave),
-			                                "npass" : $.base64Encode($("#iPass").val(),preLogin.nllave)
+			                                "pass" : $.base64Encode($("#iPass").val(),(preLogin.llave != undefined ? preLogin.llave : "")),
+			                                "npass" : $.base64Encode($("#iPass").val(),(preLogin.nLlave != undefined ? preLogin.nLlave : ""))
 			                            };
 
 		                		$.ajax({
@@ -37,9 +37,9 @@
 					                type: "post",
 					                async: true,
 					                success: function(login){
-					                	if(login.respuesta=="TRUE"){
+					                	if(login.respuesta=="TRUE")
 					                		window.location.href = login.destino;
-					                	}else
+					                	else
 		                					$.notify(login.mensaje,"error")
 					                }
 		            			});
