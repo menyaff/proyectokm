@@ -136,9 +136,8 @@
                 </fieldset>
             </div>
             <div class="col-md-12 text-center">
-                <button type="submit" id="btnAceptar" class="btn btn-default">Aceptar</button>
-                &nbsp;
-                <button type="reset" class="btn btn-default">Limpiar</button>
+                <input type="submit" id="btnAceptar" class="btn btn-default" value="Aceptar" />
+                <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>            
         </form>
     </div>

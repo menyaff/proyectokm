@@ -1,9 +1,8 @@
-
 <?php require_once "config/front.conf"; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Áreas</title>
+    <title>Configuraci&oacute;n</title>
     <?php
         metatags();
 
@@ -22,8 +21,7 @@
     <script>
         jsonFields = {
                         id: { type: "number" },
-                        nombre: { type: "string" },
-                        familia: { type: "string" }
+                        nombre: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -31,34 +29,15 @@
                             field: "nombre",
                             title: "Nombre"
                         },
-                        {
-                            field: "familia",
-                            title: "Familia"
-                        },
-                        {
-                            field: "subfamilia",
-                            title: "Subamilia"
-                        },
-
                         templateBotones
                     ];
         modal = "#divModal"; 
-        grid = "#divGrid";  
-        WS = "<?= $pathWS ?>WS_areas.php";
+        grid = "#divGrid";
+        WS =  "<?= $pathWS ?>WS_roles.php";
 
         $(document).ready(function(){
-            $(modal).setModal("área", 550);
+            $(modal).setModal("Roles", 550);
             $(grid).setGrid();
-            $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
-
-            $("#selSubFamilias").change(function() {
-                var elem = $(this);
-
-                var jsonSubfamilias = '{"selSubfamilias":"'+elem.val()+'"}';
-                jsonSubfamilias = $.parseJSON(jsonSubfamilias);
-
-                $("#selFamilias").rellenaSelect("<?= $pathWS ?>WS_familias.php",jsonSubfamilias);
-            });
         });
     </script>
 </head>
@@ -80,24 +59,14 @@
     <div id="divModal" class="formPopup">
         <form method="post">
             <div class="form-group">
-                <input type="text" id="iNombre" name="nombre" class="form-control form-md" placeholder="Nombre" required />
-                <input type="hidden" id="hdnId" name="id" value="0" />
-            </div>
-            <div class="form-group">
-                <select name="id_subfamilia" id="selSubFamilias" class="form-control form-md" required>
-                    <option value="" selected disabled>Subfamilias...</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select name="id_familia" id="selFamilias" class="form-control form-md selDependiente" required>
-                    <option value="" selected disabled>Familias...</option>
-                </select>
+                <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
             </div>
             <div class="text-center">
                 <input type="submit" class="btn btn-default" value="Enviar" />
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
-       </form>
+        </form>
     </div>
 </body>
 </html>

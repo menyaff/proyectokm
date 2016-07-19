@@ -41,7 +41,6 @@
     </script>
 </head>
 <body>
-<body>
     <div id="wrapper">
         <?php menuPrincipal(); ?>
         <!-- Contenido -->
@@ -63,8 +62,8 @@
                 <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpiar</button>
+                <input type="submit" class="btn btn-default" value="Enviar" />
+                <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
     </div>

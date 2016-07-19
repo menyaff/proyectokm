@@ -46,7 +46,6 @@
     </script>
 </head>
 <body>
-<body>
     <div id="wrapper">
         <?php menuPrincipal(); ?>
         <!-- Contenido -->
@@ -71,8 +70,8 @@
                 <textarea name="direccion" id="txtDireccion" class="form-control form-md" rows="4" placeholder="Dirección"></textarea>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpiar</button>
+                <input type="submit" class="btn btn-default" value="Enviar" />
+                <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
     </div>

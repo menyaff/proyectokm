@@ -33,7 +33,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "selectArticulo":
-			$WS = new webservice("hdnId,filtro,order");
+			$WS = new webservice("hdnId,idEvento,order");
 
 			$query = $BD->query($BD->doSP("SPQ_articulosEventos",$WS->getParametro()));
 	
@@ -57,7 +57,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iNombre, cotizacion, selStatusCotizacion, selStatusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iInvitados, chSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, iDepositosEnGarantia, iGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selBancos, iTotal, iAnticipo,arrArticulos");
+			$WS = new webservice("hdnId, iNombre, chCotizacion, selStatusCotizacion, selStatusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iInvitados, chSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, selDepositosEnGarantia, iGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, iTotal, iAnticipo,arrArticulos");
 
 			$query = $BD->doSP("SPU_eventos",$WS->getParametro());
 			
@@ -91,19 +91,16 @@
 				if($errorRelacionados == "")
 					$resp = json_encode($resultadoEventos);
 				else
-					resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento agregado correctamente con error en".trim($errorRelacionados)));
+					$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento agregado correctamente con error en".trim($errorRelacionados)));
 			}else
 				$resp = json_encode($resultadoEventos);
 			break;
 		case "asignaArticulo":
-			$WS = new webservice("iCantidad, selArticulos, hdnIdEvento");
+			$WS = new webservice("hdnId, iCantidad, selArticulos, hdnIdEvento");
 
-			if($WS->getParametro("hdnIdEvento")!="0"){
-				$query = $BD->doSP("SPU_articulosEventos",$WS->getParametro());
-				
-				$resp = json_encode($BD->fetchAssoc($BD->query($query)));
-			}else
-				exit;
+			$query = $BD->doSP("SPU_articulosEventos",$WS->getParametro());
+			
+			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "asignaServicio":
 			$WS = new webservice("selServicios, hdnIdEvento");
@@ -141,6 +138,11 @@
 			$query = $BD->doSP("SPD_serviciosEventos",$parametros);
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
+			break;
+		case "purgaArticulos":
+			$BD->query($BD->doSP("SPD_purgaArticulosEventos"));
+
+			
 			break;
 		default:
 			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));

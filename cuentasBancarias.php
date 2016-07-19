@@ -48,7 +48,7 @@
                         {
                         title: "",
                         filterable: false,
-                        template: "<button id='btnEstadoDeCuenta' registro='#: id #' class='btnFormPopup btn btn-default'>Estado de cuenta</button>&nbsp;&nbsp;<button id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'>Editar</button>&nbsp;&nbsp;<button id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default'>Eliminar</button>",
+                        template: "<input type='button' id='btnEstadoDeCuenta' registro='#: id #' class='btnFormPopup btn btn-default' value='Estado de cuenta' />&nbsp;&nbsp;<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
                         width: 320,
                         attributes: {
                             style: "text-align: center"
@@ -66,7 +66,6 @@
         });
     </script>
 </head>
-<body>
 <body>
     <div id="wrapper">
         <?php menuPrincipal(); ?>
@@ -106,8 +105,8 @@
                 <input type="number" step="any" name="saldo" id="iSaldo" class="form-control form-md" placeholder="Saldo">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-default">Enviar</button>
-                <button type="reset" class="btn btn-default">Limpiar</button>
+                <input type="submit" class="btn btn-default" value="Enviar" />
+                <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
     </div>

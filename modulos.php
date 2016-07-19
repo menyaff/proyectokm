@@ -45,7 +45,7 @@
         WS =  "<?= $pathWS ?>WS_servicios.php";
 
         $(document).ready(function(){
-            $(modal).setModal("servicios", 550);
+            $(modal).setModal("Articulos", 550);
             $(grid).setGrid();
 
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");

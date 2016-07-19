@@ -36,7 +36,7 @@
         WS =  "<?= $pathWS ?>WS_subfamilias.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Subfamilia", 550);
+            $(modal).setModal("subfamilia", 550);
             $(grid).setGrid();
         });
     </script>

@@ -88,11 +88,11 @@ getFormJson = function(form){
 
 (function($){
 	$.fn.extend({
-		inicializaInfo : function(WS, registro, onDie){
+		inicializaInfo : function(WS, accion, registro, onDie){
 			var elem = $(this);
 
 			$.ajax({
-				url: WS+"?accion=select",	
+				url: WS+"?accion="+(accion==undefined?"select":accion),	
 				data: {hdnId:registro},
 				type: "POST",
 				dataType: "JSON",
@@ -105,20 +105,20 @@ getFormJson = function(form){
 				}
 			});
 		},
-		salvaInfo : function(){
+		salvaInfo : function(accion,refresh){
 			var elem = $(this);
 
 			var data = getFormJson(elem);
 			
 			$.ajax({
-				url: WS+"?accion=update",	
+				url: WS+"?accion="+(accion==undefined?"update":accion),
 				data: data,
 				type: "POST",
 				dataType: "JSON",
 				async: true,
 				success: function(info){
 					$(modal).data("kendoWindow").close();
-					$(grid).refreshGrid();
+					$(grid).refreshGrid(refresh);
 
 					if(info.respuesta=="TRUE")
 						$.notify(info.mensaje,"success");
@@ -147,7 +147,7 @@ getFormJson = function(form){
 				dataType: "JSON",
 				async: false,
 				success: function(info){
-					if(info[0].respuesta!="FALSE")
+					if(info[0]!=undefined && info[0].respuesta!="FALSE")
 						$.each(info, function(){
 							var opcion = $(this)[0];
 
@@ -163,14 +163,14 @@ getFormJson = function(form){
 })(jQuery);
 
 $(document).ready(function(){
-	$(modal).find("form").submit(function(){
+	$("form").submit(function(){
 		var elem = $(this);
 		
 		$(elem).salvaInfo();
 
 		return false;
 	});
-	$(modal).find("form button[type='reset']").click(function(){
+	$("form input[type='reset']").click(function(){
 		var elem = $(this).parents("form");
 
 		$(elem).find("select>option[selected]").removeAttr("selected");

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Articulos</title>
+    <title>Empleados</title>
     <?php
         metatags();
 
@@ -43,7 +43,7 @@
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_empleados.php";
+        WS = "<?= $pathWS ?>WS_empleados.php";
 
         $(document).ready(function(){
             $(modal).setModal("empleado", 1100);
@@ -153,8 +153,8 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-default">Enviar</button>
-                    <button type="reset" class="btn btn-default">Limpiar</button>
+                    <input type="submit" class="btn btn-default" value="Enviar" />
+                    <input type="reset" class="btn btn-default" value="Limpiar" />
                 </div> 
             </div>
         </form>

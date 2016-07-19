@@ -165,8 +165,8 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-default">Enviar</button>
-                            <button type="reset" class="btn btn-default">Limpiar</button>
+                            <input type="submit" class="btn btn-default" value="Enviar" />
+                            <input type="reset" class="btn btn-default" value="Limpiar" />
 
                         </form>
 

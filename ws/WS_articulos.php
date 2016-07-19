@@ -13,7 +13,6 @@
 			$resp = array();
 
 			$sql = $BD->doSP("SPQ_articulos",$WS->getParametro());
-			
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchAssoc($query))

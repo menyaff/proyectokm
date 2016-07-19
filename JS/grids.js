@@ -8,7 +8,7 @@ templateID = {
 templateBotones = {
                         title: "",
                         filterable: false,
-                        template: "<button id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default'>Editar</button>&nbsp;&nbsp;<button id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default'>Eliminar</button>",
+                        template: "<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
                         width: 180,
                         attributes: {
                             style: "text-align: center"
@@ -98,20 +98,20 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
-                	$(modal).find("button[type='reset']").click();
+                	$(modal).find("input[type='reset']").click();
                 	$(modal).find("#hdnId").val("0");
                 	$(modal).find(".selDependiente").find("option[value!='']").remove();
                 }
             }).data("kendoWindow").center();
 		},
-		setGrid : function(){
+		setGrid : function(accion){
 			var elem = $(this);
 
 			$(elem).kendoGrid({
 		        dataSource: {
 		            transport: {
 		                read: {
-		                    url: WS+"?accion=select",
+		                    url: WS+"?accion="+(accion==undefined?"select":accion),
 		                    dataType: "json"
 		                }
 		            },
@@ -121,7 +121,7 @@ confirmaEliminar = function(funcion, singular){
 		                }
 		            }                
 		        },
-		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button id='btnGridEliminar' class='btn btn-default' disabled >Eliminar</button>&nbsp;&nbsp;<button id='btnGridNuevo' class='btnFormPopup btn btn-default'>Nuevo</button></div></div>",
+		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><input type='button' id='btnGridEliminar' class='btn btn-default' disabled value='Eliminar' />&nbsp;&nbsp;<input type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' value='Nuevo' /></div></div>",
 		        filterable: {
 		            messages: {
 		                info: "Muestra elementos con valor",
@@ -167,12 +167,12 @@ confirmaEliminar = function(funcion, singular){
 		            	event.stopPropagation();
 		            	var elem = $(this);
 
-		                switch(elem.html()){
+		                switch(elem.val()){
 		                    case "Nuevo":
 		                        $(modal).data("kendoWindow").title("Crear "+tituloModal);
 		                        break;
 		                    case "Editar":
-		                    	$(modal).inicializaInfo(WS, elem.attr("registro"),function(){
+		                    	$(modal).inicializaInfo(WS,accion,elem.attr("registro"),function(){
 		                        	$(modal).data("kendoWindow").title("Editar "+tituloModal);
 		                        });
 		                        break;
@@ -218,12 +218,12 @@ confirmaEliminar = function(funcion, singular){
 		        }
 		    }); 
 		},
-		refreshGrid : function(){
+		refreshGrid : function(accion){
 			var elem = $(this);
 
 			elem.data("kendoGrid").destroy();
 			elem.html("");
-    		elem.setGrid();
+    		elem.setGrid(accion);
 		}
 	});
 })(jQuery);
