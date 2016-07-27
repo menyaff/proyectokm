@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Eventos</title>
+    <title>Cotizaciones</title>
     <?php
         metatags();
 
@@ -53,14 +53,12 @@
         WS = "<?= $pathWS ?>WS_eventos.php";
 
         $(document).ready(function(){
-            $(grid).setGrid("selectEvento",function(event){
-                event.stopPropagation();
-
+            $(grid).setGrid("selectCotizacion",function(){
                 $(".btnEditarForm").unbind("click");
                 $(".btnEditarForm").click(function(){
                     var registro = $(this).attr("registro");
 
-                    window.location.href = "<?= __PathSitio__ ?>registraEvento.php?evento="+registro;
+                    window.location.href = "<?= __PathSitio__ ?>registraEvento.php?cotizacion="+registro;
                 });
             });
         });

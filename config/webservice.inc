@@ -46,7 +46,7 @@
 
 		public static function salida($resp){
 			if(isset($_GET["front"]))
-				pre(json_decode($resp),TRUE,"resp");
+				pre(json_decode($resp),FALSE,TRUE,"resp");
 			else
 				echo $resp;
 		}

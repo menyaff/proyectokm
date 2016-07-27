@@ -2,8 +2,8 @@ templateID = {
                     field: "id",
                     title: "ID",
                     filterable: false,
-                    width: 90,
-                    template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />&nbsp;#: id #"
+                    width: 50,
+                    template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />"
                 };
 templateBotones = {
                         title: "",
@@ -104,7 +104,7 @@ confirmaEliminar = function(funcion, singular){
                 }
             }).data("kendoWindow").center();
 		},
-		setGrid : function(accion){
+		setGrid : function(accion, bound){
 			var elem = $(this);
 
 			$(elem).kendoGrid({
@@ -160,7 +160,7 @@ confirmaEliminar = function(funcion, singular){
 		        },
 		        columns: jsonColumns,
 		        dataBound: function(){
-		        	var titulo = $(modal).data("kendoWindow").title();
+		        	var titulo = typeof(modal)=='undefined' ? "" : $(modal).data("kendoWindow").title();
 
 		        	$(".btnFormPopup, .btnGridEliminar, #btnGridEliminar, #chGridTodos, .chGridRegistro").unbind("click");
 		            $(".btnFormPopup").click(function(event){
@@ -215,6 +215,9 @@ confirmaEliminar = function(funcion, singular){
 
 						activaBtnEliminar();
 					});
+					
+					if(bound!=undefined)
+						$(bound);
 		        }
 		    }); 
 		},

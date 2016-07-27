@@ -7,8 +7,9 @@
 	$accion = webservice::getRequest("accion",__GET__);
 
 	switch($accion){
-		case "select":
+		case "selectCotizacion":
 			$WS = new webservice("hdnId,filtro,order");
+			$WS->changeParametro("filtro","cotizacion=1");
 			
 			$resp = array();
 
@@ -16,19 +17,29 @@
 			
 			$query = $BD->query($sql);
 
-			while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC))
+			while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC)){
+				$tupla["status"] = $tupla["id_catStatusCotizacion"];
+
 				array_push($resp,$tupla);
+			}	
+
+			$resp = json_encode($resp);
+			break;
+		case "selectEvento":
+			$WS = new webservice("hdnId,filtro,order");
+			$WS->changeParametro("filtro","cotizacion=0");
 			
-			if(!is_null($WS->getParametro("hdnId"))){
-				$temp = array();
+			$resp = array();
 
-				$query = $BD->query($BD->doSP("SPQ_articulosEventos",array(NULL,"id_evento=".$WS->getParametro("hdnId"),"articulo")));
+			$sql = $BD->doSP("SPQ_eventos",$WS->getParametro());
+			
+			$query = $BD->query($sql);
 
-				while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC))
-					array_push($temp,$tupla);
-				
-				$resp[0]["articulos"] = $temp;	
-			}		
+			while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC)){
+				$tupla["status"] = $tupla["id_catStatusEvento"];
+
+				array_push($resp,$tupla);
+			}	
 
 			$resp = json_encode($resp);
 			break;
@@ -57,13 +68,18 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnId, iNombre, chCotizacion, selStatusCotizacion, selStatusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iInvitados, chSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, selDepositosEnGarantia, iGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, iTotal, iAnticipo,arrArticulos");
+			$WS = new webservice("hdnIdArticuloEvento, iNombre, chCotizacion, statusCotizacion, statusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iDireccion, iInvitados, rdSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, selDepositosEnGarantia, iMontoDepositosEnGarantia, selGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selCuentasBancarias, iTotal, iAnticipo");
+
+			if($WS->getParametro("chCotizacion")=="TRUEb")
+				$WS->changeParametro("statusCotizacion",webservice::getRequest("selStatus"));
+			else
+				$WS->changeParametro("statusEvento",webservice::getRequest("selStatus"));
 
 			$query = $BD->doSP("SPU_eventos",$WS->getParametro());
 			
 			$resultadoEventos = $BD->fetchAssoc($BD->query($query));
 
-			if($resultadoEventos["respuesta"]=="TRUE" && $WS->getParametro("hdnId")=="0"){
+			/*if($resultadoEventos["respuesta"]=="TRUE" && $WS->getParametro("hdnIdArticuloEvento")=="0"){
 				$articulos = $WS->getParametro("arrArticulos");
 				$servicios = $WS->getParametro("arrServicios");
 				$errorRelacionados = "";
@@ -92,7 +108,7 @@
 					$resp = json_encode($resultadoEventos);
 				else
 					$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Evento agregado correctamente con error en".trim($errorRelacionados)));
-			}else
+			}else*/
 				$resp = json_encode($resultadoEventos);
 			break;
 		case "asignaArticulo":
@@ -140,9 +156,9 @@
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
 			break;
 		case "purgaArticulos":
-			$BD->query($BD->doSP("SPD_purgaArticulosEventos"));
+			$BD->query($BD->doSP("SPD_purgaArticulosEventos"));	
 
-			
+			$resp = json_encode(array("respuesta"=>"TRUE","mensaje"=>"Purgado OK"));
 			break;
 		default:
 			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));

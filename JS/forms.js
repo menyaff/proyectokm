@@ -64,12 +64,19 @@ getFormJson = function(form){
 
 		switch(tagName){
 			case "input":
-				if(tagName=="input" && campo.attr("type") == "checkbox")
-					retorno[campo.attr("id")] = (campo.is(":checked") ? "TRUEb" : "FALSEb");
-				else{
-					var valor = campo.val();
+				switch(campo.attr("type")){
+					case "checkbox":
+						retorno[campo.attr("id")] = (campo.is(":checked") ? "TRUEb" : "FALSEb");
+						break;
+					case "radio":
+						if(campo.is(":checked"))
+							retorno[campo.attr("id")] = campo.val();
+						break;
+					default:
+						var valor = campo.val();
 
-					retorno[campo.attr("id")] = (campo.attr("type")=="number" && valor=="") ? "0" : valor;
+						retorno[campo.attr("id")] = (campo.attr("type")=="number" && valor=="") ? "0" : valor;
+						break;
 				}
 				break;
 			case "select":

@@ -61,7 +61,6 @@
 	            <input type="text" placeholder="Usuario" id="iUser" <?= __DESARROLLO__ ? "" : "required " ?>/>
 	            <input type="password" placeholder="Contrase&ntilde;a" id="iPass" />
 	            <input type="submit" id="btnAceptar" value="Iniciar Sesi&oacute;n" />
-
 	        </form>
 	    </div>
 	</body>
