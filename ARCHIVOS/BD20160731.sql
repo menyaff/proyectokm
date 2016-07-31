@@ -537,7 +537,7 @@ CREATE TABLE `cobros` (
   KEY `FK_cobros_2` (`cuentaBancaria`),
   CONSTRAINT `FK_cobros_1` FOREIGN KEY (`evento`) REFERENCES `eventos` (`id`),
   CONSTRAINT `FK_cobros_2` FOREIGN KEY (`cuentaBancaria`) REFERENCES `cuentasbancarias` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,6 +546,7 @@ CREATE TABLE `cobros` (
 
 LOCK TABLES `cobros` WRITE;
 /*!40000 ALTER TABLE `cobros` DISABLE KEYS */;
+INSERT INTO `cobros` VALUES (1,'2016-07-31 21:58:54',1,200.00,'Test1',1),(2,'2016-07-31 22:00:34',1,200.00,'Test2',1);
 /*!40000 ALTER TABLE `cobros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -752,7 +753,7 @@ CREATE TABLE `gastos` (
   CONSTRAINT `FK_gastos_2` FOREIGN KEY (`evento`) REFERENCES `eventos` (`id`),
   CONSTRAINT `FK_gastos_3` FOREIGN KEY (`area`) REFERENCES `cat_areas` (`id`),
   CONSTRAINT `FK_gastos_4` FOREIGN KEY (`cuentaBancaria`) REFERENCES `cuentasbancarias` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -761,8 +762,51 @@ CREATE TABLE `gastos` (
 
 LOCK TABLES `gastos` WRITE;
 /*!40000 ALTER TABLE `gastos` DISABLE KEYS */;
+INSERT INTO `gastos` VALUES (6,1,1,500.00,'Test1',1,NULL,NULL,'2016-07-31 21:25:03',NULL,NULL,NULL,1,'2016-07-31 05:00:00'),(7,1,1,100.00,'Test2',1,NULL,NULL,'2016-07-31 21:26:57',NULL,NULL,NULL,0,NULL),(8,1,1,200.00,'Test3',1,NULL,NULL,'2016-07-31 21:30:18',NULL,NULL,NULL,1,'2016-07-31 21:30:18'),(9,1,1,1000.00,'Test4',1,NULL,NULL,'2016-07-31 21:32:22',NULL,NULL,NULL,1,'2016-07-31 21:52:12'),(10,1,1,100.00,'Test1',2,NULL,NULL,'2016-07-31 21:59:24',NULL,NULL,NULL,1,'2016-07-31 21:59:24');
 /*!40000 ALTER TABLE `gastos` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kmasociados`.`gastos_BEFORE_INSERT` BEFORE INSERT ON `gastos` FOR EACH ROW
+BEGIN
+	IF(NEW.realizado=1 OR NEW.realizado=TRUE) THEN
+		SET NEW.fechaRealizado=CURRENT_TIMESTAMP;
+	END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kmasociados`.`gastos_BEFORE_UPDATE` BEFORE UPDATE ON `gastos` FOR EACH ROW
+BEGIN
+	IF(NEW.realizado=1 OR NEW.realizado=TRUE) THEN
+		SET NEW.fechaRealizado = CURRENT_TIMESTAMP; 
+	ELSEIF(NEW.realizado=0 OR NEW.realizado=FALSE) THEN
+		SET NEW.fechaRealizado = NULL;
+	END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `modulos`
@@ -3231,12 +3275,19 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SPQ_estadoDeCuenta`(IN P_id INT, IN P_fechaIni VARCHAR(20), IN P_fechaFin VARCHAR(20))
 BEGIN
 	SET @sqlQuery = CONCAT("SELECT cb.nombre AS cuentaBancaria, b.nombre AS banco, cb.noCuenta, cb.clabe, cb.saldo,
-							g.fechaRealizado AS fechaGasto, g.monto AS montoGasto, g.concepto AS gasto, 
-                            c.fecha AS fechaCobro, c.monto AS montoCobro, c.concepto AS cobro
+							g.id AS id_movimiento, g.monto, g.concepto, g.fechaRealizado AS fecha,
+                            'GASTO' AS movimiento
+							FROM cuentasBancarias cb
+							LEFT JOIN cat_bancos b ON cb.banco=b.id
+							LEFT JOIN gastos g ON g.cuentaBancaria = cb.id
+							WHERE cb.id=",P_id,"
+                            UNION
+                            SELECT cb.nombre AS cuentaBancaria, b.nombre AS banco, cb.noCuenta, cb.clabe, cb.saldo,
+                            c.id AS id_movimiento, c.monto, c.concepto, c.fecha,
+                            'COBRO' AS movimiento
 							FROM cuentasBancarias cb
 							LEFT JOIN cat_bancos b ON cb.banco=b.id
 							LEFT JOIN cobros c ON c.cuentaBancaria = cb.id
-							LEFT JOIN gastos g ON g.cuentaBancaria = cb.id
 							WHERE cb.id=",P_id);
 	
 	IF(P_fechaIni IS NOT NULL AND P_fechaIni!="")THEN
@@ -4660,4 +4711,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-31 15:18:27
+-- Dump completed on 2016-07-31 18:15:35
