@@ -29,7 +29,7 @@
                             title: "Nombre"
                         },
                         {
-                            field: "status",
+                            field: "id_status",
                             title: "Status"
                         },
                         {
@@ -53,9 +53,7 @@
         WS = "<?= $pathWS ?>WS_eventos.php";
 
         $(document).ready(function(){
-            $(grid).setGrid("selectEvento",function(event){
-                event.stopPropagation();
-
+            $(grid).setGrid("selectEvento",function(){
                 $(".btnEditarForm").unbind("click");
                 $(".btnEditarForm").click(function(){
                     var registro = $(this).attr("registro");

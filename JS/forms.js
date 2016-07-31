@@ -22,35 +22,37 @@ eliminaRegistro = function(id){
 rellenaCampos = function(form, valores){
 	form.find("input:text, input[type='number'], input[type='email'], input:hidden, input:radio, input:checkbox, select, textarea").each(function(){
 		var campo = $(this);
+		var dato = valores[campo.attr("name")];
 
-		switch(campo.prop("tagName").toLowerCase()){
-			case "input":
-				switch(campo.attr("type").toLowerCase()){
-					case "text":
-					case "number":
-					case "email":
-					case "hidden":
-						campo.val(valores[campo.attr("name")]);
-						break;
-					case "radio":
-						if(valores[campo.attr("name")] == "1")
-							form.find("input[name='"+campo.attr("name")+"'][value='"+valores[campo.attr("name")]+"']").prop("checked","checked");
-						break;
-					case "checkbox":
-						if(valores[campo.attr("name")] == "1")
-							campo.prop("checked","checked");
-						break;
-				}
-				break;
-			case "select":
-				campo.find("option[selected]").removeAttr("selected");
-				campo.find("option[value='"+valores[campo.attr("name")]+"']").attr("selected","selected");
-				campo.val(valores[campo.attr("name")]);
-				campo.change();
-				break;
-			case "textarea":
-				campo.html(valores[campo.attr("name")]);
-				break;
+		if(dato!==undefined){
+			switch(campo.prop("tagName").toLowerCase()){
+				case "input":
+					switch(campo.attr("type").toLowerCase()){
+						case "text":
+						case "number":
+						case "email":
+						case "hidden":
+							campo.val(dato);
+							break;
+						case "radio":
+							form.find("input[name='"+campo.attr("name")+"'][value='"+dato+"']").prop("checked","checked");
+							break;
+						case "checkbox":
+							if(dato == "1")
+								campo.prop("checked","checked");
+							break;
+					}
+					break;
+				case "select":
+					campo.find("option[selected]").removeAttr("selected");
+					campo.find("option[value='"+dato+"']").attr("selected","selected");
+					campo.val(dato);
+					campo.change();
+					break;
+				case "textarea":
+					campo.html(dato);
+					break;
+			}
 		}
 	});
 };

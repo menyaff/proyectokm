@@ -18,7 +18,8 @@
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC)){
-				$tupla["status"] = $tupla["id_catStatusCotizacion"];
+				$tupla["id_status"] = $tupla["id_catStatusCotizacion"];
+				$tupla["status"] = $tupla["statusCotizacion"];
 
 				array_push($resp,$tupla);
 			}	
@@ -36,7 +37,8 @@
 			$query = $BD->query($sql);
 
 			while($tupla = $BD->fetchArray($query,MYSQLI_ASSOC)){
-				$tupla["status"] = $tupla["id_catStatusEvento"];
+				$tupla["id_status"] = $tupla["id_catStatusEvento"];
+				$tupla["status"] = $tupla["statusEvento"];
 
 				array_push($resp,$tupla);
 			}	
@@ -68,7 +70,7 @@
 			$resp = json_encode($resp);
 			break;
 		case "update":
-			$WS = new webservice("hdnIdArticuloEvento, iNombre, chCotizacion, statusCotizacion, statusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iDireccion, iInvitados, rdSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, selDepositosEnGarantia, iMontoDepositosEnGarantia, selGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selCuentasBancarias, iTotal, iAnticipo");
+			$WS = new webservice("hdnIdArticuloEvento, iNombre, chCotizacion, statusCotizacion, statusEvento, selClientes, selLugares, selTipos, iFechaEntrega, iFechaSeguimiento, iFechaFinal, iDireccion, iInvitados, rdSalon, selVendedores, iUtilidadCuenta, iCuenta, iMontoServicios, selDepositosEnGarantia, iMontoDepositosEnGarantia, selGuardias, iCantidadGuardias, iMontoGuardias, selMetodosPago, selCuentasBancarias, iTotalEvento, iAnticipo");
 
 			if($WS->getParametro("chCotizacion")=="TRUEb")
 				$WS->changeParametro("statusCotizacion",webservice::getRequest("selStatus"));
@@ -113,6 +115,10 @@
 			break;
 		case "asignaArticulo":
 			$WS = new webservice("hdnId, iCantidad, selArticulos, hdnIdEvento");
+			if(!is_null(webservice::getRequest("cotizacion")))
+				$WS->changeParametro("hdnIdEvento",webservice::getRequest("cotizacion"));
+			if(!is_null(webservice::getRequest("evento")))
+				$WS->changeParametro("hdnIdEvento",webservice::getRequest("evento"));
 
 			$query = $BD->doSP("SPU_articulosEventos",$WS->getParametro());
 			

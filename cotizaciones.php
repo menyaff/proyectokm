@@ -29,7 +29,7 @@
                             title: "Nombre"
                         },
                         {
-                            field: "status",
+                            field: "id_status",
                             title: "Status"
                         },
                         {

@@ -11,6 +11,16 @@
         librerias::notify();
         librerias::FontAwesome();
         librerias::Bootstrap();
+
+        $accionGrid="selectArticulo";
+        if(isset($_GET["cotizacion"])){
+            $accionGrid .= "&idEvento=".$_GET["cotizacion"];
+            $idRegistro = $_GET["cotizacion"];
+        }
+        if(isset($_GET["evento"])){
+            $accionGrid .= "&idEvento=".$_GET["evento"];
+            $idRegistro = $_GET["evento"];
+        }
     ?>
     <style type="ttext/css">
         #divContenido{ width: 250px; }
@@ -61,16 +71,7 @@
             });
 
             $(modal).setModal("articulo para evento", 450);
-
-            <?php
-                $accion="selectArticulo";
-                if(isset($_GET["cotizacion"]))
-                    $accion .= "&idEvento=".$_GET["cotizacion"];
-                if(isset($_GET["evento"]))
-                    $accion .= "&idEvento=".$_GET["evento"];
-
-                echo "$(grid).setGrid(\"".$accion."\");";
-            ?>
+            $(grid).setGrid("<?= $accionGrid ?>");
 
             $("#selStatus").rellenaSelect("<?= $pathWS ?>WS_status.php");
             $("#selClientes").rellenaSelect("<?= $pathWS ?>WS_clientes.php");
@@ -118,14 +119,14 @@
             $("#btnAceptarEvento").click(function(event){
                 event.stopPropagation();
 
-                $(this).parents("form").salvaInfo("update","selectArticulo");
+                $(this).parents("form").salvaInfo("update","<?= $accionGrid ?>");
             });
             $("#btnAgregaArticulo").click(function(event){
                 event.stopPropagation();
 
                 var elem = $(this).parents("form");
                 
-                $(elem).salvaInfo("asignaArticulo","selectArticulo");
+                $(elem).salvaInfo("asignaArticulo","<?= $accionGrid ?>");
             });
             $("#iTotalEvento, #iAnticipo").keyup(function(){
                 var total = $("#iTotalEvento").val() == "" ? 0 : $("#iTotalEvento").val();
@@ -174,7 +175,7 @@
                                 <input type="text" name="nombre" id="iNombre" class="form-control" placeholder="Nombre" />
                             </div>
                             <div class="col-sm-12 col-md-5 col-lg-5 form-group">
-                                <select name="status" id="selStatus" class="form-control">
+                                <select name="id_status" id="selStatus" class="form-control">
                                     <option value="" selected="" disabled="">Status...</option>
                                 </select>
                             </div>
@@ -308,6 +309,7 @@
         </div>
     </div>
     <div id="divModal" class="formPopup">
+        <input type="hidden" id="hdnIdEvento" value="<?= isset($idRegistro) ? $idRegistro : "" ?>" />
         <form method="post">
             <input type="hidden" name="id" id="hdnId" value="0" />
             <div class="form-group">
