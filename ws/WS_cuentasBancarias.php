@@ -31,11 +31,30 @@
 		case "delete":
 			$WS = new webservice("hdnId");
 
-			$parametros = $WS->getParametro();
-
-			$query = $BD->doSP("SPD_cuentasBancarias",$parametros);
+			$query = $BD->doSP("SPD_cuentasBancarias",$WS->getParametro());
 			
 			$resp = json_encode($BD->fetchAssoc($BD->query($query)));
+			break;
+		case "estadoDeCuenta":
+			$WS = new webservice("hdnId,iFechaIni,iFechaFin");
+
+			$sql = $BD->doSP("SPQ_estadoDeCuenta",$WS->getParametro());
+
+			$query = $BD->query($sql);
+
+			while($tupla = $BD->fetchAssoc($query)){
+				if(!isset($resp["cuentaBancaria"])){
+					$resp["cuentaBancaria"]["nombre"] = $tupla["nombre"];
+					$resp["cuentaBancaria"]["banco"] = $tupla["banco"];
+					$resp["cuentaBancaria"]["noCuenta"] = $tupla["noCuenta"];
+					$resp["cuentaBancaria"]["clabe"] = $tupla["clabe"];
+					$resp["cuentaBancaria"]["saldo"] = $tupla["saldo"];
+				}
+
+				$resp[$tupla["movimiento"]][] = array("fecha"=>$tupla["fecha"],"monto"=>$tupla["monto"],"concepto"=>$tupla["concepto"]);
+			}
+
+			$resp = json_encode(isset($resp) ? array("respuesta"=>"TRUE","contenido"=>$resp) : array("respuesta"=>"FALSE","mensaje"=>"No se encontró información para la cuenta bancaria"));
 			break;
 		default:
 			$resp = json_encode(array("respuesta"=>"FALSE","mensaje"=>"Falta definir acción"));

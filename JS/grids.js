@@ -77,7 +77,7 @@ confirmaEliminar = function(funcion, singular){
 
 (function($){
 	$.fn.extend({
-		setModal : function(titulo, width){
+		setModal : function(titulo, width, informacion){
 			tituloModal = titulo;
 			var elem = $(this);
 
@@ -98,9 +98,11 @@ confirmaEliminar = function(funcion, singular){
                 width: width,
                 actions: ["Close"],
                 close: function(){
-                	$(modal).find("input[type='reset']").click();
-                	$(modal).find("#hdnId").val("0");
-                	$(modal).find(".selDependiente").find("option[value!='']").remove();
+                	if(informacion===undefined){
+	                	$(modal).find("input[type='reset']").click();
+	                	$(modal).find("#hdnId").val("0");
+	                	$(modal).find(".selDependiente").find("option[value!='']").remove();
+	                }
                 }
             }).data("kendoWindow").center();
 		},

@@ -48,7 +48,7 @@
                         {
                         title: "",
                         filterable: false,
-                        template: "<input type='button' id='btnEstadoDeCuenta' registro='#: id #' class='btnFormPopup btn btn-default' value='Estado de cuenta' />&nbsp;&nbsp;<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
+                        template: "<input type='button' id='btnEstadoDeCuenta_#: id #' registro='#: id #' class='btnEstadoDeCuenta btn btn-default' value='Estado de cuenta' />&nbsp;&nbsp;<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
                         width: 320,
                         attributes: {
                             style: "text-align: center"
@@ -61,8 +61,13 @@
 
         $(document).ready(function(){
             $(modal).setModal("cuenta bancaria", 550);
+            $("#divEstadoDeCuenta").setModal("Estado de cuenta",800,true);
             $(grid).setGrid();
             $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
+
+            $(".btnEstadoDeCuenta").click(function(){
+                $("#divEstadoDeCuenta").data("kendoWindow").open();
+            });
         });
     </script>
 </head>
@@ -81,6 +86,7 @@
             </div>
         </div>
     </div>
+    <div id="divEstadoDeCuenta"></div>
     <div id="divModal" class="formPopup">
         <form method="post">
             <div class="form-group">
