@@ -8,8 +8,8 @@ templateID = {
 templateBotones = {
                         title: "",
                         filterable: false,
-                        template: "<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
-                        width: 180,
+                        template: "<button type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' title='Editar' value='Editar'><span class='fa fa-pencil' aria-hidden='true'></span></button>&nbsp;&nbsp;<button type='button' id='btnGridDetalles_#: id #' registro='#: id #' class='btnFormDetalles btn btn-default' title='Detalles' value='Detalles'><span class='fa fa-info' aria-hidden='true' style='margin: 2px 3.5px;'></span></button>&nbsp;&nbsp;<button type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' title='Eliminar' value='Eliminar'><span class='fa fa-trash' aria-hidden='true' style='margin: 0px 0.5px;'></span></button>",
+                        width: 160,
                         attributes: {
                             style: "text-align: center"
                         }
@@ -123,7 +123,7 @@ confirmaEliminar = function(funcion, singular){
 		                }
 		            }                
 		        },
-		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><input type='button' id='btnGridEliminar' class='btn btn-default' disabled value='Eliminar' />&nbsp;&nbsp;<input type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' value='Nuevo' /></div></div>",
+		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button type='button' id='btnGridEliminar' class='btn btn-default' disabled title='Eliminar' aria-label='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></button>&nbsp;&nbsp;<button type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' title='Nuevo' aria-label='Nuevo'><i class='fa fa-plus' aria-hidden='true'></i></button></div></div>",
 		        filterable: {
 		            messages: {
 		                info: "Muestra elementos con valor",
@@ -164,7 +164,7 @@ confirmaEliminar = function(funcion, singular){
 		        dataBound: function(){
 		        	var titulo = typeof(modal)=='undefined' ? "" : $(modal).data("kendoWindow").title();
 
-		        	$(".btnFormPopup, .btnGridEliminar, #btnGridEliminar, #chGridTodos, .chGridRegistro").unbind("click");
+		        	$(".btnFormPopup, .btnGridEliminar, #btnGridEliminar, #chGridTodos, .chGridRegistro, .btnFormDetalles").unbind("click");
 		            $(".btnFormPopup").click(function(event){
 		            	event.stopPropagation();
 		            	var elem = $(this);
@@ -178,8 +178,22 @@ confirmaEliminar = function(funcion, singular){
 		                        	$(modal).data("kendoWindow").title("Editar "+tituloModal);
 		                        });
 		                        break;
+		                    case "Detalles":
+		                    	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"), function(){
+		                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+tituloModal);
+		                    	});
+		                    	break;
 		                }
 		                $(modal).data("kendoWindow").open();
+		            });
+		            $(".btnFormDetalles").click(function(event){
+		            	event.stopPropagation();
+		            	var elem = $(this);
+
+		            	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"), function(){
+                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+tituloModal);
+                    	});
+                    	$(modalDetalles).data("kendoWindow").open();
 		            });
 		            $(".btnGridEliminar").click(function(event){
 						event.stopPropagation();

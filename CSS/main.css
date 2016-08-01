@@ -82,3 +82,17 @@ body {
     color: #999;
 }.side-nav>li>ul>li>a:hover {color: #fff;}
 .row{ margin-bottom: 10px; }
+
+
+/* Modal Detalles */
+#divModalDetalles form input[readonly="readonly"]{
+    background: #FFF;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#divModalDetalles form input[readonly="readonly"]:focus{
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+}

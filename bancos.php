@@ -32,11 +32,14 @@
                         templateBotones
                     ];
         modal = "#divModal"; 
+        modalDetalles = "#divModalDetalles";
         grid = "#divGrid";
+
         WS =  "<?= $pathWS ?>WS_bancos.php";
 
         $(document).ready(function(){
             $(modal).setModal("banco", 550);
+            $(modalDetalles).setModal("banco", 550);
             $(grid).setGrid();
         });
     </script>
@@ -65,6 +68,14 @@
             <div class="text-center">
                 <input type="submit" class="btn btn-default" value="Enviar" />
                 <input type="reset" class="btn btn-default" value="Limpiar" />
+            </div>
+       </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" name="id" id="hdnId" value="0"/>
+                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre" readonly="readonly" onfocus="this.blur()">
             </div>
        </form>
     </div>
