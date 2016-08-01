@@ -12,6 +12,13 @@
         librerias::FontAwesome();
         librerias::Bootstrap();
     ?>
+    <style>
+        #divEstadoDeCuenta span.titulo{
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-left: 10px;
+        }
+    </style>
     <script>
         templateID = "";
         templateBotones = "";
@@ -66,7 +73,28 @@
             $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
 
             $(".btnEstadoDeCuenta").click(function(){
-                $("#divEstadoDeCuenta").data("kendoWindow").open();
+                var elem = $(this);
+
+                $.ajax({
+                    url: WS+"?accion=estadoDeCuenta",   
+                    data: {"hdnId":elem.attr("registro")},
+                    type: "POST",
+                    dataType: "JSON",
+                    async: true,
+                    success: function(info){
+                        if(info.respuesta=="TRUE"){
+                            var htmlStr = "<span class='titulo'>"+info.contenido["cuentaBancaria"]["nombre"]+"</span> <br /><span class='titulo'>Banco:</span> "+info.contenido["cuentaBancaria"]["banco"]+"&nbsp;<span class='titulo'>Cuenta:</span> "+info.contenido["cuentaBancaria"]["noCuenta"]+"&nbsp;<span class='titulo'>CLABE:</span> "+info.contenido["cuentaBancaria"]["clabe"];
+
+                            $("#divEstadoDeCuenta").html(htmlStr);
+
+                            $("#divEstadoDeCuenta").data("kendoWindow").open();
+                        }else
+                            $.notify(info.mensaje,"error");
+                    },
+                    error: function(info){
+                        console.error(info);
+                    }
+                });
             });
         });
     </script>
