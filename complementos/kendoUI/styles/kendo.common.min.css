@@ -26,16 +26,13 @@
 
 /* KENDO GRID */
 .gridToolbar{
-    padding: 0 2.8em 0 .4em;
+    padding: 0 2.1em 0 .4em;
     overflow: hidden;
     line-height: 41px;
 }
 .gridToolbar div{ width: 50%; }
 .gridToolbar div#left{ float: left !important; }
-.gridToolbar div#right{
-    float: right !important;
-    text-align: right;
-}
+.gridToolbar div#right{ float: right !important; text-align: right; }
 
 /* KENDO MODAL */
 .formPopup{	display: none; }
