@@ -51,7 +51,7 @@
 					$resp["cuentaBancaria"]["saldo"] = $tupla["saldo"];
 				}
 
-				$resp[$tupla["movimiento"]][] = array("fecha"=>$tupla["fecha"],"monto"=>$tupla["monto"],"concepto"=>$tupla["concepto"]);
+				$resp["movimientos"][] = array("fecha"=>$tupla["fecha"],"monto"=>$tupla["monto"],"concepto"=>$tupla["concepto"],"movimiento"=>$tupla["movimiento"]);
 			}
 
 			$resp = json_encode(isset($resp) ? array("respuesta"=>"TRUE","contenido"=>$resp) : array("respuesta"=>"FALSE","mensaje"=>"No se encontró información para la cuenta bancaria"));

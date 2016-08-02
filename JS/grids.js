@@ -78,11 +78,12 @@ confirmaEliminar = function(funcion, singular){
 (function($){
 	$.fn.extend({
 		setModal : function(titulo, width, informacion){
-			tituloModal = titulo;
 			var elem = $(this);
 
+			elem.attr("titulo",titulo);
+
             $(elem).kendoWindow({
-            	title: tituloModal,
+            	title: titulo,
             	animation: {
 					open: {
 						duration: 500
@@ -171,16 +172,16 @@ confirmaEliminar = function(funcion, singular){
 
 		                switch(elem.val()){
 		                    case "Nuevo":
-		                        $(modal).data("kendoWindow").title("Crear "+tituloModal);
+		                        $(modal).data("kendoWindow").title("Crear "+$(modal).attr("titulo"));
 		                        break;
 		                    case "Editar":
 		                    	$(modal).inicializaInfo(WS,accion,elem.attr("registro"),function(){
-		                        	$(modal).data("kendoWindow").title("Editar "+tituloModal);
+		                        	$(modal).data("kendoWindow").title("Editar "+$(modal).attr("titulo"));
 		                        });
 		                        break;
 		                    case "Detalles":
 		                    	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"), function(){
-		                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+tituloModal);
+		                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+$(modalDetalles).attr("titulo"));
 		                    	});
 		                    	break;
 		                }

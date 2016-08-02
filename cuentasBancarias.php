@@ -11,6 +11,7 @@
         librerias::notify();
         librerias::FontAwesome();
         librerias::Bootstrap();
+        librerias::numeral();
     ?>
     <style>
         #divEstadoDeCuenta span.titulo{
@@ -66,35 +67,94 @@
         grid = "#divGrid";
         WS =  "<?= $pathWS ?>WS_cuentasBancarias.php";
 
+        generaEstadoDeCuenta = function(registro, inicio, fin){
+            var data = {};
+
+            data["hdnId"] = registro;
+
+            if(inicio!==undefined)
+                data["iFechaIni"] = inicio;
+            if(fin!==undefined)
+                data["iFechaFin"] = fin;
+
+            $.ajax({
+                url: WS+"?accion=estadoDeCuenta",   
+                data: data,
+                type: "POST",
+                dataType: "JSON",
+                async: true,
+                success: function(info){
+                    if(info.respuesta=="TRUE"){
+                        var htmlStr = "<span class='titulo'>"+info.contenido["cuentaBancaria"]["nombre"]+"</span>"+
+                                    "&nbsp;&nbsp;&nbsp;<span class='titulo'>"+moneda(info.contenido["cuentaBancaria"]["saldo"])+"</span>"+
+                                    "<br /><span class='titulo'>Banco:</span> "+info.contenido["cuentaBancaria"]["banco"]+
+                                    "&nbsp;<span class='titulo'>Cuenta:</span> "+info.contenido["cuentaBancaria"]["noCuenta"]+
+                                    "&nbsp;<span class='titulo'>CLABE:</span> "+info.contenido["cuentaBancaria"]["clabe"]+
+                                    "<br /><br /><div class='row'><div class='col-lg-3 col-md-3 col-sm-3'><input type='text' id='iFechaIni' placeholder='Fecha inicio' value='"+(inicio!==undefined?inicio:"")+"' /></div>"+
+                                    "<div class='col-lg-3 col-md-3 col-sm-3'><input type='text' id='iFechaFin' placeholder='Fecha final' value='"+(fin!==undefined?fin:"")+"' /></div>"+
+                                    "<div class='col-lg-3 col-md-3 col-sm-3'><input type='button' id='btnFiltrarEstadoDeCuenta' class='btn btn-default' value='Filtrar' /></div></div>"+
+                                    "<table class='table table-striped'>"+
+                                    "<tr><th>FECHA</th><th>CONCEPTO</th><th>CARGOS</th><th>ABONOS</th></tr>";
+                                
+                        var cargos=0, abonos=0;
+
+                        $(info.contenido["movimientos"]).each(function(){
+                            var registro = $(this)[0];
+
+                            if(registro["monto"]!=null){
+                                htmlStr += "<tr><td>"+registro["fecha"]+"</td><td>"+registro["concepto"]+"</td>";
+
+                                switch(registro["movimiento"]){
+                                    case "GASTO":
+                                        htmlStr += "<td>"+moneda(registro["monto"])+"</td><td>&nbsp;</td>";
+                                        cargos += parseFloat(registro["monto"]);
+                                        break;
+                                    case "COBRO":
+                                        htmlStr += "<td>&nbsp;</td><td>"+moneda(registro["monto"])+"</td>";
+                                        abonos += parseFloat(registro["monto"]);
+                                        break;
+                                }
+
+                                htmlStr += "</tr>";
+                            }
+                        });
+
+                        htmlStr += "<tr class='success'><th colspan='2'>TOTAL</th><th>"+moneda(cargos)+"</th><th>"+moneda(abonos)+"</th></tr></table>";
+
+                        $("#divEstadoDeCuenta").html(htmlStr);
+                        $("#iFechaIni, #iFechaFin").kendoDatePicker({
+                            format: "yyyy/MM/dd"
+                        });
+
+                        $("#btnFiltrarEstadoDeCuenta").unbind("click").click(function(event){
+                            event.stopPropagation();
+
+                            var fechaIni=$("#iFechaIni").val()=="" ? undefined : fechaIni=$("#iFechaIni").val(), fechaFin=$("#iFechaFin").val()=="" ? undefined : $("#iFechaFin").val();
+
+                            if(fechaIni!==undefined || fechaFin!==undefined)
+                                generaEstadoDeCuenta(registro,fechaIni,fechaFin);
+                        });
+
+                        $("#divEstadoDeCuenta").data("kendoWindow").open();
+                    }else
+                        $.notify(info.mensaje,"error");
+                },
+                error: function(info){
+                    console.error(info);
+                }
+            });
+        }
+
         $(document).ready(function(){
             $(modal).setModal("cuenta bancaria", 550);
-            $("#divEstadoDeCuenta").setModal("Estado de cuenta",800,true);
+            $("#divEstadoDeCuenta").setModal("Estado de cuenta",810,true);
             $(grid).setGrid();
             $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
 
             $(".btnEstadoDeCuenta").click(function(){
                 var elem = $(this);
 
-                $.ajax({
-                    url: WS+"?accion=estadoDeCuenta",   
-                    data: {"hdnId":elem.attr("registro")},
-                    type: "POST",
-                    dataType: "JSON",
-                    async: true,
-                    success: function(info){
-                        if(info.respuesta=="TRUE"){
-                            var htmlStr = "<span class='titulo'>"+info.contenido["cuentaBancaria"]["nombre"]+"</span> <br /><span class='titulo'>Banco:</span> "+info.contenido["cuentaBancaria"]["banco"]+"&nbsp;<span class='titulo'>Cuenta:</span> "+info.contenido["cuentaBancaria"]["noCuenta"]+"&nbsp;<span class='titulo'>CLABE:</span> "+info.contenido["cuentaBancaria"]["clabe"];
-
-                            $("#divEstadoDeCuenta").html(htmlStr);
-
-                            $("#divEstadoDeCuenta").data("kendoWindow").open();
-                        }else
-                            $.notify(info.mensaje,"error");
-                    },
-                    error: function(info){
-                        console.error(info);
-                    }
-                });
+                generaEstadoDeCuenta(elem.attr("registro"));
             });
         });
     </script>
@@ -125,7 +185,7 @@
                 <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <select name="banco" id="selBancos" class="form-control form-md">
+                <select name="id_banco" id="selBancos" class="form-control form-md">
                     <option value="" selected disabled>Bancos...</option>
                 </select>
             </div>

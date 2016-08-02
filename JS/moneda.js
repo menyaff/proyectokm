@@ -10,7 +10,7 @@ formatoMoneda = function (numero){
     return output;
 };
 
-console.log(formatoMoneda(500));
+//console.log(formatoMoneda(500));
 
 function redondeo(num, decimales) {
     var t=Math.pow(10, decimales);   
