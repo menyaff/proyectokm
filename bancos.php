@@ -39,7 +39,7 @@
 
         $(document).ready(function(){
             $(modal).setModal("banco", 550);
-            $(modalDetalles).setModal("banco", 550);
+            $(modalDetalles).setModal("banco", 450);
             $(grid).setGrid();
         });
     </script>
@@ -72,12 +72,20 @@
        </form>
     </div>
     <div id="divModalDetalles" class="formPopup">
-        <form method="post">
-            <div class="form-group">
-                <input type="hidden" name="id" id="hdnId" value="0"/>
-                <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre" readonly="readonly" onfocus="this.blur()">
-            </div>
-       </form>
+        <table class="table table-responsive">
+            <tr>
+                <td name="id" width="10%"></td>
+                <td name="nombre" width="50%"></td>
+            </tr>
+        </table>
     </div>
+        <!-- 
+            <form method="post">
+                <div class="form-group">
+                    <input type="hidden" name="id" id="hdnId" value="0"/>
+                    <input type="text" name="nombre" id="iNombre" class="form-control form-md" placeholder="Nombre" readonly="readonly" onfocus="this.blur()">
+                </div>
+            </form>
+        -->
 </body>
 </html>

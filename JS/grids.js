@@ -124,7 +124,7 @@ confirmaEliminar = function(funcion, singular){
 		                }
 		            }                
 		        },
-		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button type='button' id='btnGridEliminar' class='btn btn-default' disabled title='Eliminar' aria-label='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></button>&nbsp;&nbsp;<button type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' title='Nuevo' aria-label='Nuevo'><i class='fa fa-plus' aria-hidden='true'></i></button></div></div>",
+		        toolbar: "<div class=\"gridToolbar\"><div id=\"left\"><input type='checkbox' id='chGridTodos' />&nbsp;Todos</div><div id=\"right\"><button type='button' id='btnGridEliminar' class='btn btn-default' disabled title='Eliminar' value='Eliminar'><i class='fa fa-trash' aria-hidden='true'></i></button>&nbsp;&nbsp;<button type='button' id='btnGridNuevo' class='btnFormPopup btn btn-default' title='Nuevo' value='Nuevo'><i class='fa fa-plus' aria-hidden='true'></i></button></div></div>",
 		        filterable: {
 		            messages: {
 		                info: "Muestra elementos con valor",
@@ -166,36 +166,39 @@ confirmaEliminar = function(funcion, singular){
 		        	var titulo = typeof(modal)=='undefined' ? "" : $(modal).data("kendoWindow").title();
 
 		        	$(".btnFormPopup, .btnGridEliminar, #btnGridEliminar, #chGridTodos, .chGridRegistro, .btnFormDetalles").unbind("click");
-		            $(".btnFormPopup").click(function(event){
+		            $(".btnFormPopup, .btnFormDetalles").click(function(event){
 		            	event.stopPropagation();
 		            	var elem = $(this);
 
 		                switch(elem.val()){
 		                    case "Nuevo":
-		                        $(modal).data("kendoWindow").title("Crear "+$(modal).attr("titulo"));
+		                        $(modal).data("kendoWindow").title("Crear "+$(modal).attr("titulo")).open();
 		                        break;
 		                    case "Editar":
-		                    	$(modal).inicializaInfo(WS,accion,elem.attr("registro"),function(){
+		                    	$(modal).inicializaInfo(WS,accion,elem.attr("registro"),false,function(){
 		                        	$(modal).data("kendoWindow").title("Editar "+$(modal).attr("titulo"));
 		                        });
+		                        $(modal).data("kendoWindow").open();
 		                        break;
 		                    case "Detalles":
-		                    	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"), function(){
+		                    	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"),true, function(){
 		                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+$(modalDetalles).attr("titulo"));
 		                    	});
+		                    	$(modalDetalles).data("kendoWindow").open();
 		                    	break;
 		                }
-		                $(modal).data("kendoWindow").open();
 		            });
+		            /*
 		            $(".btnFormDetalles").click(function(event){
 		            	event.stopPropagation();
 		            	var elem = $(this);
 
 		            	$(modalDetalles).inicializaInfo(WS,accion,elem.attr("registro"), function(){
-                    		$(modalDetalles).data("kendoWindow").title("Detalles de "+tituloModal);
+                    		$(modalDetalles).data("kendoWindow").title("Detalles");
                     	});
                     	$(modalDetalles).data("kendoWindow").open();
 		            });
+		             */
 		            $(".btnGridEliminar").click(function(event){
 						event.stopPropagation();
 		            	var elem = $(this);

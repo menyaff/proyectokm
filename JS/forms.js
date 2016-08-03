@@ -19,8 +19,12 @@ eliminaRegistro = function(id){
 		}
 	});
 }
-rellenaCampos = function(form, valores){
-	form.find("input:text, input[type='number'], input[type='email'], input:hidden, input:radio, input:checkbox, select, textarea").each(function(){
+rellenaCampos = function(form, informativo, valores){
+	if (informativo) elementos="div, td, th, h1, h2, p"; 
+	else elementos="input:text, input[type='number'], input[type='email'], input:hidden, input:radio, input:checkbox, select, textarea"; 
+
+		form.find(elementos).each(function(){
+
 		var campo = $(this);
 		var dato = valores[campo.attr("name")];
 
@@ -50,6 +54,12 @@ rellenaCampos = function(form, valores){
 					campo.change();
 					break;
 				case "textarea":
+				case "div":
+				case "td":
+				case "th":
+				case "h1":
+				case "h2":
+				case "p":
 					campo.html(dato);
 					break;
 			}
@@ -97,7 +107,7 @@ getFormJson = function(form){
 
 (function($){
 	$.fn.extend({
-		inicializaInfo : function(WS, accion, registro, onDie){
+		inicializaInfo : function(WS, accion, registro, informativo, onDie){
 			var elem = $(this);
 
 			$.ajax({
@@ -109,7 +119,7 @@ getFormJson = function(form){
 				success: function(info){
 					info = info[0];
 
-					rellenaCampos(elem,info);
+					rellenaCampos(elem, informativo, info);
 					$(onDie);
 				}
 			});
