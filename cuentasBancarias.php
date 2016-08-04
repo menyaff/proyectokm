@@ -32,13 +32,7 @@
                         saldo: { type: "string" }
                     };
         jsonColumns = [
-                        {
-                            field: "id",
-                            title: "ID",
-                            filterable: false,
-                            width: 70,
-                            template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />&nbsp;#: id #"
-                        },
+                        templateID,
                         {
                             field: "nombre",
                             title: "Nombre"
@@ -143,7 +137,7 @@
                     console.error(info);
                 }
             });
-        }
+        };
 
         $(document).ready(function(){
             $(modal).setModal("cuenta bancaria", 550);

@@ -1,6 +1,6 @@
 templateID = {
                     field: "id",
-                    title: "ID",
+                    title: "&nbsp;",
                     filterable: false,
                     width: 50,
                     template: "<input type='checkbox' id='chGridRegistro_#: id #' registro='#: id #' class='chGridRegistro' />"

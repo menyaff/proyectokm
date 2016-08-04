@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Roles</title>
+    <title>Usuarios</title>
     <?php
         metatags();
 
@@ -11,7 +11,15 @@
         librerias::notify();
         librerias::FontAwesome();
         librerias::Bootstrap();
+        librerias::numeral();
     ?>
+    <style>
+        #divEstadoDeCuenta span.titulo{
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-left: 10px;
+        }
+    </style>
     <script>
         templateID = "";
         templateBotones = "";
@@ -20,8 +28,8 @@
     <script src="<?= $pathJS ?>grids.js"></script>
     <script>
         jsonFields = {
-                        id: { type: "number" },
-                        nombre: { type: "string" }
+                        nombre: { type: "string" },
+                        saldo: { type: "string" }
                     };
         jsonColumns = [
                         templateID,
@@ -29,15 +37,25 @@
                             field: "nombre",
                             title: "Nombre"
                         },
+                        {
+                            field: "empleado",
+                            title: "Empleado"
+                        },
+                        {
+                            field: "rol",
+                            title: "Rol"
+                        },
                         templateBotones
                     ];
         modal = "#divModal"; 
         grid = "#divGrid";
-        WS =  "<?= $pathWS ?>WS_roles.php";
+        WS =  "<?= $pathWS ?>WS_usuarios.php";
 
         $(document).ready(function(){
-            $(modal).setModal("roles", 450);
+            $(modal).setModal("usuario", 450);
             $(grid).setGrid();
+            $("#selEmpleados").rellenaSelect("<?= $pathWS ?>WS_empleados.php");
+            $("#selRoles").rellenaSelect("<?= $pathWS ?>WS_roles.php");
         });
     </script>
 </head>
@@ -61,6 +79,16 @@
             <div class="form-group">
                 <input type="hidden" name="id" id="hdnId" value="0"/>
                 <input type="text" name="nombre" id="iNombre" class="form-control form-sm" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <select name="id_empleado" id="selEmpleados" class="form-control form-sm">
+                    <option value="" selected disabled>Empleados...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="id_rol" id="selRoles" class="form-control form-sm">
+                    <option value="" selected disabled>Roles...</option>
+                </select>
             </div>
             <div class="text-center">
                 <input type="submit" class="btn btn-default" value="Enviar" />

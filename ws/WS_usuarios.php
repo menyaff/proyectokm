@@ -83,7 +83,7 @@
 			}
 			break;
 		case "select":
-			$WS = new webservice("iId,filtro,orden");
+			$WS = new webservice("hdnId,filtro,orden");
 			
 			$resp = array();
 
@@ -98,7 +98,7 @@
 		case "update":
 			require __PathComplementos__."cifrado.php";
 
-			$WS = new webservice("iId,iNombre,iPassword,iLlave,selEmpleado,selRol");
+			$WS = new webservice("iId,iNombre,selEmpleados,selRoles");
 
 			$WS->changeParametro("iPassword",cifrado::encrypt($WS->getParametro("iPassword"),$WS->getParametro("iLlave")));
 
