@@ -51,12 +51,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "art&iacute;culo";
+
         WS =  "<?= $pathWS ?>WS_articulos.php";
 
         $(document).ready(function(){
-            $(modal).setModal("art&iacute;culo", 550);
+            $(modalDetalles).setModal(titulo, 850);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
 
             $("#selLugares").rellenaSelect("<?= $pathWS ?>WS_lugares.php");
@@ -166,6 +170,50 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Clave</th>
+                <th>Articulo</th>
+                <th>Linea</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Descripción</th>
+                <th>Lugar</th>
+                <th>Codigo de Barras</th>
+                <th>Sustituto</th>
+                <th>Unidad</th>
+                <th>Existencias</th>
+                <th>Área</th>
+                <th>Familia</th>
+                <th>Subfamilia</th>
+                <th>Archivo</th>
+                <th>Precio de Recuperación</th>
+                <th>Precio de Lista</th>
+                <th>Precio Mayoreo</th>
+            </tr>
+            <tr>
+                <td name="clave"></td>
+                <td name="nombre"></td>
+                <td name="linea"></td>
+                <td name="marca"></td>
+                <td name="modelo"></td>
+                <td name="descripcion"></td>
+                <td name="lugar"></td>
+                <td name="codigoBarras"></td>
+                <td name="sustituto"></td>
+                <td name="unidad"></td>
+                <td name="existencias"></td>
+                <td name="area"></td>
+                <td name="familia"></td>
+                <td name="subfamilia"></td>
+                <td name="archivo"></td>
+                <td name="precioRecuperacion"></td>
+                <td name="precioLista"></td>
+                <td name="precioMayoreo"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
