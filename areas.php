@@ -1,4 +1,3 @@
-
 <?php require_once "config/front.conf"; ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,12 +41,16 @@
 
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
         grid = "#divGrid";  
+        titulo = "área";
+
         WS = "<?= $pathWS ?>WS_areas.php";
 
         $(document).ready(function(){
-            $(modal).setModal("área", 550);
+            $(modalDetalles).setModal(titulo, 600);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
 
@@ -98,6 +101,20 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Área</th>
+                <th>Subfamilia</th>
+                <th>Familia</th>
+            </tr>
+            <tr>
+                <td name="nombre" width="30%"></td>
+                <td name="familia" width="35%"></td>
+                <td name="subfamilia" width="35%"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

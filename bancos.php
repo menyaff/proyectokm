@@ -31,15 +31,15 @@
                         },
                         templateBotones
                     ];
-        modal = "#divModal"; 
         modalDetalles = "#divModalDetalles";
+        modal = "#divModal"; 
         grid = "#divGrid";
-
+        titulo = "banco";
         WS =  "<?= $pathWS ?>WS_bancos.php";
 
         $(document).ready(function(){
-            $(modal).setModal("banco", 550);
-            $(modalDetalles).setModal("banco", 450);
+            $(modalDetalles).setModal(titulo, 450);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
         });
     </script>
