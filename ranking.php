@@ -30,12 +30,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "ranking";
+
         WS =  "<?= $pathWS ?>WS_ranking.php";
 
         $(document).ready(function(){
-            $(modal).setModal("ranking", 550);
+            $(modalDetalles).setModal(titulo, 400);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
         });
     </script>
@@ -66,6 +70,16 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Ranking</th>
+            </tr>
+            <tr>
+                <td name="nombre"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

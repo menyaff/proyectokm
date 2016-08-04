@@ -35,13 +35,18 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "cliente";
+
         WS =  "<?= $pathWS ?>WS_clientes.php";
 
         $(document).ready(function(){
-            $(modal).setModal("cliente", 1100);
+            $(modalDetalles).setModal(titulo, 700);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
+
             $("#selEstadosContacto, #selEstadosFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
 
             $("#selEstadosContacto").change(function(){
@@ -190,5 +195,125 @@
             </div>            
         </form>
     </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th class="thead">Clave</th>
+                <td name="clave"></td>
+            </tr>
+            <tr>
+                <th class="thead">Articulo</th>
+                <td name="nombre"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre Comercial</th>
+                <td name="nombreComercial"></td>
+            </tr>
+            <tr>
+                <th class="thead">Cargo</th>
+                <td name="cargo"></td>
+            </tr>
+            <tr>
+                <th class="thead">Crédito</th>
+                <td name="montoCredito"></td>
+            </tr>
+            <tr>
+                <th class="thead">Días Crédito</th>
+                <td name="diasCredito"></td>
+            </tr>
+            <tr>
+                <th class="thead">Tipo Contacto</th>
+                <td name="tipoContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Contacto</th>
+                <td name="nombreContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Contacto Web</th>
+                <td name="webContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Direccion Contacto</th>
+                <td name="direccionContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Colonia Contacto</th>
+                <td name="coloniaContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Ciudad Contacto</th>
+                <td name="ciudadContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Estado Contacto</th>
+                <td name="estadoContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Código Postal Contacto</th>
+                <td name="codigoPostalContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Telefono Contacto</th>
+                <td name="telefonoContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Celular Contacto</th>
+                <td name="celularContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Email Contacto</th>
+                <td name="emailContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">RFC Físcal</th>
+                <td name="rfcFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Razon Social Físcal</th>
+                <td name="razonSocialFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Calle Físcal</th>
+                <td name="calleFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Colonia Físcal</th>
+                <td name="coloniaFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Estado Físcal</th>
+                <td name="estadoFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Ciudad Físcal</th>
+                <td name="ciudadFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">País Físcal</th>
+                <td name="paisFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Código Postal Físcal</th>
+                <td name="codigoPostalFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Número Interior Físcal</th>
+                <td name="numeroInteriorFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Número Exterior Físcal</th>
+                <td name="numeroExteriorFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Localidad Físcal</th>
+                <td name="localidadFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Municipio Físcal</th>
+                <td name="municipioFiscal"></td>
+            </tr>
+        </table>
+    </div>
 </body>
-</html>
+</html>    

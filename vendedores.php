@@ -26,7 +26,7 @@
         jsonColumns = [
                         templateID,
                         {
-                            field: "empleado",
+                            field: "nombre",
                             title: "Empleado"
                         },
                         {
@@ -35,13 +35,18 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "vendedor";
+
         WS =  "<?= $pathWS ?>WS_vendedores.php";
 
         $(document).ready(function(){
-            $(modal).setModal("vendedor", 450);
+            $(modalDetalles).setModal(titulo, 400);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
+
             $("#selEmpleados").rellenaSelect("<?= $pathWS ?>WS_empleados.php");
             $("#selRankings").rellenaSelect("<?= $pathWS ?>WS_ranking.php");
         });
@@ -80,6 +85,18 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Empleado</th>
+                <th>Ranking</th>
+            </tr>
+            <tr>
+                <td name="nombre"></td>
+                <td name="ranking"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

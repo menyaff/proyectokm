@@ -36,13 +36,18 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "proveedores";
+
         WS =  "<?= $pathWS ?>WS_proveedores.php";
 
         $(document).ready(function(){
-            $(modal).setModal("proveedor", 1100);
+            $(modalDetalles).setModal(titulo, 600);
+            $(modal).setModal(titulo, 1050);
             $(grid).setGrid();
+
             $("#selEstadosFiscal").rellenaSelect("<?= $pathWS ?>WS_estados.php");
             $("#selEstadosFiscal").change(function(){
                 var elem = $(this);
@@ -140,6 +145,74 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>            
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th class="thead">Clave</th>
+                <td name="clave"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre</th>
+                <td name="nombre"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre Contacto 1</th>
+                <td name="nombreContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre Contacto 2</th>
+                <td name="nombre2Contacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre Empresa Contacto</th>
+                <td name="nombreEmpresaContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Telefono Contacto</th>
+                <td name="telefonoContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Celular Contacto</th>
+                <td name="celularContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Correo Contacto</th>
+                <td name="emailContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Web Contacto</th>
+                <td name="webContacto"></td>
+            </tr>
+            <tr>
+                <th class="thead">RFC Físcal</th>
+                <td name="rfcFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre Comercial Físcal</th>
+                <td name="nombreComercialFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Calle Físcal</th>
+                <td name="calleFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Colonia Físcal</th>
+                <td name="coloniaFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Ciudad Físcal</th>
+                <td name="ciudadFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Estado Físcal</th>
+                <td name="estadoFiscal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Código Postal Físcal</th>
+                <td name="codigoPostalFiscal"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

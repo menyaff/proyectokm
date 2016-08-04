@@ -31,11 +31,14 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+
         WS =  "<?= $pathWS ?>WS_roles.php";
 
         $(document).ready(function(){
+            $(modalDetalles).setModal("roles", 400);
             $(modal).setModal("roles", 450);
             $(grid).setGrid();
         });
@@ -67,6 +70,16 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Rol</th>
+            </tr>
+            <tr>
+                <td name="nombre"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

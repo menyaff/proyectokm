@@ -40,12 +40,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "servicio";
+
         WS =  "<?= $pathWS ?>WS_servicios.php";
 
         $(document).ready(function(){
-            $(modal).setModal("servicios", 550);
+            $(modalDetalles).setModal(titulo, 400);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
 
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
@@ -120,6 +124,42 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th class="thead">Clave</th>
+                <td name="clave"></td>
+            </tr>
+            <tr>
+                <th class="thead">Concepto</th>
+                <td name="concepto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Subfamilia</th>
+                <td name="subFamilia"></td>
+            </tr>
+            <tr>
+                <th class="thead">Familia</th>
+                <td name="familia"></td>
+            </tr>
+            <tr>
+                <th class="thead">Área</th>
+                <td name="area"></td>
+            </tr>
+            <tr>
+                <th class="thead">Cantidad</th>
+                <td name="cantidad"></td>
+            </tr>
+            <tr>
+                <th class="thead">Precio Unitario</th>
+                <td name="precioUnitario"></td>
+            </tr>
+            <tr>
+                <th class="thead"><u>Total</u></th>
+                <td name="total"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

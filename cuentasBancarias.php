@@ -57,8 +57,11 @@
                         }
                     }
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "cuenta bancaria";
+
         WS =  "<?= $pathWS ?>WS_cuentasBancarias.php";
 
         generaEstadoDeCuenta = function(registro, inicio, fin){
@@ -140,7 +143,9 @@
         };
 
         $(document).ready(function(){
-            $(modal).setModal("cuenta bancaria", 550);
+            $(modalDetalles).setModal(titulo, 600);
+            $(modal).setModal(titulo, 550);
+            $(grid).setGrid();
             $("#divEstadoDeCuenta").setModal("Estado de cuenta",810,true);
             $(grid).setGrid();
             $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
@@ -197,6 +202,12 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr><th></th></tr>
+            <tr></tr>
+        </table>
     </div>
 </body>
 </html>
