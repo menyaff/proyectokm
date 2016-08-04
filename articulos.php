@@ -174,43 +174,75 @@
     <div id="divModalDetalles" class="formPopup">
         <table class="table table-responsive">
             <tr>
-                <th>Clave</th>
-                <th>Articulo</th>
-                <th>Linea</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Descripción</th>
-                <th>Lugar</th>
-                <th>Codigo de Barras</th>
-                <th>Sustituto</th>
-                <th>Unidad</th>
-                <th>Existencias</th>
-                <th>Área</th>
-                <th>Familia</th>
-                <th>Subfamilia</th>
-                <th>Archivo</th>
-                <th>Precio de Recuperación</th>
-                <th>Precio de Lista</th>
-                <th>Precio Mayoreo</th>
+                <th class="thead">Clave</th>
+                <td name="clave"></td>
             </tr>
             <tr>
-                <td name="clave"></td>
+                <th class="thead">Articulo</th>
                 <td name="nombre"></td>
+            </tr>
+            <tr>
+                <th class="thead">Linea</th>
                 <td name="linea"></td>
+            </tr>
+            <tr>
+                <th class="thead">Marca</th>
                 <td name="marca"></td>
+            </tr>
+            <tr>
+                <th class="thead">Modelo</th>
                 <td name="modelo"></td>
+            </tr>
+            <tr>
+                <th class="thead">Descripción</th>
                 <td name="descripcion"></td>
+            </tr>
+            <tr>
+                <th class="thead">Lugar</th>
                 <td name="lugar"></td>
+            </tr>
+            <tr>
+                <th class="thead">Codigo de Barras</th>
                 <td name="codigoBarras"></td>
+            </tr>
+            <tr>
+                <th class="thead">Sustituto</th>
                 <td name="sustituto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Unidad</th>
                 <td name="unidad"></td>
+            </tr>
+            <tr>
+                <th class="thead">Existencias</th>
                 <td name="existencias"></td>
+            </tr>
+            <tr>
+                <th class="thead">Área</th>
                 <td name="area"></td>
+            </tr>
+            <tr>
+                <th class="thead">Familia</th>
                 <td name="familia"></td>
+            </tr>
+            <tr>
+                <th class="thead">Subfamilia</th>
                 <td name="subfamilia"></td>
+            </tr>
+            <tr>
+                <th class="thead">Archivo</th>
                 <td name="archivo"></td>
+            </tr>
+            <tr>
+                <th class="thead">Precio de Recuperación</th>
                 <td name="precioRecuperacion"></td>
+            </tr>
+            <tr>
+                <th class="thead">Precio de Lista</th>
                 <td name="precioLista"></td>
+            </tr>
+            <tr>
+                <th class="thead">Precio Mayoreo</th>
                 <td name="precioMayoreo"></td>
             </tr>
         </table>

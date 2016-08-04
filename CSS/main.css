@@ -96,3 +96,4 @@ body {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
 }
+.thead{border-right: 1px solid #CCC !important; width: 35%;}

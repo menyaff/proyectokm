@@ -68,9 +68,6 @@
         });
     </script>
 </head>
-<style>
-    .thead{border-right: 1px solid #CCC !important; width: 30%;}
-</style>
 <body>
     <div id="wrapper">
         <?php menuPrincipal(); ?>

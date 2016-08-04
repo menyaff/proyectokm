@@ -35,12 +35,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "lugar";
+
         WS =  "<?= $pathWS ?>WS_lugares.php";
 
         $(document).ready(function(){
-            $(modal).setModal("lugar", 550);
+            $(modalDetalles).setModal(titulo, 800);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
         });
     </script>
@@ -74,6 +78,18 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Lugar</th>
+                <th>Dirección</th>
+            </tr>
+            <tr>
+                <td name="nombre"></td>
+                <td name="direccion"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

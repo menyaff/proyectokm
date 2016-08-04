@@ -41,12 +41,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid";  
+        titulo = "empleado";
+
         WS = "<?= $pathWS ?>WS_empleados.php";
 
         $(document).ready(function(){
-            $(modal).setModal("empleado", 1100);
+            $(modalDetalles).setModal(titulo, 700);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
             $("#selPuestos").rellenaSelect("<?= $pathWS ?>WS_puestos.php");
             $("#selEstados").rellenaSelect("<?= $pathWS ?>WS_estados.php");
@@ -57,6 +61,16 @@
                 jsonCiudades = $.parseJSON(jsonCiudades);
 
                 $("#selCiudades").rellenaSelect("<?= $pathWS ?>WS_ciudades.php",jsonCiudades);
+            });
+
+            $(".btnFormDetalles").click(function(event){
+                camposDias = "td[name='lunes'], td[name='martes'], td[name='miercoles'], td[name='jueves'], td[name='viernes'], td[name='sabado']";
+                camposVal = $(camposDias).html();
+                if(camposVal = 1){
+                    $(camposDias).html('Y');
+                } else if(camposVal = 0){
+                    $(camposDias).html('N');
+                }
             });
         });
     </script>
@@ -158,6 +172,78 @@
                 </div> 
             </div>
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th class="thead">Clave</th>
+                <td name="clave"></td>
+            </tr>
+            <tr>
+                <th class="thead">Nombre</th>
+                <td name="nombre"></td>
+            </tr>
+            <tr>
+                <th class="thead">Puesto</th>
+                <td name="puesto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Domicilio</th>
+                <td name="domicilio"></td>
+            </tr>
+            <tr>
+                <th class="thead">Colonia</th>
+                <td name="colonia"></td>
+            </tr>
+            <tr>
+                <th class="thead">Ciudad</th>
+                <td name="ciudad"></td>
+            </tr>
+            <tr>
+                <th class="thead">Estado</th>
+                <td name="estado"></td>
+            </tr>
+            <tr>
+                <th class="thead">Código Postal</th>
+                <td name="codigoPostal"></td>
+            </tr>
+            <tr>
+                <th class="thead">Teléfono</th>
+                <td name="telefono"></td>
+            </tr>
+            <tr>
+                <th class="thead">Celular</th>
+                <td name="celular"></td>
+            </tr>
+            <tr>
+                <th class="thead">Correo</th>
+                <td name="email"></td>
+            </tr>
+            <tr>
+                <th class="thead">Lunes</th>
+                <td name="lunes"></td>
+            </tr>
+            <tr>
+                <th class="thead">Martes</th>
+                <td name="martes"></td>
+            </tr>
+            <tr>
+                <th class="thead">Miércoles</th>
+                <td name="miercoles"></td>
+            </tr>
+            <tr>
+                <th class="thead">Jueves</th>
+                <td name="jueves"></td>
+            </tr>
+            <tr>
+                <th class="thead">Viernes</th>
+                <td name="viernes"></td>
+            </tr>
+            <tr>
+                <th class="thead">Sábado</th>
+                <td name="sabado"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

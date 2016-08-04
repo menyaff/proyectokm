@@ -58,11 +58,16 @@
                             title: "Cobro"
                         }
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
-        grid = "#divGrid";
+        grid = "#divGrid"; 
+        titulo = "estado de cuenta";
+
         WS =  "<?= $pathWS ?>WS_estadosCuenta.php";
+
         $(document).ready(function(){
-            $(modal).setModal("banco", 550);
+            $(modalDetalles).setModal(titulo, 700);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
         });
     </script>
@@ -93,6 +98,46 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th class="thead">Cuenta Bancaria</th>
+                <td name="nombre"></td>
+            </tr>
+            <tr>
+                <th class="thead">Banco</th>
+                <td name="banco"></td>
+            </tr>
+            <tr>
+                <th class="thead">No. Cuenta</th>
+                <td name="noCuenta"></td>
+            </tr>
+            <tr>
+                <th class="thead">CLABE</th>
+                <td name="clabe"></td>
+            </tr>
+            <tr>
+                <th class="thead">Saldo</th>
+                <td name="saldo"></td>
+            </tr>
+            <tr>
+                <th class="thead">Fecha</th>
+                <td name="fecha"></td>
+            </tr>
+            <tr>
+                <th class="thead">Monto</th>
+                <td name="monto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Concepto</th>
+                <td name="concepto"></td>
+            </tr>
+            <tr>
+                <th class="thead">Movimiento</th>
+                <td name="movimiento"></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
