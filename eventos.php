@@ -86,111 +86,111 @@
     <div id="divModalDetalles" class="formPopup">
         <table class="table table-responsive">
             <tr>
-                <th class="thead">nombre</th>
+                <th class="thead">Nombre</th>
                 <td name="nombre"></td>
             </tr>
             <tr>
-                <th class="thead">cotizacion</th>
+                <th class="thead">Cotización</th>
                 <td name="cotizacion"></td>
             </tr>
             <tr>
-                <th class="thead">statusCotizacion</th>
+                <th class="thead">Status Cotización</th>
                 <td name="statusCotizacion"></td>
             </tr>
             <tr>
-                <th class="thead">statusEvento</th>
+                <th class="thead">Status Evento</th>
                 <td name="statusEvento"></td>
             </tr>
             <tr>
-                <th class="thead">cliente</th>
+                <th class="thead">Cliente</th>
                 <td name="cliente"></td>
             </tr>
             <tr>
-                <th class="thead">lugar</th>
+                <th class="thead">Lugar</th>
                 <td name="lugar"></td>
             </tr>
             <tr>
-                <th class="thead">tipo</th>
+                <th class="thead">Tipo</th>
                 <td name="tipo"></td>
             </tr>
             <tr>
-                <th class="thead">fechaEntrega</th>
+                <th class="thead">Fecha de Entrega</th>
                 <td name="fechaEntrega"></td>
             </tr>
             <tr>
-                <th class="thead">fechaSeguimiento</th>
+                <th class="thead">Fecha Seguimiento</th>
                 <td name="fechaSeguimiento"></td>
             </tr>
             <tr>
-                <th class="thead">fechaFinal</th>
+                <th class="thead">Fecha Final</th>
                 <td name="fechaFinal"></td>
             </tr>
             <tr>
-                <th class="thead">direccion</th>
+                <th class="thead">Dirección</th>
                 <td name="direccion"></td>
             </tr>
             <tr>
-                <th class="thead">invitados</th>
+                <th class="thead">Invitados</th>
                 <td name="invitados"></td>
             </tr>
             <tr>
-                <th class="thead">salon</th>
+                <th class="thead">Salón</th>
                 <td name="salon"></td>
             </tr>
             <tr>
-                <th class="thead">vendedor</th>
+                <th class="thead">Vendedor</th>
                 <td name="vendedor"></td>
             </tr>
             <tr>
-                <th class="thead">utilidadCuenta</th>
+                <th class="thead">Utilidad de cuenta</th>
                 <td name="utilidadCuenta"></td>
             </tr>
             <tr>
-                <th class="thead">cuenta</th>
+                <th class="thead">Cuenta</th>
                 <td name="cuenta"></td>
             </tr>
             <tr>
-                <th class="thead">montoServicios</th>
+                <th class="thead">Monto de servicios</th>
                 <td name="montoServicios"></td>
             </tr>
             <tr>
-                <th class="thead">depositosEnGarantia</th>
+                <th class="thead">Depositos en garantía</th>
                 <td name="depositosEnGarantia"></td>
             </tr>
             <tr>
-                <th class="thead">montoDepositosEnGarantia</th>
+                <th class="thead">Monto depositos en garantía</th>
                 <td name="montoDepositosEnGarantia"></td>
             </tr>
             <tr>
-                <th class="thead">guardias</th>
+                <th class="thead">Guardias</th>
                 <td name="guardias"></td>
             </tr>
             <tr>
-                <th class="thead">cantidadGuardias</th>
+                <th class="thead">Cantidad guardias</th>
                 <td name="cantidadGuardias"></td>
             </tr>
             <tr>
-                <th class="thead">montoGuardias</th>
+                <th class="thead">Monto guardias</th>
                 <td name="montoGuardias"></td>
             </tr>
             <tr>
-                <th class="thead">metodoPago</th>
+                <th class="thead">Método pago</th>
                 <td name="metodoPago"></td>
             </tr>
             <tr>
-                <th class="thead">cuentaBancaria</th>
+                <th class="thead">Cuenta Bancaria</th>
                 <td name="cuentaBancaria"></td>
             </tr>
             <tr>
-                <th class="thead">banco</th>
+                <th class="thead">Banco</th>
                 <td name="banco"></td>
             </tr>
             <tr>
-                <th class="thead">totalEvento</th>
+                <th class="thead">Total evento</th>
                 <td name="totalEvento"></td>
             </tr>
             <tr>
-                <th class="thead">anticipo</th>
+                <th class="thead">Anticipo</th>
                 <td name="anticipo"></td>
             </tr>
             <script src="<?= $pathJS ?>forms.js"></script>
@@ -198,32 +198,3 @@
     </div>
 </body>
 </html>
-
-e.nombre
-e.cotizacion
-csc.nombre AS statusCotizacion
-cse.nombre AS statusEvento
-c.nombre AS cliente
-cl.nombre AS lugar
-cte.nombre AS tipo
-e.fechaEntrega
-e.fechaSeguimiento
-e.fechaFinal
-e.direccion
-e.invitados
-e.salon
-emp.nombre AS vendedor
-e.utilidadCuenta
-e.cuenta
-e.montoServicios
-e.depositosEnGarantia
-e.montoDepositosEnGarantia
-cg.nombre AS guardias
-e.cantidadGuardias
-e.montoGuardias
-cmp.nombre AS metodoPago
-cb.nombre AS cuentaBancaria
-b.nombre AS banco
-e.totalEvento
-e.anticipo
-FROM eventos e

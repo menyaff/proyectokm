@@ -75,7 +75,7 @@
     <div id="divModalDetalles" class="formPopup">
         <table class="table table-responsive">
             <tr>
-                <th>Nombre Banco</th>
+                <th>Banco</th>
             </tr>
             <tr>
                 <td name="nombre"></td>

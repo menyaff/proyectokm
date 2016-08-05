@@ -97,7 +97,7 @@
                     <input type="text" name="montoCredito" id="iMontoCredito" class="form-control form-sm" placeholder="Monto Credito"/>
                 </div>
                 <fieldset>
-                    <legend>Datos de Contacto</legend>
+                    <legend>Detalles de Contacto</legend>
                     <div class="form-group">
                         <input type="text" name="nombreContacto" id="iNombreContacto" class="form-control form-sm" placeholder="Nombre"/>
                     </div>
@@ -206,7 +206,7 @@
                 <td name="nombre"></td>
             </tr>
             <tr>
-                <th class="thead">Nombre Comercial</th>
+                <th class="thead">Nombre comercial</th>
                 <td name="nombreComercial"></td>
             </tr>
             <tr>
@@ -218,99 +218,105 @@
                 <td name="montoCredito"></td>
             </tr>
             <tr>
-                <th class="thead">Días Crédito</th>
+                <th class="thead">Días crédito</th>
                 <td name="diasCredito"></td>
             </tr>
             <tr>
-                <th class="thead">Tipo Contacto</th>
+                <th class="thead">Tipo contacto</th>
                 <td name="tipoContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Contacto</th>
+                <th class="text-center" colspan="2">Detalles de Contacto</th>
+            </tr>
+            <tr>
+                <th class="thead">Nombre</th>
                 <td name="nombreContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Contacto Web</th>
+                <th class="thead">Web</th>
                 <td name="webContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Direccion Contacto</th>
+                <th class="thead">Dirección</th>
                 <td name="direccionContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Colonia Contacto</th>
+                <th class="thead">Colonia</th>
                 <td name="coloniaContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Ciudad Contacto</th>
+                <th class="thead">Ciudad</th>
                 <td name="ciudadContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Estado Contacto</th>
+                <th class="thead">Estado</th>
                 <td name="estadoContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Código Postal Contacto</th>
+                <th class="thead">Código Postal</th>
                 <td name="codigoPostalContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Telefono Contacto</th>
+                <th class="thead">Teléfono</th>
                 <td name="telefonoContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Celular Contacto</th>
+                <th class="thead">Celular</th>
                 <td name="celularContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Email Contacto</th>
+                <th class="thead">Correo</th>
                 <td name="emailContacto"></td>
             </tr>
             <tr>
-                <th class="thead">RFC Físcal</th>
+                <th class="text-center" colspan="2">Detalles Físcales</th>
+            </tr>
+            <tr>
+                <th class="thead">RFC</th>
                 <td name="rfcFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Razon Social Físcal</th>
+                <th class="thead">Razon Social</th>
                 <td name="razonSocialFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Calle Físcal</th>
+                <th class="thead">Calle</th>
                 <td name="calleFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Colonia Físcal</th>
+                <th class="thead">Colonia</th>
                 <td name="coloniaFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Estado Físcal</th>
+                <th class="thead">Estado</th>
                 <td name="estadoFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Ciudad Físcal</th>
+                <th class="thead">Ciudad</th>
                 <td name="ciudadFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">País Físcal</th>
+                <th class="thead">País</th>
                 <td name="paisFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Código Postal Físcal</th>
+                <th class="thead">Código Postal</th>
                 <td name="codigoPostalFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Número Interior Físcal</th>
+                <th class="thead">Número Interior</th>
                 <td name="numeroInteriorFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Número Exterior Físcal</th>
+                <th class="thead">Número Exterior</th>
                 <td name="numeroExteriorFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Localidad Físcal</th>
+                <th class="thead">Localidad</th>
                 <td name="localidadFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Municipio Físcal</th>
+                <th class="thead">Municipio</th>
                 <td name="municipioFiscal"></td>
             </tr>
         </table>

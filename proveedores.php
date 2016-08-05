@@ -157,59 +157,65 @@
                 <td name="nombre"></td>
             </tr>
             <tr>
-                <th class="thead">Nombre Contacto 1</th>
+                <th class="text-center" colspan="2">Detalles Contacto</th>
+            </tr>
+            <tr>
+                <th class="thead">Nombre 1</th>
                 <td name="nombreContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Nombre Contacto 2</th>
+                <th class="thead">Nombre 2</th>
                 <td name="nombre2Contacto"></td>
             </tr>
             <tr>
-                <th class="thead">Nombre Empresa Contacto</th>
+                <th class="thead">Empresa</th>
                 <td name="nombreEmpresaContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Telefono Contacto</th>
+                <th class="thead">Teléfono</th>
                 <td name="telefonoContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Celular Contacto</th>
+                <th class="thead">Celular</th>
                 <td name="celularContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Correo Contacto</th>
+                <th class="thead">Correo</th>
                 <td name="emailContacto"></td>
             </tr>
             <tr>
-                <th class="thead">Web Contacto</th>
+                <th class="thead">Web</th>
                 <td name="webContacto"></td>
             </tr>
             <tr>
-                <th class="thead">RFC Físcal</th>
+                <th class="text-center" colspan="2">Detalles Fiscales</th>
+            </tr>
+            <tr>
+                <th class="thead">RFC</th>
                 <td name="rfcFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Nombre Comercial Físcal</th>
+                <th class="thead">Nombre Comercial</th>
                 <td name="nombreComercialFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Calle Físcal</th>
+                <th class="thead">Calle</th>
                 <td name="calleFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Colonia Físcal</th>
+                <th class="thead">Colonia</th>
                 <td name="coloniaFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Ciudad Físcal</th>
+                <th class="thead">Ciudad</th>
                 <td name="ciudadFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Estado Físcal</th>
+                <th class="thead">Estado</th>
                 <td name="estadoFiscal"></td>
             </tr>
             <tr>
-                <th class="thead">Código Postal Físcal</th>
+                <th class="thead">Código Postal</th>
                 <td name="codigoPostalFiscal"></td>
             </tr>
         </table>

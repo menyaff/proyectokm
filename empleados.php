@@ -64,12 +64,10 @@
             });
 
             $(".btnFormDetalles").click(function(event){
-                camposDias = "td[name='lunes'], td[name='martes'], td[name='miercoles'], td[name='jueves'], td[name='viernes'], td[name='sabado']";
+                camposDias = "input:radio[name='lunes'], input:radio[name='martes'], input:radio[name='miercoles'], input:radio[name='jueves'], input:radio[name='viernes'], input:radio[name='sabado']";
                 camposVal = $(camposDias).html();
                 if(camposVal = 1){
-                    $(camposDias).html('Y');
-                } else if(camposVal = 0){
-                    $(camposDias).html('N');
+                    $(camposDias).prop("checked","checked");
                 }
             });
         });
@@ -177,71 +175,63 @@
         <table class="table table-responsive">
             <tr>
                 <th class="thead">Clave</th>
-                <td name="clave"></td>
+                <td colspan="5" name="clave"></td>
             </tr>
             <tr>
                 <th class="thead">Nombre</th>
-                <td name="nombre"></td>
+                <td colspan="5" name="nombre"></td>
             </tr>
             <tr>
                 <th class="thead">Puesto</th>
-                <td name="puesto"></td>
+                <td colspan="5" name="puesto"></td>
             </tr>
             <tr>
                 <th class="thead">Domicilio</th>
-                <td name="domicilio"></td>
+                <td colspan="5" name="domicilio"></td>
             </tr>
             <tr>
                 <th class="thead">Colonia</th>
-                <td name="colonia"></td>
+                <td colspan="5" name="colonia"></td>
             </tr>
             <tr>
                 <th class="thead">Ciudad</th>
-                <td name="ciudad"></td>
+                <td colspan="5" name="ciudad"></td>
             </tr>
             <tr>
                 <th class="thead">Estado</th>
-                <td name="estado"></td>
+                <td colspan="5" name="estado"></td>
             </tr>
             <tr>
                 <th class="thead">Código Postal</th>
-                <td name="codigoPostal"></td>
+                <td colspan="5" name="codigoPostal"></td>
             </tr>
             <tr>
                 <th class="thead">Teléfono</th>
-                <td name="telefono"></td>
+                <td colspan="5" name="telefono"></td>
             </tr>
             <tr>
                 <th class="thead">Celular</th>
-                <td name="celular"></td>
+                <td colspan="5" name="celular"></td>
             </tr>
             <tr>
                 <th class="thead">Correo</th>
-                <td name="email"></td>
+                <td colspan="5" name="email"></td>
             </tr>
             <tr>
                 <th class="thead">Lunes</th>
-                <td name="lunes"></td>
-            </tr>
-            <tr>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="lunes"></td>
                 <th class="thead">Martes</th>
-                <td name="martes"></td>
-            </tr>
-            <tr>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="martes"></td>
                 <th class="thead">Miércoles</th>
-                <td name="miercoles"></td>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="miercoles"></td>
             </tr>
             <tr>
                 <th class="thead">Jueves</th>
-                <td name="jueves"></td>
-            </tr>
-            <tr>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="jueves"></td>
                 <th class="thead">Viernes</th>
-                <td name="viernes"></td>
-            </tr>
-            <tr>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="viernes"></td>
                 <th class="thead">Sábado</th>
-                <td name="sabado"></td>
+                <td style="border-right: 1px solid #ccc;"><input type="radio" name="sabado"></td>
             </tr>
         </table>
     </div>

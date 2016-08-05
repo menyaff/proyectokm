@@ -202,7 +202,7 @@
                 <td name="lugar"></td>
             </tr>
             <tr>
-                <th class="thead">Codigo de Barras</th>
+                <th class="thead">Codigo de barras</th>
                 <td name="codigoBarras"></td>
             </tr>
             <tr>
@@ -234,15 +234,15 @@
                 <td name="archivo"></td>
             </tr>
             <tr>
-                <th class="thead">Precio de Recuperación</th>
+                <th class="thead">Precio de recuperación</th>
                 <td name="precioRecuperacion"></td>
             </tr>
             <tr>
-                <th class="thead">Precio de Lista</th>
+                <th class="thead">Precio de lista</th>
                 <td name="precioLista"></td>
             </tr>
             <tr>
-                <th class="thead">Precio Mayoreo</th>
+                <th class="thead">Precio mayoreo</th>
                 <td name="precioMayoreo"></td>
             </tr>
         </table>

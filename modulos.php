@@ -40,12 +40,16 @@
                         },
                         templateBotones
                     ];
+        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
         grid = "#divGrid";
+        titulo = "módulo"
+
         WS =  "<?= $pathWS ?>WS_servicios.php";
 
         $(document).ready(function(){
-            $(modal).setModal("Articulos", 550);
+            $(modalDetalles).setModal(titulo, 700);
+            $(modal).setModal(titulo, 550);
             $(grid).setGrid();
 
             $("#selSubFamilias").rellenaSelect("<?= $pathWS ?>WS_subfamilias.php");
@@ -120,6 +124,13 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
         </form>
+    </div>
+    <div id="divModalDetalles" class="formPopup">
+        <table class="table table-responsive">
+            <tr>
+                <th>Table header</th>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

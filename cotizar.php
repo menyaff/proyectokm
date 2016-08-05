@@ -261,11 +261,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="number" name="cantidad" id="iCantidad" class="form-control form-sm" placeholder="Cantidad" />
+                <input type="number" name="cantidad" id="iCantidad" class="form-control form-sm" placeholder="Cantidad"/>
             </div>
             <div class="text-center">
-                <input id="btnAgregaArticulo" type="button" class="btn btn-default" value="Enviar" />
-                <input type="reset" class="btn btn-default" value="Limpiar" />
+                <input id="btnAgregaArticulo" type="button" class="btn btn-default" value="Enviar"/>
+                <input type="reset" class="btn btn-default" value="Limpiar"/>
             </div>
        </form>
     </div>

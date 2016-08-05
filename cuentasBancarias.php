@@ -45,19 +45,18 @@
                             field: "saldo",
                             title: "Saldo",
                             template: "$#: saldo #",
-                            width: 150
+                            width: 180
                         },
                         {
                         title: "",
                         filterable: false,
-                        template: "<input type='button' id='btnEstadoDeCuenta_#: id #' registro='#: id #' class='btnEstadoDeCuenta btn btn-default' value='Estado de cuenta' />&nbsp;&nbsp;<input type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' value='Editar' />&nbsp;&nbsp;<input type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' value='Eliminar' />",
-                        width: 320,
+                        template: "<button type='button' id='btnEstadoDeCuenta_#: id #' registro='#: id #' class='btnEstadoDeCuenta btn btn-default' title='Estado de cuenta' value='Estado de cuenta'/><span class='fa fa-file-text' aria-hidden='true'></span></button>&nbsp;&nbsp;<button type='button' id='btnGridEditar_#: id #' registro='#: id #' class='btnFormPopup btn btn-default' title='Editar' value='Editar'><span class='fa fa-pencil' aria-hidden='true'></span></button>&nbsp;&nbsp;<button type='button' id='btnGridEliminar_#: id #' registro='#: id #' class='btnGridEliminar btn btn-default' title='Eliminar' value='Eliminar'><span class='fa fa-trash' aria-hidden='true' style='margin: 0px 0.5px;'></span></button>",
+                        width: 160,
                         attributes: {
                             style: "text-align: center"
                         }
                     }
                     ];
-        modalDetalles = "#divModalDetalles";
         modal = "#divModal"; 
         grid = "#divGrid";  
         titulo = "cuenta bancaria";
@@ -143,10 +142,9 @@
         };
 
         $(document).ready(function(){
-            $(modalDetalles).setModal(titulo, 600);
             $(modal).setModal(titulo, 550);
             $(grid).setGrid();
-            $("#divEstadoDeCuenta").setModal("Estado de cuenta",810,true);
+            $("#divEstadoDeCuenta").setModal("Estado de cuenta",1050,true);
             $(grid).setGrid();
             $("#selBancos").rellenaSelect("<?= $pathWS ?>WS_bancos.php");
 
@@ -202,12 +200,6 @@
                 <input type="reset" class="btn btn-default" value="Limpiar" />
             </div>
        </form>
-    </div>
-    <div id="divModalDetalles" class="formPopup">
-        <table class="table table-responsive">
-            <tr><th></th></tr>
-            <tr></tr>
-        </table>
     </div>
 </body>
 </html>
